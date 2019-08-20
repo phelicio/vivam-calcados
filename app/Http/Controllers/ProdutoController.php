@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Produto;
 
 class ProdutoController extends Controller
 {
@@ -13,7 +14,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {   
-        return view('produto.index', compact(Produto::paginate(25)));
+        return view('admin.produto.produtos', ['produtos' => (Produto::paginate(25))]);
     }
 
     /**
@@ -23,7 +24,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('admin.createProduct');
+        return view('admin.produto.novoProduto');
     }
 
     /**
@@ -35,7 +36,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         Produto::create($request->all());
-        return redirect()->route('admin.index');
+        return redirect()->route('produtos.create')->with('mensagem', 'Produto adicionado com sucesso!');
     }
 
     /**
@@ -80,6 +81,7 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Produto::find($id)->delete();
+        return redirect()->route('produtos.index');
     }
 }

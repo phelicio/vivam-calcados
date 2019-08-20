@@ -19,6 +19,7 @@ class CreateProdutosTable extends Migration
             $table->integer('quantidade');
             $table->double('valor', 8, 2);
             $table->string('tamanho');
+            $table->string('foto');
             $table->timestamps();
         });
     }

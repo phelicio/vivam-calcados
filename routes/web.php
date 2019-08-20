@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['as' => 'produtos.', 'prefix' => 'produtos'], function(){
+Route::get('/admin/produtos', ['as' => 'index','uses' =>'AdminController@produto']);
+Route::get('/admin/produto/novo', ['as' => 'index','uses' =>'AdminController@criarProduto']);
+
+
+Route::group(['as' => 'produtos.', 'prefix' => '/admin/produtos'], function(){
 
     Route::get('', ['as' => 'index','uses' =>'ProdutoController@index']);
     Route::get('/novo', ['as' => 'create','uses' =>'ProdutoController@create']);
@@ -29,7 +30,7 @@ Route::group(['as' => 'produtos.', 'prefix' => 'produtos'], function(){
     Route::get('/delete/{id}', ['as' => 'destroy','uses' =>'ProdutoController@destroy']);
 });
 
-Route::group(['as' => 'marcas.', 'prefix' => 'marcas'], function(){
+Route::group(['as' => 'marcas.', 'prefix' => '/admin/marcas'], function(){
 
     Route::get('', ['as' => 'index','uses' =>'MarcaController@index']);
     Route::get('/novo', ['as' => 'create','uses' =>'MarcaController@create']);
@@ -39,7 +40,7 @@ Route::group(['as' => 'marcas.', 'prefix' => 'marcas'], function(){
     Route::get('/delete/{id}', ['as' => 'destroy','uses' =>'MarcaController@destroy']);
 });
 
-Route::group(['as' => 'categorias.', 'prefix' => 'categorias'], function(){
+Route::group(['as' => 'categorias.', 'prefix' => '/admin/categorias'], function(){
 
     Route::get('', ['as' => 'index','uses' =>'CategoriaController@index']);
     Route::get('/novo', ['as' => 'create','uses' =>'CategoriaController@create']);
@@ -48,3 +49,17 @@ Route::group(['as' => 'categorias.', 'prefix' => 'categorias'], function(){
     Route::post('/{id}', ['as' => 'update','uses' =>'CategoriaController@update']);
     Route::get('/delete/{id}', ['as' => 'destroy','uses' =>'CategoriaController@destroy']);
 });
+
+Route::get('/admin', function () {
+    return view('admin.auth.login');
+});
+
+Route::get('/admin/email', function () {
+    return view('admin.auth.passwords.email');
+});
+
+Route::get('/admin/reset', function () {
+    return view('admin.auth.passwords.email');
+});
+
+
