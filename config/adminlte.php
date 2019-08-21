@@ -133,43 +133,51 @@ return [
         ],*/
         [
             'text'    => 'Produto',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'glyphicon glyphicon-record',
             'submenu' => [
                 [
                     'text' => 'Novo',
                     'url'  => '/admin/produtos/novo',
+                    'icon'    => 'glyphicon glyphicon-plus',
+                    
                 ],
                 [
                     'text' => 'Visualizar',
                     'url'  => '/admin/produtos',
+                    'icon'    => 'glyphicon glyphicon-eye-open',
                 ],
             ],
         ],
         [
             'text'    => 'Marca',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'glyphicon glyphicon-record',
             'submenu' => [
                 [
                     'text' => 'Novo',
                     'url'  => '/admin/marcas/novo',
+                    'icon'    => 'glyphicon glyphicon-plus',
                 ],
                 [
                     'text' => 'Visualizar',
                     'url'  => '/admin/marcas',
+                    'icon'    => 'glyphicon glyphicon-eye-open',
                 ],
             ],
         ],
         [
             'text'    => 'Categoria',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'glyphicon glyphicon-record',
             'submenu' => [
                 [
                     'text' => 'Novo',
                     'url'  => '/admin/categorias/novo',
+                    'icon'    => 'glyphicon glyphicon-plus',
+
                 ],
                 [
                     'text' => 'Visualizar',
                     'url'  => '/admin/categorias',
+                    'icon'    => 'glyphicon glyphicon-eye-open',
                 ],
             ],
         ],
@@ -180,9 +188,17 @@ return [
                 [
                     'text' => 'Visualizar Histórico',
                     'url'  => '/admin/vendas',
+                    'icon'    => 'glyphicon glyphicon-eye-open',
                 ],
             ],
-        ],/*
+        ],
+        ['header' => 'CONFIGURAÇÕES'],
+        [
+            'text' => 'profile',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        /*
         ['header' => 'labels'],
         [
             'text'       => 'important',
