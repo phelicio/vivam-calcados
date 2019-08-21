@@ -47,7 +47,7 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('produto.show', ['produto' => Produto::find($id)]);
     }
 
     /**
@@ -58,7 +58,7 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.produto.novoProduto', ['produto' => Produto::find($id)]);
     }
 
     /**

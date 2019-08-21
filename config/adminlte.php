@@ -133,7 +133,7 @@ return [
         ],*/
         [
             'text'    => 'Produto',
-            'icon'    => 'glyphicon glyphicon-record',
+            'icon'    => 'glyphicon glyphicon-road',
             'submenu' => [
                 [
                     'text' => 'Novo',
@@ -150,7 +150,7 @@ return [
         ],
         [
             'text'    => 'Marca',
-            'icon'    => 'glyphicon glyphicon-record',
+            'icon'    => 'glyphicon glyphicon-road',
             'submenu' => [
                 [
                     'text' => 'Novo',
@@ -166,7 +166,7 @@ return [
         ],
         [
             'text'    => 'Categoria',
-            'icon'    => 'glyphicon glyphicon-record',
+            'icon'    => 'glyphicon glyphicon-road',
             'submenu' => [
                 [
                     'text' => 'Novo',
@@ -183,7 +183,7 @@ return [
         ],
         [
             'text'    => 'Vendas',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'glyphicon glyphicon-road',
             'submenu' => [
                 [
                     'text' => 'Visualizar Histórico',

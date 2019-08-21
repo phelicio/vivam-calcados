@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        return view('admin.categoria.categorias', ['categorias' => (Categoria::paginate(25))]);
     }
 
     /**
@@ -23,7 +23,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categoria.novoCategoria');
     }
 
     /**
@@ -34,7 +34,8 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Categoria::create($request->all());
+        return redirect()->route('categorias.create')->with('mensagem', 'Categoria adicionado com sucesso!');
     }
 
     /**
@@ -45,7 +46,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('categoria.show', ['categoria' => Categoria::find($id)]);
     }
 
     /**
@@ -56,7 +57,7 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.categoria.novoCategoria', ['categoria' => Categoria::find($id)]);
     }
 
     /**
@@ -79,6 +80,7 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Categoria::find($id)->delete();
+        return redirect()->route('categorias.index');
     }
 }

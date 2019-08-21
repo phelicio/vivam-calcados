@@ -12,8 +12,8 @@ class MarcaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        return view('admin.marca.marcas', ['marcas' => (Marca::paginate(25))]);
     }
 
     /**
@@ -23,7 +23,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.marca.novoMarca');
     }
 
     /**
@@ -34,7 +34,8 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Marca::create($request->all());
+        return redirect()->route('marcas.create')->with('mensagem', 'Marca adicionada com sucesso!');
     }
 
     /**
@@ -45,7 +46,7 @@ class MarcaController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('marca.show', ['marca' => Marca::find($id)]);
     }
 
     /**
@@ -56,7 +57,7 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.marca.novoMarca', ['marca' => Marca::find($id)]);
     }
 
     /**
@@ -79,6 +80,7 @@ class MarcaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Marca::find($id)->delete();
+        return redirect()->route('marcas.index');
     }
 }
