@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
+use App\Http\Requests\ProdutoRequest;
 
 class ProdutoController extends Controller
 {
@@ -33,10 +34,14 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProdutoRequest $request)
     {
-        Produto::create($request->all());
-        return redirect()->route('produtos.create')->with('mensagem', 'Produto adicionado com sucesso!');
+        if(Produto::create($request->all())){
+    
+            return redirect()->route('produtos.create')->with('mensagem', 'Produto adicionado com sucesso!');
+        } else {
+
+        }
     }
 
     /**
@@ -68,9 +73,15 @@ class ProdutoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProdutoRequest $request, $id)
     {
-        //
+        $produto = Produto::find($id);
+        $produto->update($request->all());
+        //$produto->categorias()->detach();
+        $categorias = $request->only(['categorias'])['categorias'];
+        //$produto->categorias()->attach($categorias);
+        return redirect('');
+    
     }
 
     /**

@@ -20,7 +20,7 @@ class CreateProdutosTable extends Migration
             $table->integer('marca_id');
             $table->double('valor', 8, 2);
             $table->string('tamanho');
-            $table->string('foto');
+            $table->string('imagem');
             $table->timestamps();
         });
     }

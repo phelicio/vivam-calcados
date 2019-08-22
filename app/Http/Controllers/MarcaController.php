@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Marca;
 use Illuminate\Http\Request;
+use App\Http\Requests\MarcaRequest;
 
 class MarcaController extends Controller
 {
@@ -32,7 +34,7 @@ class MarcaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MarcaRequest $request)
     {
         Marca::create($request->all());
         return redirect()->route('marcas.create')->with('mensagem', 'Marca adicionada com sucesso!');
