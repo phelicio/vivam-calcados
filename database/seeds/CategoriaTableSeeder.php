@@ -12,8 +12,9 @@ class CategoriaTableSeeder extends Seeder
     public function run()
     {
         for($i=0; $i < 40; $i++) { 
-            DB::table('marcas')->insert([
+            DB::table('categorias')->insert([
                 'nome' => Str::random(10),
             ]);
-        }    }
+        }    
+    }
 }
