@@ -39,7 +39,9 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoRequest $request)
     {
-        Produto::create($request->all());
+        \Debugbar::info($request->except('categoria_id'));
+        $produto = Produto::create($request->except('categoria_id'));
+        $produto->attach('categoria_id');
         return redirect()->route('produtos.create')->with('mensagem', 'Produto adicionado com sucesso!');
     }
 

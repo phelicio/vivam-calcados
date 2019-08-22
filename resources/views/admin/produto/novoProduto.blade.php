@@ -44,8 +44,8 @@
           <input name="tamanho" type="money" class="form-control" id="tamanho" placeholder="Tamanho">
         </div>
         <div class="form-group">
-          <label for="foto">Imagem do Produto</label>
-          <input name="foto" type="file" class="form-control-file" id="foto">
+          <label for="imagem">Imagem do Produto</label>
+          <input name="imagem" type="file" class="form-control-file" id="imagem">
         </div>
         
         <div class="form-group ">
@@ -53,7 +53,7 @@
           <div class="col-xs-12">
             @foreach ($categorias as $categoria)
               <div class="col-xs-3">
-                <input type="checkbox" name="categoria_id" value="{{$categoria->id}}" id="categoria[{{$categoria->id}}]">
+                <input type="checkbox" name="categoria_id[]" value="{{$categoria->id}}" id="categoria[{{$categoria->id}}]">
                   <span for="categoria[{{$categoria->id}}]">{{$categoria->nome}}</span>
               </div>
             @endforeach
@@ -61,7 +61,7 @@
         </div>
         <div class="form-group">
               <label>Marca</label>
-              <select class="form-control" name="marca_id" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+              <select class="form-control" name="marca_id" style="width: 100%;" aria-hidden="true">
                 @foreach ($marcas as $marca)
                   <option value="{{$marca->id}}">{{$marca->nome}}</option>
                 @endforeach
