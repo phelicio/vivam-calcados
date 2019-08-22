@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
+use App\Categoria;
+use App\Marca;
+
 use App\Http\Requests\ProdutoRequest;
 
 class ProdutoController extends Controller
@@ -25,7 +28,7 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('admin.produto.novoProduto');
+        return view('admin.produto.novoProduto', ['categorias' => Categoria::all(), 'marcas' => Marca::all()]);
     }
 
     /**
@@ -36,12 +39,8 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoRequest $request)
     {
-        if(Produto::create($request->all())){
-    
-            return redirect()->route('produtos.create')->with('mensagem', 'Produto adicionado com sucesso!');
-        } else {
-
-        }
+        Produto::create($request->all());
+        return redirect()->route('produtos.create')->with('mensagem', 'Produto adicionado com sucesso!');
     }
 
     /**

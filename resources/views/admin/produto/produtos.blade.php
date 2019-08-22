@@ -10,6 +10,7 @@
             <th>Valor</th>
             <th>Quantidade</th>
             <th>Tamanho</th>
+            <th>Marca</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,7 @@
                 <td><h4>{{$produto->valor}}</h4></td>                      
                 <td><h4>{{$produto->quantidade}}</h4></td>                      
                 <td><h4>{{$produto->tamanho}}</h4></td>
+                <td><h4>{{$produto->marca->nome}}</h4></td>
                 <td><a href="{{route('produtos.edit', $produto->id)}}"><i class="glyphicon glyphicon-pencil alert alert-info"></i></a></td>      
                 <td><a href="{{route('produtos.destroy', $produto->id)}}"><i class="glyphicon glyphicon-remove alert alert-danger"></i></a></td>      
             </tr>
