@@ -10,8 +10,12 @@
     
                 <h3 class="box-title">{{$produto->nome}}</h3>
                 <div class="pull-right">
-                    <a  style="margin-right:5px; color: #605ca8;" href="{{route('produtos.edit', $produto->id)}}"><i class="glyphicon glyphicon-pencil"></i></a>      
-                    <a style="margin-right:5px; color: lightcoral;" href="{{route('produtos.destroy', $produto->id)}}"><i class="glyphicon glyphicon-remove"></i></a>  
+                    <form action="{{route('produtos.destroy', $produto->id)}}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <a class="btn btn-outline glyphicon glyphicon-pencil" style="margin-right:5px; color: #605ca8;" href="{{route('produtos.edit', $produto->id)}}"></a>      
+                        <button class="btn btn-outline glyphicon glyphicon-remove" style="color:lightcoral;"></button>
+                    </form>
                 </div>
                 </div>
                 <!-- /.box-header -->
