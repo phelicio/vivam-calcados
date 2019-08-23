@@ -2,30 +2,32 @@
 
 
 @section('content')
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Nome</th>
-            <th>Valor</th>
-            <th>Quantidade</th>
-            <th>Tamanho</th>
-            <th>Marca</th>
-        </tr>
-    </thead>
-    <tbody>
-            @foreach ($produtos as $produto)
-            <tr>
-                <td><img  width="300px" src="http://images-cdn.impresa.pt/caras/2011-07-21-nicolas-cage?v=w870h555" class="card-img-top" alt="..."></td>
-                <td><h4>{{$produto->nome}}</h4></td>                      
-                <td><h4>{{$produto->valor}}</h4></td>                      
-                <td><h4>{{$produto->quantidade}}</h4></td>                      
-                <td><h4>{{$produto->tamanho}}</h4></td>
-                <td><h4>{{$produto->marca->nome}}</h4></td>
-                <td><a href="{{route('produtos.edit', $produto->id)}}"><i class="glyphicon glyphicon-pencil alert alert-info"></i></a></td>      
-                <td><a href="{{route('produtos.destroy', $produto->id)}}"><i class="glyphicon glyphicon-remove alert alert-danger"></i></a></td>      
-            </tr>
-            @endforeach
-    </tbody>
-    </table>
+    @foreach ($produtos as $produto)
+    <div class="col-md-3">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                <i class="fa fa-warning"></i>
+    
+                <h3 class="box-title">{{$produto->nome}}</h3>
+                <div class="pull-right">
+                    <a  style="margin-right:5px; color: #605ca8;" href="{{route('produtos.edit', $produto->id)}}"><i class="glyphicon glyphicon-pencil"></i></a>      
+                    <a style="margin-right:5px; color: lightcoral;" href="{{route('produtos.destroy', $produto->id)}}"><i class="glyphicon glyphicon-remove"></i></a>  
+                </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <img  width="244px" src="http://images-cdn.impresa.pt/caras/2011-07-21-nicolas-cage?v=w870h555" class="card-img-top" alt="...">
+                    <small>Valor</small>
+                    <p>R${{$produto->valor}},00</p>
+                    <small>Quantidade</small>
+                    <p>{{$produto->quantidade}}</p>
+                    <small>Tamanho</small>
+                    <p>{{$produto->tamanho}}</p>
+                    <small>Marca</small>
+                    <p>{{$produto->marca->nome}}</p>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
+    @endforeach
 @stop
