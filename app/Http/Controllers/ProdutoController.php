@@ -39,10 +39,11 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoRequest $request)
     {
-        \Debugbar::info($request->except('categoria_id'));
+        \Debugbar::info($request->all());
         $produto = Produto::create($request->except('categoria_id'));
-        $produto->attach('categoria_id');
-        return redirect()->route('produtos.create')->with('mensagem', 'Produto adicionado com sucesso!');
+        $categorias = Categoria::findMany($request->only('categoria_id'));
+        $produto->categorias()->attach($categorias);
+        return redirect()->route('produtos.create')->with('mensagem' , 'Produto adicionado com sucesso!' );
     }
 
     /**

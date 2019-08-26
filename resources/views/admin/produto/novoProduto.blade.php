@@ -1,19 +1,19 @@
 @extends('adminlte::page')
 @section('content')
 
-@hasSection ('mensagem')
-    <div class="alert alert-success alert-dismissible">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <h4><i class="icon fa fa-check"></i>{{$mensagem}}</h4>
-    </div>
+@if($mensagem = Session::get('mensagem'))
+  <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+  <h4><i class="icon fa fa-check"></i>{{$mensagem}}</h4>
+  </div>
 @endif
+
 
 @empty(!$errors->any())
 <div class = "alert alert-danger">
     @foreach($errors->all() as $error)
 
         <div> {{ $error }} </div>
-
     @endforeach
 </div>
 @endempty
