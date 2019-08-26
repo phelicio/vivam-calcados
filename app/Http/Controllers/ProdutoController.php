@@ -18,7 +18,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {   
-        return view('admin.produto.produtos', ['produtos' => (Produto::paginate(25))]);
+        return view('admin.produto.produtos', ['produtos' => (Produto::paginate(100))]);
     }
 
     /**
@@ -40,7 +40,7 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
         $produto = Produto::create($request->except('categoria_id'));
-        $categorias = Categoria::findMany($request->only('categoria_id'));
+        $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
         $produto->categorias()->attach($categorias);
         return redirect()->route('produtos.create')->with('mensagem' , 'Produto adicionado com sucesso!' );
     }
@@ -64,9 +64,19 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        \Debugbar::info( Produto::find($id));
         $produto = Produto::find($id);
-        return view('admin.produto.novoProduto', ['produto' => $produto, 'categorias' => Categoria::all(), 'marcas' => Marca::all()]);
+        $categoriasIds = array();
+
+        foreach ($produto->categorias as $categoria) {
+            array_push($categoriasIds, $categoria->id);
+        }
+
+        return view('admin.produto.novoProduto', [
+            'produto' => $produto,
+            'categorias' => Categoria::all(),
+            'marcas' => Marca::all(),
+            'categoriasIds' => $categoriasIds
+            ]);
     }
 
     /**

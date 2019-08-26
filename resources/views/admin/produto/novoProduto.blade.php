@@ -28,8 +28,8 @@
       @csrf
       <div class="box-body">
         <div class="form-group">
-          <label for="nome">Nome</label>
-          <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome">
+          <label for="nome">Nome</label> 
+        <input name="nome" type="text" class="form-control" id="nome" @isset($produto) value="{{$produto->nome}}" @endisset placeholder="Nome">
         </div>
         <div class="form-group">
           <label for="quantidade">Quantidade</label>
@@ -53,8 +53,14 @@
           <div class="col-xs-12">
             @foreach ($categorias as $categoria)
               <div class="col-xs-3">
-                <input type="checkbox" name="categoria_id[]" value="{{$categoria->id}}" id="categoria[{{$categoria->id}}]">
-                  <span for="categoria[{{$categoria->id}}]">{{$categoria->nome}}</span>
+                <input 
+
+                @if (isset($produto) && in_array($categoria->id, $categoriasIds))
+                    checked
+                @endif 
+
+                type="checkbox" name="categoria_id[]" value="{{$categoria->id}}" id="categoria[{{$categoria->id}}]">
+                <span for="categoria[{{$categoria->id}}]">{{$categoria->nome}}</span>
               </div>
             @endforeach
           </div>
