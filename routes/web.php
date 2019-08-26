@@ -46,6 +46,13 @@ Route::group(['as' => 'categorias.', 'prefix' => '/admin/categorias'], function(
     Route::delete('/delete/{id}', ['as' => 'destroy','uses' =>'CategoriaController@destroy']);
 });
 
+Route::group(['as' => 'admin.', 'prefix' => '/admin'], function(){
+    Route::get('/settings', ['as' => 'settings', 'uses' => 'AdminController@settings']);
+    Route::post('/settings', ['as' => 'saveSettings', 'uses' => 'AdminController@saveSettings']);
+
+});
+
+
 Route::get('/admin', function () {
     return view('admin.auth.login');
 });

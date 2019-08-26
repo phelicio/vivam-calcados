@@ -107,12 +107,14 @@ return [
     */
 
     'menu' => [
-        ['header' => 'GERENCIAR'],
+        ['header' => 'CONFIGURAÇÕES'],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'Perfil',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
         ],
+
+        ['header' => 'GERENCIAR'],
         /*[
             'text'        => 'pages',
             'url'         => 'admin/pages',
@@ -133,7 +135,7 @@ return [
         ],*/
         [
             'text'    => 'Produto',
-            'icon'    => 'glyphicon glyphicon-road',
+            'icon'    => 'glyphicon glyphicon-folder-close',
             'submenu' => [
                 [
                     'text' => 'Novo',
@@ -150,7 +152,7 @@ return [
         ],
         [
             'text'    => 'Marca',
-            'icon'    => 'glyphicon glyphicon-road',
+            'icon'    => 'glyphicon glyphicon-folder-close',
             'submenu' => [
                 [
                     'text' => 'Novo',
@@ -166,7 +168,7 @@ return [
         ],
         [
             'text'    => 'Categoria',
-            'icon'    => 'glyphicon glyphicon-road',
+            'icon'    => 'glyphicon glyphicon-folder-close',
             'submenu' => [
                 [
                     'text' => 'Novo',
@@ -183,7 +185,7 @@ return [
         ],
         [
             'text'    => 'Vendas',
-            'icon'    => 'glyphicon glyphicon-road',
+            'icon'    => 'glyphicon glyphicon-folder-close',
             'submenu' => [
                 [
                     'text' => 'Visualizar Histórico',
@@ -192,12 +194,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'CONFIGURAÇÕES'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
+        
         /*
         ['header' => 'labels'],
         [

@@ -39,7 +39,6 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoRequest $request)
     {
-        \Debugbar::info($request->all());
         $produto = Produto::create($request->except('categoria_id'));
         $categorias = Categoria::findMany($request->only('categoria_id'));
         $produto->categorias()->attach($categorias);
@@ -65,7 +64,9 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.produto.novoProduto', ['produto' => Produto::find($id)]);
+        \Debugbar::info( Produto::find($id));
+        $produto = Produto::find($id);
+        return view('admin.produto.novoProduto', ['produto' => $produto, 'categorias' => Categoria::all(), 'marcas' => Marca::all()]);
     }
 
     /**
