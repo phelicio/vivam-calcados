@@ -1,4 +1,4 @@
-</p>Instalar as dependencias:</p>
+<p>Instalar as dependencias:</p>
 <pre>composer install </pre>
 <p>Publish do adminLTE:</p>
 <pre>php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvider" --tag=assets</pre>
