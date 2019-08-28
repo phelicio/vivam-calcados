@@ -44,6 +44,7 @@
                 <input name="estado" type="text" class="form-control" id="estado" placeholder="Estado">
             </div>
         </div>
+        <script src="{{ URL::asset('js/custom-masked-autocomplete-cep.js') }}"></script>
         <!-- /.box-body -->
         <div class="box-footer">
             <button type="submit" class="btn btn-primary">Salvar</button>

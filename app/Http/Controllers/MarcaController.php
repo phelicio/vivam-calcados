@@ -37,7 +37,7 @@ class MarcaController extends Controller
     public function store(MarcaRequest $request)
     {
         Marca::create($request->all());
-        return redirect()->route('marcas.create')->with('mensagem', 'Marca adicionada com sucesso!');
+        return redirect()->route('marcas.index')->with('mensagem', 'Marca adicionada com sucesso!');
     }
 
     /**
@@ -69,9 +69,11 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MarcaRequest $request, $id)
     {
-        //
+        $marca = Marca::find($id);
+        $marca->update($request->all());
+        return redirect()->route('marcas.index')->with('mensagem', 'Produto salvo com sucesso!');
     }
 
     /**

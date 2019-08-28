@@ -42,7 +42,7 @@ class ProdutoController extends Controller
         $produto = Produto::create($request->except('categoria_id'));
         $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
         $produto->categorias()->attach($categorias);
-        return redirect()->route('produtos.create')->with('mensagem' , 'Produto adicionado com sucesso!' );
+        return redirect()->route('produtos.index')->with('mensagem' , 'Produto adicionado com sucesso!' );
     }
 
     /**
@@ -89,12 +89,12 @@ class ProdutoController extends Controller
     public function update(ProdutoRequest $request, $id)
     {
         $produto = Produto::find($id);
-        $produto->update($request->all());
-        //$produto->categorias()->detach();
-        $categorias = $request->only(['categorias'])['categorias'];
-        //$produto->categorias()->attach($categorias);
-        return redirect('');
-    
+        $produto->update($request->except('categoria_id'));
+        $produto->categorias()->detach();
+        $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
+        $produto->categorias()->attach($categorias);
+        
+        return redirect()->route('produtos.index')->with('mensagem', 'Produto salvo com sucesso!');
     }
 
     /**

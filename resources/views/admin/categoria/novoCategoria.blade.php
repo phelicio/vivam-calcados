@@ -1,13 +1,6 @@
 @extends('adminlte::page')
 @section('content')
 
-@if($mensagem = Session::get('mensagem'))
-  <div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-  <h4><i class="icon fa fa-check"></i>{{$mensagem}}</h4>
-  </div>
-@endif
-
 @empty(!$errors->any())
 <div class = "alert alert-danger">
     @foreach($errors->all() as $error)
@@ -20,16 +13,31 @@
 
   <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Nova Categoria</h3>
+      <h3 class="box-title"> 
+        @if (isset($categoria))
+          Editar Categoria    
+        @else
+          Nova Categoria
+        @endif 
+      </h3>
     </div>
     <!-- /.box-header -->
     <!-- form start -->
-    <form role="form" method="POST" action="{{ route('categorias.store') }}" accept-charset="UTF-8">
+    <form role="form" method="POST" action="
+    @if (isset($categoria))
+    {{ route('categorias.update', $categoria->id) }}
+    @else
+    {{ route('categorias.store') }}
+    @endif" 
+    accept-charset="UTF-8">
+    @isset($categoria)
+      {{ method_field('PUT') }}
+    @endisset
       @csrf
       <div class="box-body">
         <div class="form-group">
           <label for="nome">Nome</label>
-          <input name="nome" type="text" class="form-control" id="nome" placeholder="Nome">
+          <input name="nome" type="text" class="form-control"  @isset($categoria) value="{{$categoria->nome}}" id="nome" placeholder="Nome">
         </div>
       <div class="box-footer">
           <button type="submit" class="btn btn-primary">Salvar</button>

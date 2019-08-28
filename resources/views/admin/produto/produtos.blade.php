@@ -2,6 +2,14 @@
 
 
 @section('content')
+    
+@if($mensagem = Session::get('mensagem'))
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h4><i class="icon fa fa-check"></i>{{$mensagem}}</h4>
+    </div>
+    @endif
+
     @foreach ($produtos as $produto)
     <div class="col-md-3">
             <div class="box box-default">
@@ -20,7 +28,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <img  width="244px" src="http://images-cdn.impresa.pt/caras/2011-07-21-nicolas-cage?v=w870h555" class="card-img-top" alt="...">
+                    <img  width="212px" src="http://images-cdn.impresa.pt/caras/2011-07-21-nicolas-cage?v=w870h555" class="card-img-top" alt="...">
                     <small>Valor</small>
                     <p>R${{$produto->valor}},00</p>
                     <small>Quantidade</small>
