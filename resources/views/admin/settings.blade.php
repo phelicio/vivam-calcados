@@ -44,6 +44,7 @@
                 <input name="estado" type="text" class="form-control" id="estado" placeholder="Estado">
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
         <script src="{{ URL::asset('js/custom-masked-autocomplete-cep.js') }}"></script>
         <!-- /.box-body -->
         <div class="box-footer">
