@@ -21,7 +21,7 @@
            
             <div class="form-group col-md-8">
                     <label for="cep">Cep</label>
-                    <input name="cep" type="text" class="form-control" id="cep" placeholder="Cep">
+                    <input name="cep" type="text" maxlength="11" class="form-control" id="cep" placeholder="Cep">
             </div>
             <div class="form-group col-md-8">
                     <label for="rua">Rua</label>
@@ -45,7 +45,7 @@
             </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
-        <script src="{{ URL::asset('js/custom-masked-autocomplete-cep.js') }}"></script>
+        <script src="{{ URL::asset('js/masked-autocomplete-cep.js') }}"></script>
         <!-- /.box-body -->
         <div class="box-footer">
             <button type="submit" class="btn btn-primary">Salvar</button>
