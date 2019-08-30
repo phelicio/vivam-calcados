@@ -6,22 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Endereco extends Model
 {
-    protected $fillable = ['nome'];
+    protected $fillable = ['logradouro', 'cep', 'bairro', 'localidade', 'uf'];
 
-    public function rua() { 
-        return $this->belongsTo('App\Rua'); 
-    }
-
-    public function bairro() { 
-        return $this->belongsTo('App\Bairro'); 
-    }
-
-    public function cidade() { 
-        return $this->belongsTo('App\Cidade'); 
-    }
-
-    public function estado() { 
-        return $this->belongsTo('App\Estado'); 
+    public function user() { 
+        return $this->belongsTo('App\User'); 
     }
 }
 
