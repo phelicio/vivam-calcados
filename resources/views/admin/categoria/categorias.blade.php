@@ -24,8 +24,8 @@
         </div>
     </div>
 @endforeach
-    <ul class="pagination">
+    <nav class="footer position-fixed text-center">
             {{ $categorias->links() }}
-    </ul>
+    </nav>
    
 @stop

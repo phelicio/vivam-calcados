@@ -26,7 +26,7 @@
             </div>
             </div>
 @endforeach
-        <nav class="footer position-absolute text-center">
+        <nav class="footer position-fixed text-center">
             {{ $marcas->links() }}
         </nav>
     </div>
