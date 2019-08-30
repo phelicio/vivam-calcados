@@ -15,7 +15,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {   
-        return view('admin.categoria.categorias', ['categorias' => (Categoria::paginate(25))]);
+        return view('admin.categoria.categorias', ['categorias' => (Categoria::paginate(28))]);
     }
 
     /**

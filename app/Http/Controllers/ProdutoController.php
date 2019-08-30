@@ -18,7 +18,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {   
-        return view('admin.produto.produtos', ['produtos' => (Produto::paginate(100))]);
+        return view('admin.produto.produtos', ['produtos' => (Produto::paginate(28))]);
     }
 
     /**

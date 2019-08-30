@@ -42,6 +42,9 @@
             </div>
         </div>
     @endforeach
+        <nav class="footer position-absolute text-center">
+            {{ $produtos->links() }}
+        </nav>
 </div>
 
 @stop

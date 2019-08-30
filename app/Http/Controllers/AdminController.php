@@ -10,6 +10,8 @@ class AdminController extends Controller
         return view('admin.settings');
     }
 
-    public function saveSettings(){
+    public function saveSettings(Request $request){
+        
+        return view('admin.settings');
     }
 }
