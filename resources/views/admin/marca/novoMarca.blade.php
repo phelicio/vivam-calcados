@@ -29,7 +29,7 @@
       @else
         {{ route('marcas.store') }}
       @endif" 
-      accept-charset="UTF-8">
+      zaccept-charset="UTF-8">
       @isset($marca)
         {{ method_field('PUT') }}
       @endisset

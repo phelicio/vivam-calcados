@@ -37,7 +37,7 @@
       <div class="box-body">
         <div class="form-group">
           <label for="nome">Nome</label>
-          <input name="nome" type="text" class="form-control"  @isset($categoria) value="{{$categoria->nome}}" id="nome" placeholder="Nome">
+          <input name="nome" type="text" class="form-control"  @isset($categoria) value="{{$categoria->nome}}" @endisset id="nome" placeholder="Nome">
         </div>
       <div class="box-footer">
           <button type="submit" class="btn btn-primary">Salvar</button>

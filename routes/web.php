@@ -14,8 +14,9 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
+
+##Admin Routes ##begin
 Route::group(['as' => 'produtos.', 'prefix' => '/admin/produtos'], function(){
 
     Route::get('', ['as' => 'index','uses' =>'ProdutoController@index']);
@@ -64,5 +65,9 @@ Route::get('/admin/email', function () {
 Route::get('/admin/reset', function () {
     return view('admin.auth.passwords.email');
 });
+##Admin Routes ##end
 
 
+##User Routes
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
