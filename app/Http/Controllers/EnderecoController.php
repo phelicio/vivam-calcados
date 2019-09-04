@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Geocoder\Laravel\Facades\Geocoder;
 
 class EnderecoController extends Controller
 {
@@ -13,7 +14,7 @@ class EnderecoController extends Controller
      */
     public function index()
     {
-        //
+       var_dump(Geocoder::getProviders());
     }
 
     /**

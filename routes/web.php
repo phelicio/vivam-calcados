@@ -71,3 +71,4 @@ Route::get('/admin/reset', function () {
 ##User Routes
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
+Route::get('/teste', 'EnderecoController@index');
