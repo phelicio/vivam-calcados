@@ -48,11 +48,15 @@
         </div>
         <div class="form-group">
           <label for="valor">Valor</label>
-          <input name="valor" type="money" class="form-control" id="valor" @isset($produto) value="{{$produto->valor}}" @endisset placeholder="Valor">
+          <input name="valor" type="text" class="form-control" id="valor" @isset($produto) value="{{$produto->valor}}" @endisset placeholder="Valor">
+        </div>
+        <div class="form-group">
+          <label for="cor">Cor</label>
+          <input name="cor" type="text" class="form-control" id="cor" @isset($produto) value="{{$produto->cor}}" @endisset placeholder="Cor">
         </div>
         <div class="form-group">
           <label for="tamanho">Tamanho</label>
-          <input name="tamanho" type="money" class="form-control" id="tamanho" @isset($produto) value="{{$produto->tamanho}}" @endisset placeholder="Tamanho">
+          <input name="tamanho" type="text" class="form-control" id="tamanho" @isset($produto) value="{{$produto->tamanho}}" @endisset placeholder="Tamanho">
         </div>
         <div class="form-group">
           <label for="imagem">Imagem do Produto</label>

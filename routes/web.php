@@ -10,14 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Auth::routes();
-
-
-
 ##Admin Routes ##begin
-Route::group(['as' => 'produtos.', 'prefix' => '/admin/produtos'], function(){
+Route::group(['as' => 'produtos.', 'prefix' => '/admin/produtos' ,'middleware' => 'auth.admin'], function(){
 
     Route::get('', ['as' => 'index','uses' =>'ProdutoController@index']);
     Route::get('/novo', ['as' => 'create','uses' =>'ProdutoController@create']);
@@ -27,7 +22,7 @@ Route::group(['as' => 'produtos.', 'prefix' => '/admin/produtos'], function(){
     Route::delete('/delete/{id}', ['as' => 'destroy','uses' =>'ProdutoController@destroy']);
 });
 
-Route::group(['as' => 'marcas.', 'prefix' => '/admin/marcas'], function(){
+Route::group(['as' => 'marcas.', 'prefix' => '/admin/marcas','middleware' => 'auth.admin'], function(){
 
     Route::get('', ['as' => 'index','uses' =>'MarcaController@index']);
     Route::get('/novo', ['as' => 'create','uses' =>'MarcaController@create']);
@@ -37,7 +32,7 @@ Route::group(['as' => 'marcas.', 'prefix' => '/admin/marcas'], function(){
     Route::delete('/delete/{id}', ['as' => 'destroy','uses' =>'MarcaController@destroy']);
 });
 
-Route::group(['as' => 'categorias.', 'prefix' => '/admin/categorias'], function(){
+Route::group(['as' => 'categorias.', 'prefix' => '/admin/categorias','middleware' => 'auth.admin'], function(){
 
     Route::get('', ['as' => 'index','uses' =>'CategoriaController@index']);
     Route::get('/novo', ['as' => 'create','uses' =>'CategoriaController@create']);
@@ -48,14 +43,13 @@ Route::group(['as' => 'categorias.', 'prefix' => '/admin/categorias'], function(
 });
 
 Route::group(['as' => 'admin.', 'prefix' => '/admin'], function(){
+    
+    Route::get('/', ['as' => 'loginPage', 'uses' => 'AdminController@loginPage']);
+    Route::post('/login' , ['as' => 'login' , 'uses' => 'AdminController@login']);
+    Route::post('/logout' , ['as' => 'logout' , 'uses' => 'AdminController@logout']);
     Route::get('/settings', ['as' => 'settings', 'uses' => 'AdminController@settings']);
     Route::post('/settings', ['as' => 'saveSettings', 'uses' => 'AdminController@saveSettings']);
 
-});
-
-
-Route::get('/admin', function () {
-    return view('admin.auth.login');
 });
 
 Route::get('/admin/email', function () {

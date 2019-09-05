@@ -19,6 +19,7 @@ class ProdutoTableSeeder extends Seeder
                 'tamanho' => rand(10, 38),
                 'imagem' => Str::random(10),
                 'marca_id' => rand(1, 40),
+                'cor' => Str::random(10),
             ]);   
         } 
     }

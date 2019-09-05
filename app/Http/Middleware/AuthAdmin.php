@@ -15,6 +15,11 @@ class AuthAdmin
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        session_start();
+        if($_SESSION['is_admin']){
+            return $next($request);
+        }
+
+        return back();
     }
 }

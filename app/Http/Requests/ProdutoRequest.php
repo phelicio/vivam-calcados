@@ -29,6 +29,7 @@ class ProdutoRequest extends FormRequest
             'marca_id' => 'required|numeric',
             'valor' => 'required|numeric',
             'tamanho' => 'required|max:128',
+            'cor' => 'required|max:128',
             //'imagem' => 'required|max:264|image'
         ];
     }
@@ -40,14 +41,16 @@ class ProdutoRequest extends FormRequest
             'nome.max' => 'O :attribute ultrapassou o máximo de caracteres permitidos: :max',
             'quantidade.required' => 'É necessário inserir a :attribute',
             'quantidade.numeric' => ':attribute invalida',
-            'marca_id.required' => 'É necessário inserir a marca',
+            'cor.required' => 'É necessário inserir a :attribute',
+            'cor.max' => 'A :attribute ultrapassou o máximo de caracteres permitidos: :max',
             'valor.required' => 'É necessário inserir o :attribute',
             'valor.numeric' => 'Valor invalido',
+            'marca_id.required' => 'É necessário inserir a marca',
             'tamanho.required' => 'É necessário inserir o :attribute',
             'tamanho.max' => 'O :attribute ultrapassou o máximo de caracteres permitidos: :max',
             //'imagem.required' => 'É necessário inserir a :attribute',
             'imagem.image' => 'Arquivo invalido',
-            'imagem.max' => 'A :attribute ultrapassou o máximo de caracteres permitidos: :max',
+            'imagem.max' => 'A :attribute ultrapassou o tamanho máxmimo :max',
 
         ];
     }
