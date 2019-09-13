@@ -21,7 +21,6 @@ class CreateEnderecosTable extends Migration
             $table->string('bairro');
             $table->string('localidade');
             $table->string('estado_id');
-            $table->string('data');
             $table->timestamps();
         });
     }

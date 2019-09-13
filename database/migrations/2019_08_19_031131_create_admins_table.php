@@ -18,7 +18,6 @@ class CreateAdminsTable extends Migration
             $table->string('nome');
             $table->string('login');
             $table->string('senha');
-            $table->integer('endereco_id');
             $table->timestamps();
         });
     }
