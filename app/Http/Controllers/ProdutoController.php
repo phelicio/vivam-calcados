@@ -39,9 +39,22 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoRequest $request)
     {
-        $produto = Produto::create($request->except('categoria_id'));
+        
+        $produto = Produto::create($request->except(['categoria_id', 'imagem']));
+      
         $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
         $produto->categorias()->attach($categorias);
+
+        $imagem = $request->imagem;
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+             $name = $produto->id;
+             $extension = $request->imagem->extension();
+             $nameFile = "{$name}.{$extension}";
+        }
+        $produto->imagem = "{$produto->id}.{$request->imagem->extension()}";
+        $produto->save();
+        $request->imagem->storeAs('produto', $nameFile);
+
         return redirect()->route('produtos.index')->with('mensagem' , 'Produto adicionado com sucesso!' );
     }
 
@@ -93,8 +106,17 @@ class ProdutoController extends Controller
         $produto->categorias()->detach();
         $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
         $produto->categorias()->attach($categorias);
-        
-        return redirect()->route('produtos.index')->with('mensagem', 'Produto salvo com sucesso!');
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+       
+            $name = $produto->id;
+            $extension = $request->imagem->extension();
+            $nameFile = "{$name}.{$extension}";
+       }
+       $produto->imagem = $nameFile;
+       $request->imagem->storeAs('produto', $nameFile);
+       $produto->save();
+
+       return redirect()->route('produtos.index')->with('mensagem', 'Produto salvo com sucesso!');
     }
 
     /**
@@ -105,7 +127,11 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        Produto::find($id)->delete();
+        try{
+            Produto::find($id)->delete();
+        }catch(Exception $e ) {
+            return back();
+        }
         return redirect()->route('produtos.index');
     }
 

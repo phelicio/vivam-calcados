@@ -15,7 +15,6 @@ class AdminTableSeeder extends Seeder
             'nome' => Str::random(10),
             'login' => 'joão@joao.com',
             'senha' => '123456',
-            'endereco_id' => 1
         ]);
     }
 }

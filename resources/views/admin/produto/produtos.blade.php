@@ -28,7 +28,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <img class="img-responsive" src="http://images-cdn.impresa.pt/caras/2011-07-21-nicolas-cage?v=w870h555" class="card-img-top" alt="...">
+                <img class="img-responsive" src=" {{url('storage/produto/'."{$produto->imagem}")}} " class="card-img-top" alt="...">
                     <small>Valor</small>
                     <p>R${{$produto->valor}},00</p>
                     <small>Quantidade</small>
