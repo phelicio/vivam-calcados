@@ -70,4 +70,6 @@ Route::get('/teste', 'EnderecoController@index');
 Route::group(['as' => 'produtos.', 'prefix' => '/produtos'], function(){
 
     Route::get('', ['as' => 'catalogo','uses' =>'ProdutoController@catalogo']);
+    Route::get('/{id}', ['as' => 'show','uses' =>'ProdutoController@show']);
+
 });
