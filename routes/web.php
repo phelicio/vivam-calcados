@@ -56,6 +56,10 @@ Route::get('/admin/email', function () {
     return view('admin.auth.passwords.email');
 });
 
+Route::get('/admin/vendas', function () {
+    return view('admin.vendas');
+});
+
 Route::get('/admin/reset', function () {
     return view('admin.auth.passwords.email');
 });
