@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Produto;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $produtos = Produto::latest('created_at')->limit(10)->get();
+        return view('home', ['produtos' => $produtos]);
     }
 }

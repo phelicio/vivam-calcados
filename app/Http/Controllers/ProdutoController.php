@@ -108,4 +108,21 @@ class ProdutoController extends Controller
         Produto::find($id)->delete();
         return redirect()->route('produtos.index');
     }
+
+
+    public function catalogo(Request $request){
+
+        $categoria = $request->input('categoria')? $request->input('categoria'): "";
+        if(!empty($categoria)){
+            $categoria = Categoria::where('nome' , $categoria);
+            $produtos = Produto::where('categoria_id', $categoria->id);
+        } else {
+            $produtos = Produto::all();
+        }
+
+        return view('produto.catalogo',[
+            'produtos' => $produtos,
+            'categorias' => Categoria::all()
+        ]);
+    }
 }

@@ -18,14 +18,13 @@
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="public-assets/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/flaticon.css"/>
-	<link rel="stylesheet" href="public-assets/css/slicknav.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/jquery-ui.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/animate.css"/>
-	<link rel="stylesheet" href="public-assets/css/style.css"/>
+	<link rel="stylesheet" href="/public-assets/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="/public-assets/css/flaticon.css"/>
+	<link rel="stylesheet" href="/public-assets/css/slicknav.min.css"/>
+	<link rel="stylesheet" href="/public-assets/css/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="/public-assets/css/owl.carousel.min.css"/>
+	<link rel="stylesheet" href="/public-assets/css/animate.css"/>
+	<link rel="stylesheet" href="/public-assets/css/style.css"/>
 
 
     <!-- Scripts -->
@@ -79,11 +78,11 @@
                     <!-- menu -->
                     <ul class="main-menu">
                         <li><a href="#">Página Inicial</a></li>
-                        <li><a href="#">Femininos</a></li>
-                        <li><a href="#">Masculinos</a></li>
-                        <li><a href="#">Infantis</a></li>
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Contato</a></li>
+                    <li><a href="{{route('produtos.catalogo').'/?categoria=feminino'}}">Femininos</a></li>
+                        <li><a href="{{route('produtos.catalogo').'/?categoria=masculino'}}">Masculinos</a></li>
+                        <li><a href="{{route('produtos.catalogo').'/?categoria=infantil'}}">Infantis</a></li>
+                        <li><a href="{{route('produtos.catalogo')}}">Sobre Nós</a></li>
+                        <li><a href="{{route('produtos.catalogo')}}">Contato</a></li>
                     </ul>
                 </div>
             </nav>

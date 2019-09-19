@@ -2,12 +2,5 @@
 
 @section('content')
 
-    <table>
-        <thead>
-            <tbody>
-                
-            </tbody>
-        </thead>
-    </table>
-
+   
 @endsection

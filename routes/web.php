@@ -66,3 +66,8 @@ Route::get('/admin/reset', function () {
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
 Route::get('/teste', 'EnderecoController@index');
+
+Route::group(['as' => 'produtos.', 'prefix' => '/produtos'], function(){
+
+    Route::get('', ['as' => 'catalogo','uses' =>'ProdutoController@catalogo']);
+});
