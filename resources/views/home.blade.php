@@ -69,7 +69,7 @@
 						<div class="feature-icon">
 							<img src="public-assets/img/icons/3.png" alt="#">
 						</div>
-						<h2>Entrega Grátis</h2>
+						<h2>Entrega em 24hrs Grátis</h2>
 					</div>
 				</div>
 			</div>
@@ -82,75 +82,23 @@
 	<section class="top-letest-product-section">
 		<div class="container">
 			<div class="section-title">
-				<h2>PRODUTOS MAIS RECENTES</h2>
+				<h2>PRODUTOS RECENTES</h2>
 			</div>
 			<div class="product-slider owl-carousel">
-				<div class="product-item">
-					<div class="pi-pic">
-						<img src="public-assets/img/product/1.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Flamboyant Pink Top </p>
-					</div>
-				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<div class="tag-new">New</div>
-						<img src="public-assets/img/product/2.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Black and White Stripes Dress</p>
-					</div>
-				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<img src="public-assets/img/product/3.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Flamboyant Pink Top </p>
-					</div>
-				</div>
-				<div class="product-item">
+				@foreach ($produtosRecentes as $produto)
+					<div class="product-item">
 						<div class="pi-pic">
-							<img src="public-assets/img/product/4.jpg" alt="">
+							<img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="">
 							<div class="pi-links">
 								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
 						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
+						<h6>R${{ $produto->valor }}</h6>
+							<p>{{ $produto->nome }}</p>
 						</div>
 					</div>
-				<div class="product-item">
-						<div class="pi-pic">
-							<img src="public-assets/img/product/6.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
+				@endforeach
 			</div>
 		</div>
 	</section>
@@ -165,14 +113,9 @@
 				<h2>PRODUTOS MAIS VENDIDOS</h2>
 			</div>
 			<ul class="product-filter-menu">
-				<li><a href="#">TÊNIS</a></li>
-				<li><a href="#">CURRULEPES</a></li>
-				<li><a href="#">SALTOS</a></li>
-				<li><a href="#">RASTEIRINHAS</a></li>
-				<li><a href="#">SAPATÊNIS</a></li>
-				<li><a href="#">BOTAS</a></li>
-				<li><a href="#">CHINELOS</a></li>
-			
+				@foreach ($categorias as $categoria)
+			<li><a href="{{ route('produtos.catalogo')."?categoria=".$categoria->nome}}">{{ $categoria->nome }}</a></li>
+				@endforeach
 			</ul>
 			<div class="row">
 				<div class="col-lg-3 col-sm-6">

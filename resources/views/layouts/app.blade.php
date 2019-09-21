@@ -45,13 +45,13 @@
                     <div class="row">
                         <div class="col-lg-2 text-center text-lg-left">
                             <!-- logo -->
-                            <a href="./index.html" class="site-logo">
+                        <a href="{{ route('home') }}" class="site-logo">
                                 <img src="public-assets/img/logo.png" alt="">
                             </a>
                         </div>
                         <div class="col-xl-6 col-lg-5">
-                            <form class="header-search-form">
-                                <input type="text" placeholder="Pesquisar">
+                        <form  method="GET" action="{{ route('produtos.catalogo') }}" class="header-search-form">
+                                <input type="text" name="search" placeholder="Pesquisar">
                                 <button><i class="flaticon-search"></i></button>
                             </form>
                         </div>
@@ -81,8 +81,8 @@
                     <li><a href="{{route('produtos.catalogo').'/?categoria=feminino'}}">Femininos</a></li>
                         <li><a href="{{route('produtos.catalogo').'/?categoria=masculino'}}">Masculinos</a></li>
                         <li><a href="{{route('produtos.catalogo').'/?categoria=infantil'}}">Infantis</a></li>
-                        <li><a href="{{route('produtos.catalogo')}}">Sobre Nós</a></li>
-                        <li><a href="{{route('produtos.catalogo')}}">Contato</a></li>
+                        <li><a href="{{route('home')}}">Sobre Nós</a></li>
+                        <li><a href="{{route('home')}}">Contato</a></li>
                     </ul>
                 </div>
             </nav>

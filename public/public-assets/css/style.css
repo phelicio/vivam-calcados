@@ -891,7 +891,7 @@ ol {
 }
 
 .product-item .pi-links a.add-card:hover {
-	width: 148px;
+	width: 190px;
 	padding: 8px 18px 0;
 	text-align: left;
 }
@@ -921,6 +921,11 @@ ol {
 	font-size: 16px;
 	color: #111111;
 	margin-bottom: 0;
+}
+
+.product-item img{
+	height:250px ;
+	width:450px ;
 }
 
 /* -----------------------
@@ -2224,6 +2229,7 @@ ol {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.site-logo {
 		margin-bottom: 20px;
+		width: 65%;
 	}
 	.header-search-form {
 		margin-bottom: 15px;

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Produto;
 use App\Categoria;
 use App\Marca;
+use \DB;
 
 use App\Http\Requests\ProdutoRequest;
 
@@ -50,11 +51,11 @@ class ProdutoController extends Controller
              $name = $produto->id;
              $extension = $request->imagem->extension();
              $nameFile = "{$name}.{$extension}";
+             $produto->imagem = "{$produto->id}.{$request->imagem->extension()}";
+             $produto->save();
+             $request->imagem->storeAs('produto', $nameFile);
         }
-        $produto->imagem = "{$produto->id}.{$request->imagem->extension()}";
-        $produto->save();
-        $request->imagem->storeAs('produto', $nameFile);
-
+       
         return redirect()->route('produtos.index')->with('mensagem' , 'Produto adicionado com sucesso!' );
     }
 
@@ -140,8 +141,13 @@ class ProdutoController extends Controller
 
         $categoria = $request->input('categoria')? $request->input('categoria'): "";
         if(!empty($categoria)){
-            $categoria = Categoria::where('nome' , $categoria);
-            $produtos = Produto::where('categoria_id', $categoria->id);
+            $produtos = DB::table('categoria_produto')
+                            ->join('produtos', 'produtos.id', '=', 'categoria_produto.produto_id')
+                            ->join('categorias', 'categorias.id', '=', 'categoria_produto.categoria_id')
+                            ->where('categorias.nome', '=', $categoria)
+                            ->select('produtos.*')
+                            ->get();
+
         } else {
             $produtos = Produto::all();
         }

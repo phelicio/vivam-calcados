@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Produto;
+use App\Categoria;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         $produtos = Produto::latest('created_at')->limit(10)->get();
-        return view('home', ['produtos' => $produtos]);
+        $categorias = Categoria::all();
+        return view('home', ['produtosRecentes' => $produtos, 'categorias' => $categorias ]);
     }
 }
