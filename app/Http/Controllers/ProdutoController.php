@@ -43,7 +43,7 @@ class ProdutoController extends Controller
         
         $produto = Produto::create($request->except(['categoria_id', 'imagem']));
       
-        $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
+        $categorias = Categoria::findMany($request->only('categoria_id'));
         $produto->categorias()->attach($categorias);
 
         $imagem = $request->imagem;
