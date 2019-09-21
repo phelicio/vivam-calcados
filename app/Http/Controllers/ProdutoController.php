@@ -42,8 +42,10 @@ class ProdutoController extends Controller
     {
         
         $produto = Produto::create($request->except(['categoria_id', 'imagem']));
-      
-        $categorias = Categoria::findMany($request->only('categoria_id'));
+        if($request->only('categoria_id')['categoria_id']){
+
+            $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
+        }
         $produto->categorias()->attach($categorias);
 
         $imagem = $request->imagem;
@@ -105,17 +107,20 @@ class ProdutoController extends Controller
         $produto = Produto::find($id);
         $produto->update($request->except('categoria_id'));
         $produto->categorias()->detach();
-        $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
+        if($request->only('categoria_id')['categoria_id']){
+
+            $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
+        }        
         $produto->categorias()->attach($categorias);
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
        
             $name = $produto->id;
             $extension = $request->imagem->extension();
             $nameFile = "{$name}.{$extension}";
+            $produto->imagem = $nameFile;
+            $request->imagem->storeAs('produto', $nameFile);
+            $produto->save();
        }
-       $produto->imagem = $nameFile;
-       $request->imagem->storeAs('produto', $nameFile);
-       $produto->save();
 
        return redirect()->route('produtos.index')->with('mensagem', 'Produto salvo com sucesso!');
     }
