@@ -42,11 +42,11 @@ class ProdutoController extends Controller
     {
         
         $produto = Produto::create($request->except(['categoria_id', 'imagem']));
-        if($request->only('categoria_id')['categoria_id']){
+        if($request->only('categoria_id')){
 
             $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
+            $produto->categorias()->attach($categorias);
         }
-        $produto->categorias()->attach($categorias);
 
         $imagem = $request->imagem;
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
@@ -107,11 +107,11 @@ class ProdutoController extends Controller
         $produto = Produto::find($id);
         $produto->update($request->except('categoria_id'));
         $produto->categorias()->detach();
-        if($request->only('categoria_id')['categoria_id']){
+        if($request->only('categoria_id')){
 
             $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
+            $produto->categorias()->attach($categorias);
         }        
-        $produto->categorias()->attach($categorias);
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
        
             $name = $produto->id;
