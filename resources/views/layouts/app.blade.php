@@ -46,7 +46,7 @@
                         <div class="col-lg-2 text-center text-lg-left">
                             <!-- logo -->
                         <a href="{{ route('home') }}" class="site-logo">
-                                <img src="public-assets/img/logo.png" alt="">
+                                <img src="/public-assets/img/logo.png" alt="">
                             </a>
                         </div>
                         <div class="col-xl-6 col-lg-5">

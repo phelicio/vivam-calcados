@@ -159,7 +159,8 @@ class ProdutoController extends Controller
 
         return view('produto.catalogo',[
             'produtos' => $produtos,
-            'categorias' => Categoria::all()
+            'categorias' => Categoria::all(),
+            'marcas' => Marca::all()
         ]);
     }
 }
