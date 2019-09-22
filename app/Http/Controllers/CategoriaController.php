@@ -71,7 +71,9 @@ class CategoriaController extends Controller
      */
     public function update(CategoriaRequest $request, $id)
     {
-        //
+        $categoria = Categoria::find($id);
+        $categoria->update($request->all());
+        return redirect()->route('categorias.index')->with('mensagem', 'Produto salvo com sucesso!');
     }
 
     /**
