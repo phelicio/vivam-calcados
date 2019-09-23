@@ -56,9 +56,11 @@ Route::get('/admin/email', function () {
     return view('admin.auth.passwords.email');
 });
 
-Route::get('/admin/reset', function () {
-    return view('admin.auth.passwords.email');
+
+Route::get('/admin/vendas', function () {
+    return view('admin.vendas');
 });
+
 ##Admin Routes ##end
 
 
@@ -66,3 +68,10 @@ Route::get('/admin/reset', function () {
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
 Route::get('/teste', 'EnderecoController@index');
+
+Route::group(['as' => 'produtos.', 'prefix' => '/produtos'], function(){
+
+    Route::get('', ['as' => 'catalogo','uses' =>'ProdutoController@catalogo']);
+    Route::get('/{id}', ['as' => 'show','uses' =>'ProdutoController@show']);
+
+});

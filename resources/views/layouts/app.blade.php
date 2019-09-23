@@ -18,14 +18,13 @@
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="public-assets/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/flaticon.css"/>
-	<link rel="stylesheet" href="public-assets/css/slicknav.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/jquery-ui.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="public-assets/css/animate.css"/>
-	<link rel="stylesheet" href="public-assets/css/style.css"/>
+	<link rel="stylesheet" href="/public-assets/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="/public-assets/css/flaticon.css"/>
+	<link rel="stylesheet" href="/public-assets/css/slicknav.min.css"/>
+	<link rel="stylesheet" href="/public-assets/css/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="/public-assets/css/owl.carousel.min.css"/>
+	<link rel="stylesheet" href="/public-assets/css/animate.css"/>
+	<link rel="stylesheet" href="/public-assets/css/style.css"/>
 
 
     <!-- Scripts -->
@@ -46,13 +45,13 @@
                     <div class="row">
                         <div class="col-lg-2 text-center text-lg-left">
                             <!-- logo -->
-                            <a href="./index.html" class="site-logo">
-                                <img src="public-assets/img/logo.png" alt="">
+                        <a href="{{ route('home') }}" class="site-logo">
+                                <img src="/public-assets/img/logo.png" alt="">
                             </a>
                         </div>
                         <div class="col-xl-6 col-lg-5">
-                            <form class="header-search-form">
-                                <input type="text" placeholder="Pesquisar">
+                        <form  method="GET" action="{{ route('produtos.catalogo') }}" class="header-search-form">
+                                <input type="text" name="search" placeholder="Pesquisar">
                                 <button><i class="flaticon-search"></i></button>
                             </form>
                         </div>
@@ -79,11 +78,11 @@
                     <!-- menu -->
                     <ul class="main-menu">
                         <li><a href="#">Página Inicial</a></li>
-                        <li><a href="#">Femininos</a></li>
-                        <li><a href="#">Masculinos</a></li>
-                        <li><a href="#">Infantis</a></li>
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Contato</a></li>
+                    <li><a href="{{route('produtos.catalogo').'/?categoria=feminino'}}">Femininos</a></li>
+                        <li><a href="{{route('produtos.catalogo').'/?categoria=masculino'}}">Masculinos</a></li>
+                        <li><a href="{{route('produtos.catalogo').'/?categoria=infantil'}}">Infantis</a></li>
+                        <li><a href="{{route('home')}}">Sobre Nós</a></li>
+                        <li><a href="{{route('home')}}">Contato</a></li>
                     </ul>
                 </div>
             </nav>

@@ -21,7 +21,7 @@ class CreateProdutosTable extends Migration
             $table->double('valor', 8, 2);
             $table->string('tamanho');
             $table->string('cor');
-            $table->string('imagem')->default('123');
+            $table->string('imagem')->nullable();
             $table->timestamps();
         });
     }

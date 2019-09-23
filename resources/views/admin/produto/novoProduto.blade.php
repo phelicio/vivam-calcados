@@ -29,7 +29,7 @@
         {{ route('produtos.update', $produto->id) }}
       @else
         {{ route('produtos.store') }}
-      @endif"  accept-charset="UTF-8">
+      @endif"  accept-charset="UTF-8" enctype="multipart/form-data">
         
       @isset($produto)
         {{ method_field('PUT') }}
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group">
           <label for="imagem">Imagem do Produto</label>
-          <input name="imagem" type="file" class="form-control-file" @isset($produto) value="{{$produto->imagem}}" @endisset id="imagem">
+          <input name="imagem" type="file" class="form-control-file"  id="imagem">
         </div>
         
         <div class="form-group ">

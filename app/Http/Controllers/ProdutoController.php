@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Produto;
 use App\Categoria;
 use App\Marca;
+use \DB;
 
 use App\Http\Requests\ProdutoRequest;
 
@@ -39,9 +40,24 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoRequest $request)
     {
-        $produto = Produto::create($request->except('categoria_id'));
-        $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
-        $produto->categorias()->attach($categorias);
+        
+        $produto = Produto::create($request->except(['categoria_id', 'imagem']));
+        if($request->only('categoria_id')){
+
+            $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
+            $produto->categorias()->attach($categorias);
+        }
+
+        $imagem = $request->imagem;
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+             $name = $produto->id;
+             $extension = $request->imagem->extension();
+             $nameFile = "{$name}.{$extension}";
+             $produto->imagem = "{$produto->id}.{$request->imagem->extension()}";
+             $produto->save();
+             $request->imagem->storeAs('produto', $nameFile);
+        }
+       
         return redirect()->route('produtos.index')->with('mensagem' , 'Produto adicionado com sucesso!' );
     }
 
@@ -91,10 +107,22 @@ class ProdutoController extends Controller
         $produto = Produto::find($id);
         $produto->update($request->except('categoria_id'));
         $produto->categorias()->detach();
-        $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
-        $produto->categorias()->attach($categorias);
-        
-        return redirect()->route('produtos.index')->with('mensagem', 'Produto salvo com sucesso!');
+        if($request->only('categoria_id')){
+
+            $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
+            $produto->categorias()->attach($categorias);
+        }        
+        if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
+       
+            $name = $produto->id;
+            $extension = $request->imagem->extension();
+            $nameFile = "{$name}.{$extension}";
+            $produto->imagem = $nameFile;
+            $request->imagem->storeAs('produto', $nameFile);
+            $produto->save();
+       }
+
+       return redirect()->route('produtos.index')->with('mensagem', 'Produto salvo com sucesso!');
     }
 
     /**
@@ -105,7 +133,34 @@ class ProdutoController extends Controller
      */
     public function destroy($id)
     {
-        Produto::find($id)->delete();
+        try{
+            Produto::find($id)->delete();
+        }catch(Exception $e ) {
+            return back();
+        }
         return redirect()->route('produtos.index');
+    }
+
+
+    public function catalogo(Request $request){
+
+        $categoria = $request->input('categoria')? $request->input('categoria'): "";
+        if(!empty($categoria)){
+            $produtos = DB::table('categoria_produto')
+                            ->join('produtos', 'produtos.id', '=', 'categoria_produto.produto_id')
+                            ->join('categorias', 'categorias.id', '=', 'categoria_produto.categoria_id')
+                            ->where('categorias.nome', '=', $categoria)
+                            ->select('produtos.*')
+                            ->get();
+
+        } else {
+            $produtos = Produto::all();
+        }
+
+        return view('produto.catalogo',[
+            'produtos' => $produtos,
+            'categorias' => Categoria::all(),
+            'marcas' => Marca::all()
+        ]);
     }
 }

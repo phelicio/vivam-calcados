@@ -7,17 +7,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-7 text-white">
-                        <span>New Arrivals</span>
-                        <h2>denim jackets</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-                        <a href="#" class="site-btn sb-line">DISCOVER</a>
-                        <a href="#" class="site-btn sb-white">ADD TO CART</a>
+                        <span>Novos Produtos</span>
+                        <h2>Tênis Solly</h2>
+                        <p>Novo lançamento do Tênis Solly com o melhor designer da linha e a melhor performance para os seus pés. Aproveite essa promoção, pois e por tempo limitado. </p>
+                        <a href="#" class="site-btn sb-line">VISUALIZAR</a>
+                        <a href="#" class="site-btn sb-white">ADD AO CARRINHO</a>
                     </div>
                 </div>
                 <div class="offer-card text-white">
-                    <span>from</span>
-                    <h2>$29</h2>
-                    <p>SHOP NOW</p>
+                    <span>APENAS</span>
+                    <h2>$90</h2>
+                    <p>COMPRE JÁ</p>
                 </div>
             </div>
         </div>
@@ -25,17 +25,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-lg-7 text-white">
-                        <span>New Arrivals</span>
-                        <h2>denim jackets</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum sus-pendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-                        <a href="#" class="site-btn sb-line">DISCOVER</a>
-                        <a href="#" class="site-btn sb-white">ADD TO CART</a>
+                        <span>Novos Produtos</span>
+                        <h2>Sandálias Currulepe</h2>
+                        <p>Pra você que gosta de sandalias regionais do nordeste, chegou as sandalias de couro Currulepe, com designer arrojado sem perder a cultura nordestina. </p>
+                        <a href="#" class="site-btn sb-line">VISUALIZAR</a>
+                        <a href="#" class="site-btn sb-white">ADD AO CARRINHO</a>
                     </div>
                 </div>
                 <div class="offer-card text-white">
-                    <span>from</span>
-                    <h2>$29</h2>
-                    <p>SHOP NOW</p>
+                    <span>APENAS</span>
+                    <h2>$69</h2>
+                    <p>COMPRE JÁ</p>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
 						<div class="feature-icon">
 							<img src="public-assets/img/icons/1.png" alt="#">
 						</div>
-						<h2>Fast Secure Payments</h2>
+						<h2>Pagamento Rápido</h2>
 					</div>
 				</div>
 				<div class="col-md-4 p-0 feature">
@@ -61,7 +61,7 @@
 						<div class="feature-icon">
 							<img src="public-assets/img/icons/2.png" alt="#">
 						</div>
-						<h2>Premium Products</h2>
+						<h2>Produtos Premium</h2>
 					</div>
 				</div>
 				<div class="col-md-4 p-0 feature">
@@ -69,7 +69,7 @@
 						<div class="feature-icon">
 							<img src="public-assets/img/icons/3.png" alt="#">
 						</div>
-						<h2>Free & fast Delivery</h2>
+						<h2>Entrega em 24hrs Grátis</h2>
 					</div>
 				</div>
 			</div>
@@ -82,75 +82,23 @@
 	<section class="top-letest-product-section">
 		<div class="container">
 			<div class="section-title">
-				<h2>LATEST PRODUCTS</h2>
+				<h2>PRODUTOS RECENTES</h2>
 			</div>
 			<div class="product-slider owl-carousel">
-				<div class="product-item">
-					<div class="pi-pic">
-						<img src="public-assets/img/product/1.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Flamboyant Pink Top </p>
-					</div>
-				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<div class="tag-new">New</div>
-						<img src="public-assets/img/product/2.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Black and White Stripes Dress</p>
-					</div>
-				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<img src="public-assets/img/product/3.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Flamboyant Pink Top </p>
-					</div>
-				</div>
-				<div class="product-item">
+				@foreach ($produtosRecentes as $produto)
+					<div class="product-item">
 						<div class="pi-pic">
-							<img src="public-assets/img/product/4.jpg" alt="">
+							<img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 							</div>
 						</div>
 						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
+						<h6>R${{ $produto->valor }}</h6>
+							<p>{{ $produto->nome }}</p>
 						</div>
 					</div>
-				<div class="product-item">
-						<div class="pi-pic">
-							<img src="public-assets/img/product/6.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
+				@endforeach
 			</div>
 		</div>
 	</section>
@@ -162,17 +110,12 @@
 	<section class="product-filter-section">
 		<div class="container">
 			<div class="section-title">
-				<h2>BROWSE TOP SELLING PRODUCTS</h2>
+				<h2>PRODUTOS MAIS VENDIDOS</h2>
 			</div>
 			<ul class="product-filter-menu">
-				<li><a href="#">TOPS</a></li>
-				<li><a href="#">JUMPSUITS</a></li>
-				<li><a href="#">LINGERIE</a></li>
-				<li><a href="#">JEANS</a></li>
-				<li><a href="#">DRESSES</a></li>
-				<li><a href="#">COATS</a></li>
-				<li><a href="#">JUMPERS</a></li>
-				<li><a href="#">LEGGINGS</a></li>
+				@foreach ($categorias as $categoria)
+			<li><a href="{{ route('produtos.catalogo')."?categoria=".$categoria->nome}}">{{ $categoria->nome }}</a></li>
+				@endforeach
 			</ul>
 			<div class="row">
 				<div class="col-lg-3 col-sm-6">
@@ -180,7 +123,7 @@
 						<div class="pi-pic">
 							<img src="public-assets/img/product/5.jpg" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
@@ -196,7 +139,7 @@
 							<div class="tag-sale">ON SALE</div>
 							<img src="public-assets/img/product/6.jpg" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
@@ -211,7 +154,7 @@
 						<div class="pi-pic">
 							<img src="public-assets/img/product/7.jpg" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
@@ -226,7 +169,7 @@
 						<div class="pi-pic">
 							<img src="public-assets/img/product/8.jpg" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
@@ -241,7 +184,7 @@
 						<div class="pi-pic">
 							<img src="public-assets/img/product/9.jpg" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
@@ -256,7 +199,7 @@
 						<div class="pi-pic">
 							<img src="public-assets/img/product/10.jpg" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
@@ -271,7 +214,7 @@
 						<div class="pi-pic">
 							<img src="public-assets/img/product/11.jpg" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
@@ -286,7 +229,7 @@
 						<div class="pi-pic">
 							<img src="public-assets/img/product/12.jpg" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
 							</div>
 						</div>
@@ -298,7 +241,7 @@
 				</div>
 			</div>
 			<div class="text-center pt-5">
-				<button class="site-btn sb-line sb-dark">LOAD MORE</button>
+				<button class="site-btn sb-line sb-dark">MAIS PRODUTOS</button>
 			</div>
 		</div>
 	</section>
@@ -309,10 +252,10 @@
 	<section class="banner-section">
 		<div class="container">
 			<div class="banner set-bg" data-setbg="public-assets/img/banner-bg.jpg">
-				<div class="tag-new">NEW</div>
-				<span>New Arrivals</span>
-				<h2>STRIPED SHIRTS</h2>
-				<a href="#" class="site-btn">SHOP NOW</a>
+				<div class="tag-new">NOVO</div>
+				<span>Novos Produtos</span>
+				<h2>SAPATILHAS</h2>
+				<a href="#" class="site-btn">COMPRE AGORA</a>
 			</div>
 		</div>
 	</section>
