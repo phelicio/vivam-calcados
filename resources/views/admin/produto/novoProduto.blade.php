@@ -124,21 +124,22 @@
 
       $('#addModelo').on('click', function(){
       
-        let tr = $('#dummy-modelo-tr');
+        let tr = $('#dummy-modelo-tr').clone();
         let tabela = $('#tabelaModelo');
         let size = tabela.find('tr').lenght? tabela.find('tr').lenght: 0;
         let newTr = $('<tr />');
-        let newTd = $('<td />');
+
+
 
         tr.find('input').each( function(){
           let attr = this.getAttribute('data-type');
           this.setAttribute('name', `newModelo[${size+1}][${attr}]`);
+          newTd = $('<td />');
           newTd.append(this);
-          
+          newTr.append(newTd);
         });
-        delModelo = tr.find('a');
-        newTd.append(delModelo);
-        newTr.append(newTd);
+        //newTr.append($('<td />').append(tr.find('a').clone().setAttribute('name', `newModelo[${size+1}][${this.getAttribute('data-type')}]`)));
+
         tabela.append((newTr));
       });
       
