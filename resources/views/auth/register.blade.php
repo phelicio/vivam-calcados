@@ -40,6 +40,32 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="dataNascimento" class="col-md-4 col-form-label text-md-right">Data de Nascimento</label>
+
+                            <div class="col-md-6">
+                                <input id="dataNascimento" type="date" class="form-control" name="dataNascimento" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="telefone" class="col-md-4 col-form-label text-md-right">Telefone</label>
+
+                            <div class="col-md-6">
+                                <input id="telefone" type="text" class="form-control" name="telefone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="dataNascimento" class="col-md-4 col-form-label text-md-right">Sexo</label>
+                                <div class="col-md-3">
+                                <select class="form-control" name="sexo">
+                                    <option selected value="m">Masculino</option>
+                                    <option value="f">Feminino</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
