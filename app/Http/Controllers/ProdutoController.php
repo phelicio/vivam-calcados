@@ -49,9 +49,13 @@ class ProdutoController extends Controller
             $produto->categorias()->attach($categorias);
         }
 
+        $modelos = array();
+
         foreach ($request->only(['modelo']) as $modelo) {
-            Model::create($modelo)->associate($produto);
+            array_push($modelos, Modelo::create($modelo)->associate($produto));
         }
+
+        $produto->modelos()->attach($modelos);
 
         $imagem = $request->imagem;
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){

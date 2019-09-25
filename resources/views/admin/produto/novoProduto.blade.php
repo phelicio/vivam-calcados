@@ -61,19 +61,28 @@
                     <th></th>
                   </tr>
             </thead>
-            <tbody>
-              @foreach ($produto->modelos as $modelos)
+            <tbody  id="tabelaModelo">
+              @isset($produto)
+                @foreach ($produto->modelos as $modelo)
                 <tr>
-                  <td><input name="cor" type="text" class="form-control" id="cor" @isset($produto) value="{{$modelo->cor}}" @endisset placeholder="Cor"></td>
-                  <td><input name="tamanho" type="text" class="form-control" id="tamanho" @isset($produto) value="{{$modelo->tamanho}}" @endisset placeholder="Tamanho"></td>
-                  <td><input name="quantidade" type="text" class="form-control" id="quantidade" @isset($produto) value="{{$modelo->quantidade}}" @endisset placeholder="Quantidade"></td>                
-                <td><a id="delModelo"><span><i class="glyphicon glyphicon-trash"></i></span></a></td>
+                  <td><input name="modelo[{{$modelo->id}}]['cor']" type="text" class="form-control" id="cor" @isset($produto) value="{{$modelo->cor}}" @endisset placeholder="Cor"></td>
+                  <td><input name="tamanho[{{$modelo->id}}['tamanho']" type="text" class="form-control" id="tamanho" @isset($produto) value="{{$modelo->tamanho}}" @endisset placeholder="Tamanho"></td>
+                  <td><input name="quantidade[{{$modelo->id}}]['quantidade']" type="text" class="form-control" id="quantidade" @isset($produto) value="{{$modelo->quantidade}}" @endisset placeholder="Quantidade"></td>                
+                  <td><a id="delModelo"><span><i class="glyphicon glyphicon-trash"></i></span></a></td>
                 </tr>    
-              @endforeach
-            </tbody>            
+                @endforeach
+              @endisset
+                <tr id="dummy-modelo-tr" hidden>
+                  <td><input data-type="cor" type="text" class="form-control" id="cor" placeholder="Cor"></td>
+                  <td><input data-type="tamanho" type="text" class="form-control" id="tamanho" placeholder="Tamanho"></td>
+                  <td><input data-type="quantidade" type="text" class="form-control" id="quantidade" placeholder="Quantidade"></td>                
+                  <td><a data-type="delModelo" id="delModelo"><span><i class="glyphicon glyphicon-trash"></i></span></a></td>
+                </tr>    
+            </tbody>      
           </table>
-
+          <a id="addModelo" class="btn  btn-success addModelo"><i class="fa fa-plus"> </i> Adicionar Modelo</a>     
         </div>
+        <br>
         <div class="form-group ">
           <label >Categorias</label>
           <div class="col-xs-12">
@@ -111,6 +120,36 @@
     </form>
   </div>
   @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+
+      $('#addModelo').on('click', function(){
+      
+        let tr = $('#dummy-modelo-tr');
+        let tabela = $('#tabelaModelo');
+        let size = tabela.find('tr').lenght? tabela.find('tr').lenght: 0;
+        let newTr = $('<tr />');
+        let newTd = $('<td />');
+
+        tr.find('input').each( function(){
+          let attr = this.getAttribute('data-type');
+          this.setAttribute('name', `newModelo[${size+1}][${attr}]`);
+          newTd.append(this);
+          
+        });
+        delModelo = tr.find('a');
+        newTd.append(delModelo);
+        newTr.append(newTd);
+        tabela.append((newTr));
+      });
+      
+    </script>
   @stop
+  @section('css')
+      <style>
+        .addModelo{
+          float:right;
+          cursor: pointer;
+        }
+      </style>
+  @endsection
 @stop
