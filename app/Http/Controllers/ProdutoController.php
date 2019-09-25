@@ -41,11 +41,16 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
         
-        $produto = Produto::create($request->except(['categoria_id', 'imagem']));
+        $produto = Produto::create($request->except(['categoria_id', 'imagem', 'cor', 'quantidade', 'tamanho']));
+        
         if($request->only('categoria_id')){
 
             $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
             $produto->categorias()->attach($categorias);
+        }
+
+        foreach ($request->only(['modelo']) as $modelo) {
+            Model::create($modelo)->associate($produto);
         }
 
         $imagem = $request->imagem;

@@ -43,26 +43,37 @@
         <input name="nome" type="text" class="form-control" id="nome" @isset($produto) value="{{$produto->nome}}" @endisset placeholder="Nome">
         </div>
         <div class="form-group">
-          <label for="quantidade">Quantidade</label>
-          <input name="quantidade" type="number" class="form-control" id="quantidade" @isset($produto) value="{{$produto->quantidade}}" @endisset placeholder="Quantidade">
-        </div>
-        <div class="form-group">
           <label for="valor">Valor</label>
           <input name="valor" type="text" class="form-control" id="valor" @isset($produto) value="{{$produto->valor}}" @endisset placeholder="Valor">
-        </div>
-        <div class="form-group">
-          <label for="cor">Cor</label>
-          <input name="cor" type="text" class="form-control" id="cor" @isset($produto) value="{{$produto->cor}}" @endisset placeholder="Cor">
-        </div>
-        <div class="form-group">
-          <label for="tamanho">Tamanho</label>
-          <input name="tamanho" type="text" class="form-control" id="tamanho" @isset($produto) value="{{$produto->tamanho}}" @endisset placeholder="Tamanho">
         </div>
         <div class="form-group">
           <label for="imagem">Imagem do Produto</label>
           <input name="imagem" type="file" class="form-control-file"  id="imagem">
         </div>
-        
+        <div class="form-group">
+          <label>Modelo</label>
+          <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Cor</th>
+                    <th>Tamanho</th>
+                    <th>Quantidade</th>
+                    <th></th>
+                  </tr>
+            </thead>
+            <tbody>
+              @foreach ($produto->modelos as $modelos)
+                <tr>
+                  <td><input name="cor" type="text" class="form-control" id="cor" @isset($produto) value="{{$modelo->cor}}" @endisset placeholder="Cor"></td>
+                  <td><input name="tamanho" type="text" class="form-control" id="tamanho" @isset($produto) value="{{$modelo->tamanho}}" @endisset placeholder="Tamanho"></td>
+                  <td><input name="quantidade" type="text" class="form-control" id="quantidade" @isset($produto) value="{{$modelo->quantidade}}" @endisset placeholder="Quantidade"></td>                
+                <td><a id="delModelo"><span><i class="glyphicon glyphicon-trash"></i></span></a></td>
+                </tr>    
+              @endforeach
+            </tbody>            
+          </table>
+
+        </div>
         <div class="form-group ">
           <label >Categorias</label>
           <div class="col-xs-12">
@@ -99,4 +110,7 @@
       </div>
     </form>
   </div>
+  @section('js')
+    <script> console.log('Hi!'); </script>
+  @stop
 @stop

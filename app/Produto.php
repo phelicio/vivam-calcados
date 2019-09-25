@@ -18,4 +18,9 @@ class Produto extends Model
     {
         return $this->belongsTo('App\Marca');
     }
+
+    public function modelos()
+    {
+        return $this->hasMany('App\Modelo');
+    }
 }

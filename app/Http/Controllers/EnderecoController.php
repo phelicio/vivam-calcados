@@ -14,7 +14,7 @@ class EnderecoController extends Controller
      */
     public function index()
     {
-       var_dump(Geocoder::getProviders());
+        
     }
 
     /**
