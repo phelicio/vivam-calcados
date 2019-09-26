@@ -54,7 +54,7 @@
 						<h2 class="fw-title">Brand</h2>
 						<ul class="category-menu">
 							@foreach ($marcas as $marca)
-								<li><a href="#">{{ $marca->nome }}<span>({{ $marca->produtos()->count() }})</span></a></li>
+								<li><a href="#">{{ ucfirst($marca->nome) }}<span>({{ $marca->produtos()->count() }})</span></a></li>
 							@endforeach
 						</ul>
 					</div>
@@ -66,7 +66,7 @@
 								<div class="product-item">
 									<div class="pi-pic">
 										<div class="tag-sale">
-											@if ($produto->quantidade > 0)
+											@if ($produto->quantidadeTotal() > 0)
 												Disponível
 											@else
 												Fora de estoque
@@ -74,7 +74,7 @@
 										</div>
 										<img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="Imagem do produto">
 										<div class="pi-links">
-											<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+											<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 										</div>
 									</div>
 									<div class="pi-text">

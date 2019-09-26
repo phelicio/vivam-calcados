@@ -31,10 +31,6 @@
                 <img class="img-responsive" src=" {{url('storage/produto/'."{$produto->imagem}")}} " class="card-img-top" alt="...">
                     <small>Valor</small>
                     <p>R${{$produto->valor}},00</p>
-                    <small>Quantidade</small>
-                    <p>{{$produto->quantidade}}</p>
-                    <small>Tamanho</small>
-                    <p>{{$produto->tamanho}}</p>
                     <small>Marca</small>
                     <p>{{$produto->marca->nome}}</p>
                 </div>

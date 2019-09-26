@@ -115,10 +115,11 @@ class ProdutoController extends Controller
     {
 
         $produto = Produto::find($id);
-        $produto->update($request->except(['categoria_id', 'imagem', 'cor', 'quantidade', 'tamanho', 'newModelo']));
+        $produto->update($request->except(['categoria_id', 'imagem', 'cor', 'quantidade', 'tamanho','modelo', 'newModelo']));
         $produto->categorias()->detach();
-        $modelos = array();
         $produto->modelos()->delete();
+
+        $modelos = array();
         if($request->only('newModelo')){
             foreach ($request->only('newModelo')['newModelo'] as $modelo) {
                 array_push($modelos, $modelo);
@@ -134,7 +135,6 @@ class ProdutoController extends Controller
 
             $produto->modelos()->updateOrCreate($modelo);
         }
-
 
         if($request->only('categoria_id')){
 

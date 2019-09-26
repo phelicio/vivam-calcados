@@ -23,4 +23,14 @@ class Produto extends Model
     {
         return $this->hasMany('App\Modelo');
     }
+
+    public function quantidadeTotal(){
+        
+        $return = 0;
+
+        foreach ($this->modelos as $modelo) {
+            $return+=$modelo->quantidade;
+        }
+        return $return;
+    }
 }
