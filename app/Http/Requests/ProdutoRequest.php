@@ -25,11 +25,8 @@ class ProdutoRequest extends FormRequest
     {
         return [
             'nome' => 'required|max:128',
-            'quantidade' => 'required|numeric',
             'marca_id' => 'required|numeric',
             'valor' => 'required|numeric',
-            'tamanho' => 'required|max:128',
-            'cor' => 'required|max:128',
         ];
     }
 
@@ -38,15 +35,9 @@ class ProdutoRequest extends FormRequest
         return [
             'nome.required' => 'É necessário inserir o :attribute',
             'nome.max' => 'O :attribute ultrapassou o máximo de caracteres permitidos: :max',
-            'quantidade.required' => 'É necessário inserir a :attribute',
-            'quantidade.numeric' => ':attribute invalida',
-            'cor.required' => 'É necessário inserir a :attribute',
-            'cor.max' => 'A :attribute ultrapassou o máximo de caracteres permitidos: :max',
-            'valor.required' => 'É necessário inserir o :attribute',
+                'valor.required' => 'É necessário inserir o :attribute',
             'valor.numeric' => 'Valor invalido',
             'marca_id.required' => 'É necessário inserir a marca',
-            'tamanho.required' => 'É necessário inserir o :attribute',
-            'tamanho.max' => 'O :attribute ultrapassou o máximo de caracteres permitidos: :max',
         ];
     }
 }

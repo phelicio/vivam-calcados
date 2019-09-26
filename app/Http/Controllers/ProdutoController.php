@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Produto;
 use App\Categoria;
 use App\Marca;
+use App\Modelo;
 use \DB;
 
 use App\Http\Requests\ProdutoRequest;
@@ -41,30 +42,29 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
         
-        $produto = Produto::create($request->except(['categoria_id', 'imagem', 'cor', 'quantidade', 'tamanho']));
-        
+        $produto = Produto::create($request->except(['categoria_id', 'imagem', 'cor', 'quantidade', 'tamanho', 'newModelo']));
+
+        $modelos = $request->only(['newModelo'])['newModelo'];
+        foreach ($modelos as $modelo) {
+
+            $produto->modelos()->updateOrCreate($modelo);
+        }
+
         if($request->only('categoria_id')){
 
             $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
             $produto->categorias()->attach($categorias);
         }
 
-        $modelos = array();
-
-        foreach ($request->only(['modelo']) as $modelo) {
-            array_push($modelos, Modelo::create($modelo)->associate($produto));
-        }
-
-        $produto->modelos()->attach($modelos);
-
         $imagem = $request->imagem;
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
-             $name = $produto->id;
-             $extension = $request->imagem->extension();
-             $nameFile = "{$name}.{$extension}";
-             $produto->imagem = "{$produto->id}.{$request->imagem->extension()}";
-             $produto->save();
-             $request->imagem->storeAs('produto', $nameFile);
+
+            $name = $produto->id;
+            $extension = $request->imagem->extension();
+            $nameFile = "{$name}.{$extension}";
+            $produto->imagem = "{$produto->id}.{$request->imagem->extension()}";
+            $produto->save();
+            $request->imagem->storeAs('produto', $nameFile);
         }
        
         return redirect()->route('produtos.index')->with('mensagem' , 'Produto adicionado com sucesso!' );
@@ -113,14 +113,35 @@ class ProdutoController extends Controller
      */
     public function update(ProdutoRequest $request, $id)
     {
+
         $produto = Produto::find($id);
-        $produto->update($request->except('categoria_id'));
+        $produto->update($request->except(['categoria_id', 'imagem', 'cor', 'quantidade', 'tamanho', 'newModelo']));
         $produto->categorias()->detach();
+        $modelos = array();
+        $produto->modelos()->delete();
+        if($request->only('newModelo')){
+            foreach ($request->only('newModelo')['newModelo'] as $modelo) {
+                array_push($modelos, $modelo);
+            }
+        }
+
+        if($request->only('modelo')){
+            foreach ($request->only('modelo')['modelo'] as $modelo) {
+                array_push($modelos, $modelo);
+            }
+        }
+        foreach ($modelos as $modelo) {
+
+            $produto->modelos()->updateOrCreate($modelo);
+        }
+
+
         if($request->only('categoria_id')){
 
             $categorias = Categoria::findMany($request->only('categoria_id')['categoria_id']);
             $produto->categorias()->attach($categorias);
-        }        
+        }
+
         if($request->hasFile('imagem') && $request->file('imagem')->isValid()){
        
             $name = $produto->id;

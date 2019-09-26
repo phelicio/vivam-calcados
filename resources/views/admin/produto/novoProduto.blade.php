@@ -65,10 +65,10 @@
               @isset($produto)
                 @foreach ($produto->modelos as $modelo)
                 <tr>
-                  <td><input name="modelo[{{$modelo->id}}]['cor']" type="text" class="form-control" id="cor" @isset($produto) value="{{$modelo->cor}}" @endisset placeholder="Cor"></td>
-                  <td><input name="tamanho[{{$modelo->id}}['tamanho']" type="text" class="form-control" id="tamanho" @isset($produto) value="{{$modelo->tamanho}}" @endisset placeholder="Tamanho"></td>
-                  <td><input name="quantidade[{{$modelo->id}}]['quantidade']" type="text" class="form-control" id="quantidade" @isset($produto) value="{{$modelo->quantidade}}" @endisset placeholder="Quantidade"></td>                
-                  <td><a id="delModelo"><span><i class="glyphicon glyphicon-trash"></i></span></a></td>
+                  <td><input name="modelo[{{$modelo->id}}][cor]" type="text" class="form-control" id="cor" @isset($produto) value="{{$modelo->cor}}" @endisset placeholder="Cor"></td>
+                  <td><input name="modelo[{{$modelo->id}}][tamanho]" type="text" class="form-control" id="tamanho" @isset($produto) value="{{$modelo->tamanho}}" @endisset placeholder="Tamanho"></td>
+                  <td><input name="modelo[{{$modelo->id}}][quantidade]" type="text" class="form-control" id="quantidade" @isset($produto) value="{{$modelo->quantidade}}" @endisset placeholder="Quantidade"></td>                
+                  <td><a id="delModelo"><i class="glyphicon glyphicon-trash"></i></a></td>
                 </tr>    
                 @endforeach
               @endisset
@@ -76,11 +76,11 @@
                   <td><input data-type="cor" type="text" class="form-control" id="cor" placeholder="Cor"></td>
                   <td><input data-type="tamanho" type="text" class="form-control" id="tamanho" placeholder="Tamanho"></td>
                   <td><input data-type="quantidade" type="text" class="form-control" id="quantidade" placeholder="Quantidade"></td>                
-                  <td><a data-type="delModelo" id="delModelo"><span><i class="glyphicon glyphicon-trash"></i></span></a></td>
+                  <td><a data-type="delModelo" id="delModelo"><i class="glyphicon glyphicon-trash"></i></a></td>
                 </tr>    
             </tbody>      
           </table>
-          <a id="addModelo" class="btn  btn-success addModelo"><i class="fa fa-plus"> </i> Adicionar Modelo</a>     
+          <a id="addModelo" class="btn btn-success addModelo"><i class="fa fa-plus"> </i>  Adicionar Modelo</a>     
         </div>
         <br>
         <div class="form-group ">
@@ -126,31 +126,46 @@
       
         let tr = $('#dummy-modelo-tr').clone();
         let tabela = $('#tabelaModelo');
-        let size = tabela.find('tr').lenght? tabela.find('tr').lenght: 0;
+        let tamanho = tabela.find('tr').length;
         let newTr = $('<tr />');
-
+        
 
 
         tr.find('input').each( function(){
           let attr = this.getAttribute('data-type');
-          this.setAttribute('name', `newModelo[${size+1}][${attr}]`);
+          this.setAttribute('name', `newModelo[${tamanho+1}][${attr}]`);
           newTd = $('<td />');
           newTd.append(this);
           newTr.append(newTd);
         });
-        //newTr.append($('<td />').append(tr.find('a').clone().setAttribute('name', `newModelo[${size+1}][${this.getAttribute('data-type')}]`)));
+
+        let tdExcluir = $('<td />');
+        let botaoExcluir = tr.find('a').clone();
+        botaoExcluir.attr('class', `remove-item`);
+        tdExcluir.append(botaoExcluir);
+        newTr.append(tdExcluir);
 
         tabela.append((newTr));
       });
+
+      $('#tabelaModelo').on('click','#delModelo', function(){
+            $(this).closest('tr').remove();
+        });
       
     </script>
   @stop
   @section('css')
       <style>
-        .addModelo{
+        .addModelo {
           float:right;
           cursor: pointer;
         }
+
+        #delModelo{
+          cursor: pointer;
+        }
+        
+
       </style>
   @endsection
 @stop
