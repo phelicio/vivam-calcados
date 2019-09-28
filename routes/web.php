@@ -75,3 +75,5 @@ Route::group(['as' => 'produtos.', 'prefix' => '/produtos'], function(){
     Route::get('/{id}', ['as' => 'show','uses' =>'ProdutoController@show']);
 
 });
+
+Route::get('/teste', 'CarrinhoController@guardarProduto');
