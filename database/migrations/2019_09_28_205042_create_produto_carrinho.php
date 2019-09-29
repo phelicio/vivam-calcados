@@ -13,7 +13,7 @@ class CreateProdutoCarrinho extends Migration
      */
     public function up()
     {
-        Schema::create('produto_carrinho', function (Blueprint $table) {
+        Schema::create('carrinho_produto', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('produto_id');
             $table->integer('carrinho_id');
@@ -30,6 +30,6 @@ class CreateProdutoCarrinho extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produto_carrinho');
+        Schema::dropIfExists('carrinho_produto');
     }
 }

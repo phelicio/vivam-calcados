@@ -3,39 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Produto;
+use App\Modelo;
+use Auth;
 
 class CarrinhoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function guardarProduto(Request $request)
+    public function __construct()
     {
-        
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return view('carrinho');
     }
 
-  
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function addProduto(Request $request)
     {
-        //
+        $carrinho = Auth::user()->carrinho;
+        $produto = Produto::find($request->input('produto'));
+        $modeloId = ($request->input('modelo'));
+        $quantidade = ($request->input('quantidade'));
+
+
+        $carrinho->produtos()->attach($produto, ['modelo_id' => $modeloId, 'quantidade' => $quantidade]);
+        
+        $modelo = Modelo::find($modeloId);
+        $modelo->quantidade-=1;
+        $modelo->save();
+        
+        return redirect()->route('produtos.catalogo', ['mensagem' => "Produto adicionado com sucesso!"]);
     }
+    
+
+    public function show()
+    {
+        return view('carrinho', ['carrinho' => Auth::user()->carrinho()]);
+    }
+
 }

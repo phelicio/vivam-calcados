@@ -13,6 +13,10 @@ class Produto extends Model
         return $this->belongsToMany('App\Categoria', 'categoria_produto','produto_id', 'categoria_id');
     }
 
+    public function carrinhos()
+    {
+        return $this->belongsToMany('App\Carrinho', 'carrinho_produto', 'produto_id', 'categoria_id');
+    }
 
     public function marca()
     {
