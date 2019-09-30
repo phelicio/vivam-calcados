@@ -64,8 +64,10 @@
                                 </div>
                                 <div class="up-item">
                                     <div class="shopping-card">
-                                    <i class="flaticon-bag"></i>
-                                    <span>0</span>
+                                        <i class="flaticon-bag"></i>
+                                        <a href="{{ route('carrinho.carrinho') }}">Carrinho</a>
+                                        <span>0</span>
+                                    </div>
                                 </div>
                                 @else
                                 <div class="up-item">
@@ -73,8 +75,7 @@
                                     <a href="{{ route('login') }}">Entrar</a> ou <a href="{{ route('register') }}">Criar conta</a>
                                 </div>
                                 @endif
-                                <a href="{{ route('carrinho.carrinho') }}">Carrinho</a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
