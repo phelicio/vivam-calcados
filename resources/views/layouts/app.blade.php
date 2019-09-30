@@ -102,7 +102,8 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="footer-widget about-widget">
                             <h2>Sobre</h2>
-                            <p>Donec vitae purus nunc. Morbi faucibus erat sit amet congue mattis. Nullam frin-gilla faucibus urna, id dapibus erat iaculis ut. Integer ac sem.</p>
+                            <p>A Vivam Calçados é um sistema onde busca explorar o mercado de Ecommerce 
+                                na área da venda de calçados com o foco principal no gênero feminino, na região do Cariri.</p>
                             <img src="/public-assets/img/cards.png" alt="">
                         </div>
                     </div>
@@ -115,15 +116,15 @@
                             </div>
                             <div class="con-info">
                                 <span>Endereço</span>
-                                <p>1481 Creekside Lane  Avila Beach, CA 93424, P.O. BOX 68 </p>
+                                <p>AV. Padre Cicero, N 152, Juazeiro do Norte - CE</p>
                             </div>
                             <div class="con-info">
                                 <span>Telefone</span>
-                                <p>+53 345 7953 32453</p>
+                                <p>+55 (88) 99308-1441</p>
                             </div>
                             <div class="con-info">
                                 <span>Email</span>
-                                <p>office@youremail.com</p>
+                                <p>suporte@vivam.online</p>
                             </div>
                         </div>
                     </div>
@@ -134,7 +135,7 @@
                 
 
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> 
-    <p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+    <p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os direitos reservados | N WAY <i class="fa fa-heart-o" aria-hidden="true"></i>  <a href="https://colorlib.com" target="_blank"></a></p>
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
                 </div>
