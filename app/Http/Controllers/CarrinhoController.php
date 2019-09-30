@@ -33,7 +33,7 @@ class CarrinhoController extends Controller
 
     public function show()
     {
-        return view('carrinho', ['carrinho' => Auth::user()->carrinho()]);
+        return view('carrinho', ['carrinho' => Auth::user()->carrinho]);
     }
 
 }

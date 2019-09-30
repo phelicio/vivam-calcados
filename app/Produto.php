@@ -15,7 +15,7 @@ class Produto extends Model
 
     public function carrinhos()
     {
-        return $this->belongsToMany('App\Carrinho', 'carrinho_produto', 'produto_id', 'categoria_id');
+        return $this->belongsToMany('App\Carrinho', 'carrinho_produto', 'produto_id', 'categoria_id')->withPivot(['modelo_id', 'quantidade']);
     }
 
     public function marca()
