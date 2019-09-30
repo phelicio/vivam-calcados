@@ -24,7 +24,7 @@ class CarrinhoController extends Controller
         $carrinho->produtos()->attach($produto, ['modelo_id' => $modeloId, 'quantidade' => $quantidade]);
         
         $modelo = Modelo::find($modeloId);
-        $modelo->quantidade-=1;
+        $modelo->quantidade-=$quantidade;
         $modelo->save();
         
         return redirect()->route('produtos.catalogo', ['mensagem' => "Produto adicionado com sucesso!"]);

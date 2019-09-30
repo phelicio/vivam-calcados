@@ -13,7 +13,7 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Favicon -->
-	<link href="public-assets/img/favicon.ico" rel="shortcut icon"/>
+	<link href="/public-assets/img/favicon.ico" rel="shortcut icon"/>
 
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -196,14 +196,14 @@
         
         
             <!--====== Javascripts & Jquery ======-->
-            <script src="public-assets/js/jquery-3.2.1.min.js"></script>
-            <script src="public-assets/js/bootstrap.min.js"></script>
-            <script src="public-assets/js/jquery.slicknav.min.js"></script>
-            <script src="public-assets/js/owl.carousel.min.js"></script>
-            <script src="public-assets/js/jquery.nicescroll.min.js"></script>
-            <script src="public-assets/js/jquery.zoom.min.js"></script>
-            <script src="public-assets/js/jquery-ui.min.js"></script>
-            <script src="public-assets/js/main.js"></script>
+            <script src="/public-assets/js/jquery-3.2.1.min.js"></script>
+            <script src="/public-assets/js/bootstrap.min.js"></script>
+            <script src="/public-assets/js/jquery.slicknav.min.js"></script>
+            <script src="/public-assets/js/owl.carousel.min.js"></script>
+            <script src="/public-assets/js/jquery.nicescroll.min.js"></script>
+            <script src="/public-assets/js/jquery.zoom.min.js"></script>
+            <script src="/public-assets/js/jquery-ui.min.js"></script>
+            <script src="/public-assets/js/main.js"></script>
         
 </body>
 </html>
