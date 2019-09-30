@@ -10,8 +10,8 @@
                         <span>Novos Produtos</span>
                         <h2>Tênis Solly</h2>
                         <p>Novo lançamento do Tênis Solly com o melhor designer da linha e a melhor performance para os seus pés. Aproveite essa promoção, pois e por tempo limitado. </p>
-                        <a href="#" class="site-btn sb-line">VISUALIZAR</a>
-                        <a href="#" class="site-btn sb-white">ADD AO CARRINHO</a>
+                        <a href="{{ route('produtos.catalogo') }}" class="site-btn sb-line">VISUALIZAR</a>
+                        <a href="{{ route('produtos.catalogo') }}" class="site-btn sb-white">ADD AO CARRINHO</a>
                     </div>
                 </div>
                 <div class="offer-card text-white">
@@ -90,7 +90,7 @@
 						<div class="pi-pic">
 							<img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="">
 							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
+							<a href="{{ route('produtos.show', $produto->id) }}" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 							</div>
 						</div>
 						<div class="pi-text">
@@ -110,138 +110,15 @@
 	<section class="product-filter-section">
 		<div class="container">
 			<div class="section-title">
-				<h2>PRODUTOS MAIS VENDIDOS</h2>
+				<h2>CATEGORIAS</h2>
 			</div>
 			<ul class="product-filter-menu">
 				@foreach ($categorias as $categoria)
 			<li><a href="{{ route('produtos.catalogo')."?categoria=".$categoria->nome}}">{{ $categoria->nome }}</a></li>
 				@endforeach
 			</ul>
-			<div class="row">
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="public-assets/img/product/5.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<div class="tag-sale">ON SALE</div>
-							<img src="public-assets/img/product/6.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Black and White Stripes Dress</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="public-assets/img/product/7.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="public-assets/img/product/8.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="public-assets/img/product/9.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="public-assets/img/product/10.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Black and White Stripes Dress</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="public-assets/img/product/11.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="public-assets/img/product/12.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="text-center pt-5">
-				<button class="site-btn sb-line sb-dark">MAIS PRODUTOS</button>
+			<a href="{{ route('produtos.catalogo') }}" class="site-btn sb-line sb-dark">MAIS PRODUTOS</a>
 			</div>
 		</div>
 	</section>
@@ -251,11 +128,11 @@
 	<!-- Banner section -->
 	<section class="banner-section">
 		<div class="container">
-			<div class="banner set-bg" data-setbg="public-assets/img/banner-bg.jpg">
+			<div class="banner set-bg" data-setbg="/public-assets/img/banner-bg.jpg">
 				<div class="tag-new">NOVO</div>
 				<span>Novos Produtos</span>
 				<h2>SAPATILHAS</h2>
-				<a href="#" class="site-btn">COMPRE AGORA</a>
+				<a href="{{ route('produtos.catalogo') }}" class="site-btn">COMPRE AGORA</a>
 			</div>
 		</div>
 	</section>

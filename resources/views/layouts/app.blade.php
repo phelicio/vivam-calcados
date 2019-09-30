@@ -96,7 +96,7 @@
         <section class="footer-section">
             <div class="container">
                 <div class="footer-logo text-center">
-                    <a href="index.html"><img src="public-assets/img/logo-light.png" alt=""></a>
+                    <a href="{{ route('home') }}"><img width="40%" src="/public-assets/img/logo-light.png" alt=""></a>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-sm-6">
@@ -135,7 +135,7 @@
                 
 
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> 
-    <p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os direitos reservados | N WAY <i class="fa fa-heart-o" aria-hidden="true"></i>  <a href="https://colorlib.com" target="_blank"></a></p>
+    <p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os direitos reservados | Template desenvolvido por: Colorlib <i class="fa fa-heart-o" aria-hidden="true"></i>  <a href="https://colorlib.com" target="_blank"></a></p>
     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
                 </div>
