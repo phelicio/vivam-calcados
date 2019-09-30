@@ -57,16 +57,23 @@
                         </div>
                         <div class="col-xl-4 col-lg-5">
                             <div class="user-panel">
+                                @if (Auth::user())
                                 <div class="up-item">
                                     <i class="flaticon-profile"></i>
-                                <a href="{{ route('login') }}">Entrar</a> ou <a href="{{ route('register') }}">Criar conta</a>
+                                    <a href="{{ route('login') }}">Olá, {{Auth::user()->name}}</a>
                                 </div>
                                 <div class="up-item">
                                     <div class="shopping-card">
-                                        <i class="flaticon-bag"></i>
-                                        <span>0</span>
-                                    </div>
-                                    <a href="#">Carrinho</a>
+                                    <i class="flaticon-bag"></i>
+                                    <span>0</span>
+                                </div>
+                                @else
+                                <div class="up-item">
+                                    <i class="flaticon-profile"></i>
+                                    <a href="{{ route('login') }}">Entrar</a> ou <a href="{{ route('register') }}">Criar conta</a>
+                                </div>
+                                @endif
+                                <a href="{{ route('carrinho.carrinho') }}">Carrinho</a>
                                 </div>
                             </div>
                         </div>
