@@ -37,4 +37,10 @@ class Produto extends Model
         }
         return $return;
     }
+
+    //Retorna o tamanho do calçado de acordo com o modelo
+    public function sizePerModelo($modelo){
+        
+        return Modelo::find($modelo)->tamanho;
+    }
 }

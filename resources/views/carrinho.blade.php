@@ -4,10 +4,10 @@
     <!-- Page info -->
 	<div class="page-top-info">
 		<div class="container">
-			<h4>Your cart</h4>
+			<h4>Carrinho</h4>
 			<div class="site-pagination">
-				<a href="">Home</a> /
-				<a href="">Your cart</a>
+				<a href="{{ route('home') }}">Pagina inicial</a> /
+				<a href="{{ route('carrinho.carrinho') }}">Carrinho</a>
 			</div>
 		</div>
 	</div>
@@ -20,7 +20,7 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="cart-table">
-						<h3>Your Cart</h3>
+						<h3>Carrinho</h3>
 						<div class="cart-table-warp">
 							<table>
 							<thead>
@@ -29,6 +29,7 @@
 									<th class="quy-th">Quantidade</th>
 									<th class="size-th">Tamanho</th>
 									<th class="total-th">Preço</th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -44,30 +45,32 @@
 									<td class="quy-col">
 										<div class="quantity">
 											<div class="pro-qty">
-											<input type="text" value="">
+											<input type="text" value="{{ $produto->pivot->quantidade }}">
 											</div>
                     					</div>
 									</td>
-									<td class="size-col"><h4></h4></td>
-									<td class="total-col"><h4>R${{ $produto->valor }}</h4></td>
+									<td class="size-col"><h4>{{ $produto->sizePerModelo($produto->pivot->modelo_id) }}</h4></td>
+									<td class="total-col"><h4>R$ {{ $produto->valor }}</h4></td>
+									<td class="total-col">
+										<form action="{{route('carrinho.rmvProduto' ,[$carrinho->id, $produto->pivot->modelo_id ,$produto->id])}}" method="POST">
+													{{ method_field('DELETE') }}
+													{{ csrf_field() }}
+													<button class="btn"><img src="/public-assets/img/delIcon.png" alt=""/></button>
+										</form>
+									</td>
 								</tr>
 								@endforeach
-								
 							</tbody>
 						</table>
 						</div>
 						<div class="total-cost">
-							<h6>Total <span>$99.90</span></h6>
+							<h6>Total <span>R$ {{ $carrinho->valorTotal() }}</span></h6>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 card-right">
-					<form class="promo-code-form">
-						<input type="text" placeholder="Enter promo code">
-						<button>Submit</button>
-					</form>
-					<a href="" class="site-btn">Proceed to checkout</a>
-					<a href="" class="site-btn sb-dark">Continue shopping</a>
+					<a href="" class="site-btn">Concluir compra</a>
+					<a href="{{ route('produtos.catalogo') }}" class="site-btn sb-dark">Continuar comprando</a>
 				</div>
 			</div>
 		</div>
