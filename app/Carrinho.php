@@ -18,7 +18,7 @@ class Carrinho extends Model
         $return = 0;
         
         foreach ($this->produtos as $produto) {
-            $return+= $produto->valor;
+            $return+= ($produto->valor * $produto->pivot->quantidade);
         }
         return $return;
     }
