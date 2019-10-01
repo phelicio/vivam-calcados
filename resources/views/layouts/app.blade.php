@@ -58,10 +58,16 @@
                         <div class="col-xl-4 col-lg-5">
                             <div class="user-panel">
                                 @if (Auth::user())
-                                <div class="up-item">
-                                    <i class="flaticon-profile"></i>
-                                    <a href="{{ route('login') }}">Olá, {{Auth::user()->name}}</a>
+                                <div class="dropdown" style="display:inline-block" >
+                                        <button class="btn dropdown-toggle" style="background-color: transparent;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="flaticon-profile"></i>
+                                                Olá, {{Auth::user()->name}}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                          <a class="dropdown-item" href="{{ route('enderecos') }}">Endereços</a>
+                                        </div>
                                 </div>
+                               
                                 <div class="up-item">
                                     <div class="shopping-card">
                                         <i class="flaticon-bag"></i>

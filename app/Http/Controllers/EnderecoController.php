@@ -14,7 +14,7 @@ class EnderecoController extends Controller
      */
     public function index()
     {
-        
+        return view('endereco');
     }
 
     /**
@@ -24,7 +24,7 @@ class EnderecoController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,10 @@ class EnderecoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $endereco = Endereco::create($request->all());
+        $endereco->associate(Autho::user());
+
+        return redirect()->route('enderecos');
     }
 
     /**
