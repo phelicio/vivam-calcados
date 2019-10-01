@@ -77,7 +77,7 @@ Route::group(['as' => 'produtos.', 'prefix' => '/produtos'], function(){
 });
 
 
-Route::group(['as' => 'carrinho.', 'prefix' => '/carrinho'], function(){
+Route::group(['as' => 'carrinho.', 'prefix' => '/carrinho', 'middleware' => 'auth'], function(){
     
     Route::get('', ['as' => 'carrinho', 'uses' => 'CarrinhoController@show']);
     Route::post('', ['as' => 'addProduto', 'uses' => 'CarrinhoController@addProduto']);

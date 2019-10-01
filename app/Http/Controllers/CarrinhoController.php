@@ -10,7 +10,7 @@ use Auth;
 
 class CarrinhoController extends Controller
 {
-
+   
     public function addProduto(Request $request)
     {
         $carrinho = Auth::user()->carrinho;
