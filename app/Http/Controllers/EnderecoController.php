@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Geocoder\Laravel\Facades\Geocoder;
+use App\Endereco;
+use App\Estado;
 
 class EnderecoController extends Controller
 {
@@ -24,7 +25,7 @@ class EnderecoController extends Controller
      */
     public function create()
     {
-
+        return view('enderecoCreate');
     }
 
     /**
@@ -36,20 +37,9 @@ class EnderecoController extends Controller
     public function store(Request $request)
     {
         $endereco = Endereco::create($request->all());
-        $endereco->associate(Autho::user());
+        $endereco->associate(Auth::user());
 
         return redirect()->route('enderecos');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -60,7 +50,8 @@ class EnderecoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $endereco = Endereco::find($id);
+        return view('endereco', ['endereco', $endereco]);
     }
 
     /**
