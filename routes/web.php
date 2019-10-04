@@ -85,3 +85,6 @@ Route::group(['as' => 'carrinho.', 'prefix' => '/carrinho', 'middleware' => 'aut
 
 
 });
+
+Route::get('/endereco', ['as' => 'enderecos', 'uses' => 'EnderecoController@index']);
+

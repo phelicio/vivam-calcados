@@ -73,7 +73,7 @@
                                 <div class="dropdown" style="display:inline-block" >
                                         <button class="btn dropdown-toggle" style="background-color: transparent;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="flaticon-profile"></i>
-                                                Olá, {{Auth::user()->name}}
+                                                Olá, {{explode(" ", Auth::user()->name)[0]}}
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                           <a class="dropdown-item" href="{{ route('enderecos') }}">Endereços</a>
@@ -84,7 +84,7 @@
                                     <div class="shopping-card">
                                         <i class="flaticon-bag"></i>
                                         <a href="{{ route('carrinho.carrinho') }}">Carrinho</a>
-                                        <span>0</span>
+                                    <span>{{ Auth::user()->carrinho->produtos()->count() }}</span>
                                     </div>
                                 </div>
                                 @else
