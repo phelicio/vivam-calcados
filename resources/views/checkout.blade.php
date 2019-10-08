@@ -19,7 +19,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 order-2 order-lg-1">
-					<form class="checkout-form">
+					<form action="{{ route('checkout') }}" method="POST" class="checkout-form">
+						@csrf
 						<div class="cf-title">Billing Address</div>
 						<div class="row">
 							<div class="col-md-7">
@@ -51,7 +52,7 @@
 								<input type="text" placeholder="Phone no.">
 							</div>
 						</div>
-						<div class="cf-title">Delievery Info</div>
+						<div class="cf-title">Entrega</div>
 						<div class="row shipping-btns">
 							<div class="col-6">
 								<h4>Standard</h4>
@@ -76,34 +77,27 @@
 								</div>
 							</div>
 						</div>
-						<div class="cf-title">Payment</div>
+						<div class="cf-title">Pagamento</div>
 						<ul class="payment-list">
-							<li>Paypal<a href="#"><img src="img/paypal.png" alt=""></a></li>
-							<li>Credit / Debit card<a href="#"><img src="img/mastercart.png" alt=""></a></li>
-							<li>Pay when you get the package</li>
+							<li>Boleto<a href="#"><img src="/public-assets/img/icons/icon.png" alt=""></a></li>
+							<li>Cartão de Credito<a href="#"><img src="/public-assets/img/icons/credit-card.png" alt=""></a></li>
 						</ul>
-						<button class="site-btn submit-order-btn">Place Order</button>
+						<button class="site-btn submit-order-btn">Concluir Compra</button>
 					</form>
 				</div>
 				<div class="col-lg-4 order-1 order-lg-2">
 					<div class="checkout-cart">
-						<h3>Your Cart</h3>
+						<h3>Seu Carrinho</h3>
 						<ul class="product-list">
+						@foreach ($carrinho->produtos as $produto)
 							<li>
-								<div class="pl-thumb"><img src="img/cart/1.jpg" alt=""></div>
-								<h6>Animal Print Dress</h6>
-								<p>$45.90</p>
+							<div class="pl-thumb"><img src="{{ url('/storage/produto/') }}/{{ $produto->imagem }}" alt=""></div>
+								<h6>{{ $produto->nome }}</h6>
+								<p>R${{ $produto->valor }}</p>
 							</li>
-							<li>
-								<div class="pl-thumb"><img src="img/cart/2.jpg" alt=""></div>
-								<h6>Animal Print Dress</h6>
-								<p>$45.90</p>
-							</li>
-						</ul>
+						@endforeach
 						<ul class="price-list">
-							<li>Total<span>$99.90</span></li>
-							<li>Shipping<span>free</span></li>
-							<li class="total">Total<span>$99.90</span></li>
+							<li class="total">Total<span>R${{$carrinho->valorTotal()}}</span></li>
 						</ul>
 					</div>
 				</div>

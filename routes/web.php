@@ -67,7 +67,8 @@ Route::get('/admin/vendas', function () {
 ##User Routes
 
 Route::get('/endereco', ['as' => 'enderecos', 'uses' => 'EnderecoController@index']);
-Route::get('/checkout', ['as' => 'checkout', 'uses' => 'CheckoutController@checkout']);
+Route::get('/checkout', ['as' => 'checkoutPage', 'uses' => 'CheckoutController@checkoutPage']);
+Route::post('/checkout', ['as' => 'checkout', 'uses' => 'CheckoutController@checkout']);
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
 
