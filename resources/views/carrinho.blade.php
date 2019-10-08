@@ -69,7 +69,7 @@
 					</div>
 				</div>
 				<div class="col-lg-4 card-right">
-					<a href="" class="site-btn">Concluir compra</a>
+					<a href="{{ route('checkout') }}" class="site-btn">Concluir compra</a>
 					<a href="{{ route('produtos.catalogo') }}" class="site-btn sb-dark">Continuar comprando</a>
 				</div>
 			</div>
