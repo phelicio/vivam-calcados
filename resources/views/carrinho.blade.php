@@ -74,6 +74,9 @@
 				</div>
 			</div>
 		</div>
+		<div id="paypal-button-container"></div>
+
+		
 	</section>
 	<!-- cart section end -->
 
@@ -149,6 +152,4 @@
 		</div>
 	</section>
 	<!-- Related product section end -->
-
-
 @endsection

@@ -38,7 +38,8 @@
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" type="text/css" href="/public-assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/public-assets/css/main.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
