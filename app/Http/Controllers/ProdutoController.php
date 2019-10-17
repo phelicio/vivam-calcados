@@ -174,7 +174,8 @@ class ProdutoController extends Controller
 
     public function catalogo(Request $request){
 
-        $categoria = $request->query('categoria')? $request->input('categoria'): "";
+        $categoria = $request->input('categoria')? $request->input('categoria'): "";
+        
         if(!empty($categoria)){
             $produtos = DB::table('categoria_produto')
                             ->join('produtos', 'produtos.id', '=', 'categoria_produto.produto_id')
@@ -186,7 +187,7 @@ class ProdutoController extends Controller
         } else {
             $produtos = Produto::all();
         }
-
+        dd($produtos);
         return view('produto.catalogo',[
             'produtos' => $produtos,
             'categorias' => Categoria::all(),
