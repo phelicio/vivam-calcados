@@ -6,6 +6,7 @@
   <h4><i class="icon fa fa-check"></i>{{$mensagem}}</h4>
   </div>
 @endif
+@isset($marcas)
 @foreach ($categorias as $categoria)
     <div class="col-md-3">
         <div class="box box-default">
@@ -24,6 +25,8 @@
         </div>
     </div>
 @endforeach
+@endisset
+
     <nav class="footer position-fixed text-center">
             {{ $categorias->links() }}
     </nav>

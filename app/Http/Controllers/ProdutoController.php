@@ -42,7 +42,7 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
         
-        $produto = Produto::create($request->except(['categoria_id', 'imagem', 'cor', 'quantidade', 'tamanho', 'newModelo']));
+        $produto = Produto::create($request->except(['categoria_id', 'imagem', 'quantidade', 'tamanho', 'newModelo']));
 
         $modelos = $request->only(['newModelo'])['newModelo'];
         foreach ($modelos as $modelo) {
@@ -115,7 +115,7 @@ class ProdutoController extends Controller
     {
 
         $produto = Produto::find($id);
-        $produto->update($request->except(['categoria_id', 'imagem', 'cor', 'quantidade', 'tamanho','modelo', 'newModelo']));
+        $produto->update($request->except(['categoria_id', 'imagem', 'quantidade', 'tamanho','modelo', 'newModelo']));
         $produto->categorias()->detach();
         $produto->modelos()->delete();
 

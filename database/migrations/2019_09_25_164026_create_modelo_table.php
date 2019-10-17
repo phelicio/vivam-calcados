@@ -17,7 +17,6 @@ class CreateModeloTable extends Migration
             $table->bigIncrements('id');
             $table->integer('quantidade');
             $table->string('tamanho');
-            $table->string('cor');
             $table->integer('produto_id');
             $table->timestamps();
         });

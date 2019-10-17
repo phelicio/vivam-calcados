@@ -10,12 +10,13 @@
     </div>
     @endif
 <div class="row">
+    @isset($produto)
     @foreach ($produtos as $produto)
     <div class="col-md-3 item">
-            <div class="box box-default">
-                <div class="box-header with-border">
+        <div class="box box-default">
+            <div class="box-header with-border">
                 <i class="fa fa-warning"></i>
-    
+                
                 <h3 class="box-title">{{$produto->nome}}</h3>
                 <div class="pull-right">
                     <form action="{{route('produtos.destroy', $produto->id)}}" method="POST">
@@ -25,19 +26,20 @@
                         <button class="btn btn-outline glyphicon glyphicon-remove" style="color:lightcoral;"></button>
                     </form>
                 </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
                 <img class="img-responsive" src=" {{url('storage/produto/'."{$produto->imagem}")}} " class="card-img-top" alt="...">
-                    <small>Valor</small>
-                    <p>R${{$produto->valor}},00</p>
-                    <small>Marca</small>
+                <small>Valor</small>
+                <p>R${{$produto->valor}},00</p>
+                <small>Marca</small>
                     <p>{{$produto->marca->nome}}</p>
                 </div>
                 <!-- /.box-body -->
             </div>
         </div>
-    @endforeach
+        @endforeach
+        @endisset
         <nav class="footer position-absolute text-center">
             {{ $produtos->links() }}
         </nav>

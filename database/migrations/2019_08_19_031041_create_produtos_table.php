@@ -18,6 +18,7 @@ class CreateProdutosTable extends Migration
             $table->string('nome');
             $table->integer('marca_id');
             $table->string('imagem')->nullable();
+            $table->string('cor');
             $table->double('valor', 8, 2);
             $table->timestamps();
         });

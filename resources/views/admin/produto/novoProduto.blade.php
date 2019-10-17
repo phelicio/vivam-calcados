@@ -47,6 +47,10 @@
           <input name="valor" type="text" class="form-control" id="valor" @isset($produto) value="{{$produto->valor}}" @endisset placeholder="Valor">
         </div>
         <div class="form-group">
+            <label for="cor">Cor</label>
+            <input name="cor" type="text" class="form-control"  id="imagem" @isset($produto) value="{{$produto->valor}}" @endisset placeholder="Cor">
+        </div>
+        <div class="form-group">
           <label for="imagem">Imagem do Produto</label>
           <input name="imagem" type="file" class="form-control-file"  id="imagem">
         </div>
@@ -55,7 +59,6 @@
           <table class="table table-hover table-bordered">
             <thead>
                 <tr>
-                    <th>Cor</th>
                     <th>Tamanho</th>
                     <th>Quantidade</th>
                     <th></th>
@@ -65,7 +68,6 @@
               @isset($produto)
                 @foreach ($produto->modelos as $modelo)
                 <tr>
-                  <td><input name="modelo[{{$modelo->id}}][cor]" type="text" class="form-control" id="cor" @isset($produto) value="{{$modelo->cor}}" @endisset placeholder="Cor"></td>
                   <td><input name="modelo[{{$modelo->id}}][tamanho]" type="text" class="form-control" id="tamanho" @isset($produto) value="{{$modelo->tamanho}}" @endisset placeholder="Tamanho"></td>
                   <td><input name="modelo[{{$modelo->id}}][quantidade]" type="text" class="form-control" id="quantidade" @isset($produto) value="{{$modelo->quantidade}}" @endisset placeholder="Quantidade"></td>                
                   <td><a id="delModelo"><i class="glyphicon glyphicon-trash"></i></a></td>
@@ -73,7 +75,6 @@
                 @endforeach
               @endisset
                 <tr id="dummy-modelo-tr" hidden>
-                  <td><input data-type="cor" type="text" class="form-control" id="cor" placeholder="Cor"></td>
                   <td><input data-type="tamanho" type="text" class="form-control" id="tamanho" placeholder="Tamanho"></td>
                   <td><input data-type="quantidade" type="text" class="form-control" id="quantidade" placeholder="Quantidade"></td>                
                   <td><a data-type="delModelo" id="delModelo"><i class="glyphicon glyphicon-trash"></i></a></td>

@@ -2,16 +2,17 @@
 @section('content')
 
 @if($mensagem = Session::get('mensagem'))
-  <div class="alert alert-success alert-dismissible">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-  <h4><i class="icon fa fa-check"></i>{{$mensagem}}</h4>
-  </div>
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h4><i class="icon fa fa-check"></i>{{$mensagem}}</h4>
+    </div>
 @endif
-<div>
-@foreach ($marcas as $marca)
+    <div>
+    @isset($marcas)
+    @foreach ($marcas as $marca)
     <div class="col-md-3">
-            <div class="box box-default">
-                <div class="box-header with-border">
+        <div class="box box-default">
+            <div class="box-header with-border">
                 <i class="fa fa-warning"></i>
                 <h3 class="box-title">{{$marca->nome}}</h3>
                 <div class="pull-right">
@@ -24,8 +25,9 @@
                 </div>
                 </div>
             </div>
-            </div>
-@endforeach
+        </div>
+        @endforeach
+        @endisset
         <nav class="footer position-fixed text-center">
             {{ $marcas->links() }}
         </nav>
