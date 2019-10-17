@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="preloder">
+		<div class="loader"></div>
+	</div>
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
         <div class="hs-item set-bg" data-setbg="public-assets/img/bg.jpg">

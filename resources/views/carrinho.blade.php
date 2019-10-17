@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="preloder">
+		<div class="loader"></div>
+	</div>
     <!-- Page info -->
 	<div class="page-top-info">
 		<div class="container">

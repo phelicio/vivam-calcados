@@ -2,7 +2,11 @@
 
 @section('content')
 
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 <!-- Page info -->
+
 	<div class="page-top-info">
 		<div class="container">
 			<h4>CAtegory PAge</h4>
