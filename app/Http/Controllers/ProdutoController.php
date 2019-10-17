@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 use App\Produto;
 use App\Categoria;
 use App\Marca;
@@ -184,7 +185,9 @@ class ProdutoController extends Controller
         //                     ->select('produtos.*')
         //                     ->get();
 
-            $produtos = Produto::has('categorias', 'nome', $categoria)->get();
+            $produtos = Produto::whereHas('categorias', function (Builder $query) {
+                $query->where('nome', '=', \Request::query('categoria'));
+            })->get();
 
         } else {
             $produtos = Produto::all();
