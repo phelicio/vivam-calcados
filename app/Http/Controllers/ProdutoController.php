@@ -187,7 +187,7 @@ class ProdutoController extends Controller
         } else {
             $produtos = Produto::all();
         }
-        dd($produtos);
+        
         return view('produto.catalogo',[
             'produtos' => $produtos,
             'categorias' => Categoria::all(),
