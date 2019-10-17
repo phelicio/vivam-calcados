@@ -75,19 +75,20 @@
 				</div>
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 					<div class="row">
+							@isset ($produtos)
 							@foreach ($produtos as $produto)
 							<div class="col-lg-4 col-sm-6">
 								<div class="product-item">
 									<div class="pi-pic">
 										<div class="tag-sale">
 											@if ($produto->quantidadeTotal() > 0)
-												Disponível
+											Disponível
 											@else
-												Fora de estoque
+											Fora de estoque
 											@endif
 										</div>
 									<a href="{{ route('produtos.show', $produto->id) }}"><img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="Imagem do produto"></a>
-										<div class="pi-links">
+									<div class="pi-links">
 											<a href="{{ route('produtos.show', $produto->id) }}" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 										</div>
 									</div>
@@ -98,6 +99,7 @@
 								</div>
 							</div>
 							@endforeach
+							@endisset
 					</div>
 				</div>
 			</div>
