@@ -10,7 +10,7 @@
     </div>
     @endif
 <div class="row">
-    @isset($produto)
+    @isset($produtos)
     @foreach ($produtos as $produto)
     <div class="col-md-3 item">
         <div class="box box-default">

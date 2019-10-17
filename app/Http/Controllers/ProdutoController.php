@@ -177,17 +177,19 @@ class ProdutoController extends Controller
         $categoria = $request->input('categoria')? $request->input('categoria'): "";
         
         if(!empty($categoria)){
-            $produtos = DB::table('categoria_produto')
-                            ->join('produtos', 'produtos.id', '=', 'categoria_produto.produto_id')
-                            ->join('categorias', 'categorias.id', '=', 'categoria_produto.categoria_id')
-                            ->where('categorias.nome', '=', $categoria)
-                            ->select('produtos.*')
-                            ->get();
+        //     $produtos = DB::table('categoria_produto')
+        //                     ->join('produtos', 'produtos.id', '=', 'categoria_produto.produto_id')
+        //                     ->join('categorias', 'categorias.id', '=', 'categoria_produto.categoria_id')
+        //                     ->where('categorias.nome', '=', $categoria)
+        //                     ->select('produtos.*')
+        //                     ->get();
+
+            $produtos = Produto::has('categorias', 'nome', $categoria)->get();
 
         } else {
             $produtos = Produto::all();
         }
-        
+
         return view('produto.catalogo',[
             'produtos' => $produtos,
             'categorias' => Categoria::all(),
