@@ -79,7 +79,7 @@
 				</div>
 				<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 					<div class="row">
-							@isset ($produtos)
+							@if (!empty($produtos))
 							@foreach ($produtos as $produto)
 							<div class="col-lg-4 col-sm-6">
 								<div class="product-item">
@@ -103,7 +103,7 @@
 								</div>
 							</div>
 							@endforeach
-							@endisset
+							@endif
 					</div>
 				</div>
 			</div>
