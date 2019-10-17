@@ -3,7 +3,7 @@
 @section('content')
 <div id="preloder">
 		<div class="loader"></div>
-	</div>
+</div>
 <section class="hero-section">
     <div class="hero-slider owl-carousel">
         <div class="hs-item set-bg" data-setbg="public-assets/img/bg.jpg">
@@ -14,7 +14,6 @@
                         <h2>Tênis Solly</h2>
                         <p>Novo lançamento do Tênis Solly com o melhor designer da linha e a melhor performance para os seus pés. Aproveite essa promoção, pois e por tempo limitado. </p>
                         <a href="{{ route('produtos.catalogo') }}" class="site-btn sb-line">VISUALIZAR</a>
-                        <a href="{{ route('produtos.catalogo') }}" class="site-btn sb-white">ADD AO CARRINHO</a>
                     </div>
                 </div>
                 <div class="offer-card text-white">
@@ -32,7 +31,6 @@
                         <h2>Sandálias Currulepe</h2>
                         <p>Pra você que gosta de sandalias regionais do nordeste, chegou as sandalias de couro Currulepe, com designer arrojado sem perder a cultura nordestina. </p>
                         <a href="#" class="site-btn sb-line">VISUALIZAR</a>
-                        <a href="#" class="site-btn sb-white">ADD AO CARRINHO</a>
                     </div>
                 </div>
                 <div class="offer-card text-white">

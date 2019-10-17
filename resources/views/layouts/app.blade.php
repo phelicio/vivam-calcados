@@ -101,9 +101,9 @@
                     <!-- menu -->
                     <ul class="main-menu">
                         <li><a href="#">Página Inicial</a></li>
-                    <li><a href="{{route('produtos.catalogo').'/?categoria=feminino'}}">Femininos</a></li>
-                        <li><a href="{{route('produtos.catalogo').'/?categoria=masculino'}}">Masculinos</a></li>
-                        <li><a href="{{route('produtos.catalogo').'/?categoria=infantil'}}">Infantis</a></li>
+                    <li><a href="{{route('produtos.catalogo').'?categoria=feminino'}}">Femininos</a></li>
+                        <li><a href="{{route('produtos.catalogo').'?categoria=masculino'}}">Masculinos</a></li>
+                        <li><a href="{{route('produtos.catalogo').'?categoria=infantil'}}">Infantis</a></li>
                         <li><a href="{{route('home')}}">Sobre Nós</a></li>
                         <li><a href="{{route('home')}}">Contato</a></li>
                     </ul>
