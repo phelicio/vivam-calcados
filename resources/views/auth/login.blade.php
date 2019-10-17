@@ -51,5 +51,7 @@
 		</div>
 	</div>
 	<div id="dropDownSelect1"></div>
+	<script src="/js/mainLogin.js"></script>
+
 
 @endsection
