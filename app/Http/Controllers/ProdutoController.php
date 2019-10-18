@@ -193,10 +193,10 @@ class ProdutoController extends Controller
             $produtos = Produto::all();
         }
         
-        $cores = DB::select('select cor, cor_html as html from produtos');
+        $cores = DB::select('select cor as nome, cor_html as html from produtos');
         $cores = array_unique($cores);
 
-        $tamanhos = DB::select('select tamanho from modelos');
+        $tamanhos = DB::select('select tamanho as nome from modelos');
         $tamanhos = array_unique($tamanhos);
 
         return view('produto.catalogo',[

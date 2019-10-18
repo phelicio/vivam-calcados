@@ -53,8 +53,8 @@
 						<div class="fw-color-choose">
 							@foreach ($cores as $cor)
 								<div class="cs-item">
-									<input type="radio" name="cor" value="{{$cor->cor}}"  name="cor" id="{{ $cor->cor }}-cor">
-									<label style="background-color={{$cor->html}};" for="{{ $cor->cor }}-cor"></label>
+									<input type="radio" name="cor" value="{{$cor->nome}}"  name="cor" id="{{ $cor->nome }}-cor">
+									<label style="background={{$cor->html}};" for="{{ $cor->nome }}-cor"></label>
 								</div>
 							@endforeach
 						</div>
@@ -64,8 +64,8 @@
 						<div class="fw-size-choose">
 							@foreach ($tamanhos as $tamanho)
 								<div class="sc-item">
-									<input type="radio" name="tamanho" value="{{$tamanho->tamanho}}" id="{{ $tamanho->tamanho }}-tamanho">
-									<label for="{{ $tamanho->tamanho }}-tamanho">{{ $tamanho->tamanho }}</label>
+									<input type="radio" name="tamanho" value="{{$tamanho->nome}}" id="{{ $tamanho->nome }}-tamanho">
+									<label for="{{ $tamanho->nome }}-tamanho">{{ $tamanho->nome }}</label>
 								</div>
 							@endforeach
 						</div>
