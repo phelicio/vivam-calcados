@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use App\Produto;
 use App\Categoria;
 use App\Marca;
@@ -176,28 +177,69 @@ class ProdutoController extends Controller
     public function catalogo(Request $request){
 
         $categoria = $request->input('categoria')? $request->input('categoria'): "";
+        $tamanho = $request->input('tamanho')? $request->input('tamanho'): "";
+        $cor = $request->input('cor')? $request->input('cor'): "";
+        $marca = $request->input('marca')? $request->input('marca'): "";
+        $produto = new Produto;
+        $produtos = new Collection;
+
+        if(!empty($categoria) || !empty($tamanho) || !empty($cor) || !empty($marca)){
+
+            if(!empty($categoria)){
+                
+                $produtosCollection = $produto->whereHas('categorias', function (Builder $query) {
+                    $query->where('nome', '=', \Request::query('categoria'));
+                })->get();
+                
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+            
+            if(!empty($tamanho)){
+
+                $produtosCollection = $produto->whereHas('modelos', function (Builder $query) {
+                    $query->where('tamanho', '=', \Request::query('tamanho'));
+                })->get();
+                
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
         
-        if(!empty($categoria)){
-        //     $produtos = DB::table('categoria_produto')
-        //                     ->join('produtos', 'produtos.id', '=', 'categoria_produto.produto_id')
-        //                     ->join('categorias', 'categorias.id', '=', 'categoria_produto.categoria_id')
-        //                     ->where('categorias.nome', '=', $categoria)
-        //                     ->select('produtos.*')
-        //                     ->get();
+            if(!empty($cor)){
+                
+                $produtosCollection = $produto->whereHas('modelos', function (Builder $query) {
+                    $query->where('cor', '=', \Request::query('cor'));
+                })->get();
+                
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+            
+            if(!empty($marca)){
+                
+                $produtosCollection = $produto->whereHas('marcas', function (Builder $query) {
+                    $query->where('nome', '=', \Request::query('marca'));
+                })->get();
+                
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+    
+        }else {
 
-            $produtos = Produto::whereHas('categorias', function (Builder $query) {
-                $query->where('nome', '=', \Request::query('categoria'));
-            })->get();
-
-        } else {
             $produtos = Produto::all();
         }
         
-        $cores = DB::select('select cor as nome, cor_html as html from produtos');
-        $cores = array_unique($cores);
-
-        $tamanhos = DB::select('select tamanho as nome from modelos');
-        $tamanhos = array_unique($tamanhos);
+        $cores = DB::table('produtos')->select('cor as nome', 'cor_html as html')->distinct()->get();
+        $tamanhos = DB::table('modelos')->select('tamanho as nome')->distinct()->get();
 
         return view('produto.catalogo',[
             'produtos' => $produtos,
