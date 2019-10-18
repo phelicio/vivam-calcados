@@ -48,7 +48,11 @@
         </div>
         <div class="form-group">
             <label for="cor">Cor</label>
-            <input name="cor" type="text" class="form-control"  id="imagem" @isset($produto) value="{{$produto->valor}}" @endisset placeholder="Cor">
+            <input name="cor" type="text" class="form-control"  id="cor" @isset($produto) value="{{$produto->valor}}" @endisset placeholder="Cor">
+        </div>
+        <div class="form-group">
+            <label for="cor_html">Cor em html</label>
+            <input name="cor_html" type="text" class="form-control"  id="cor_html" @isset($produto) value="{{$produto->valor}}" @endisset placeholder="Cor">
         </div>
         <div class="form-group">
           <label for="imagem">Imagem do Produto</label>

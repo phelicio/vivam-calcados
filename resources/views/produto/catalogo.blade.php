@@ -9,10 +9,10 @@
 
 	<div class="page-top-info">
 		<div class="container">
-			<h4>CAtegory PAge</h4>
+			<h4>Catalogo</h4>
 			<div class="site-pagination">
-				<a href="">Home</a> /
-				<a href="">Shop</a> /
+				<a href="">Página Inicial</a> /
+				<a href="">Loja</a> /
 			</div>
 		</div>
 	</div>
@@ -43,33 +43,35 @@
 						<ul class="category-menu">
 							@foreach ($categorias as $categoria)
 							<li>
-							<a href="#">{{ucfirst($categoria->nome)}}<span>({{ $categoria->produtos()->count() }})</span></a>
+							<a href="{{ route('produtos.catalogo').'?categoria='.$categoria->nome }}">{{ucfirst($categoria->nome)}}<span>({{ $categoria->produtos()->count() }})</span></a>
 							</li>
 							@endforeach
 						</ul>
 					</div>
 					<div class="filter-widget mb-0">
-						<h2 class="fw-title">COR</h2>
+						<h2 class="fw-title">Cor</h2>
 						<div class="fw-color-choose">
-							<div class="cs-item">
-								<input type="radio" name="cs" id="gray-color">
-								<label class="cs-gray" for="gray-color">
-									<span>(3)</span>
-								</label>
-							</div>
+							@foreach ($cores as $cor)
+								<div class="cs-item">
+									<input type="radio" name="cor" value="{{$cor->cor}}"  name="cor" id="{{ $cor->cor }}-cor">
+									<label style="background-color={{$cor->html}};" for="{{ $cor->cor }}-cor"></label>
+								</div>
+							@endforeach
 						</div>
 					</div>
 					<div class="filter-widget mb-0">
 						<h2 class="fw-title">Tamanho</h2>
 						<div class="fw-size-choose">
-							<div class="sc-item">
-								<input type="radio" name="sc" id="xs-size">
-								<label for="xs-size">XS</label>
-							</div>
+							@foreach ($tamanhos as $tamanho)
+								<div class="sc-item">
+									<input type="radio" name="tamanho" value="{{$tamanho->tamanho}}" id="{{ $tamanho->tamanho }}-tamanho">
+									<label for="{{ $tamanho->tamanho }}-tamanho">{{ $tamanho->tamanho }}</label>
+								</div>
+							@endforeach
 						</div>
 					</div>
 					<div class="filter-widget">
-						<h2 class="fw-title">Brand</h2>
+						<h2 class="fw-title">Marcas</h2>
 						<ul class="category-menu">
 							@foreach ($marcas as $marca)
 								<li><a href="#">{{ ucfirst($marca->nome) }}<span>({{ $marca->produtos()->count() }})</span></a></li>
@@ -81,27 +83,27 @@
 					<div class="row">
 							@if (!empty($produtos))
 							@foreach ($produtos as $produto)
-							<div class="col-lg-4 col-sm-6">
-								<div class="product-item">
-									<div class="pi-pic">
-										<div class="tag-sale">
-											@if ($produto->quantidadeTotal() > 0)
-											Disponível
-											@else
-											Fora de estoque
-											@endif
+								<div class="col-lg-4 col-sm-6">
+									<div class="product-item">
+										<div class="pi-pic">
+											<div class="tag-sale">
+												@if ($produto->quantidadeTotal() > 0)
+												Disponível	
+												@else
+												Fora de estoque
+												@endif
+											</div>
+										<a href="{{ route('produtos.show', $produto->id) }}"><img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="Imagem do produto"></a>
+										<div class="pi-links">
+												<a href="{{ route('produtos.show', $produto->id) }}" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
+											</div>
 										</div>
-									<a href="{{ route('produtos.show', $produto->id) }}"><img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="Imagem do produto"></a>
-									<div class="pi-links">
-											<a href="{{ route('produtos.show', $produto->id) }}" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
+										<div class="pi-text">
+											<h6>R${{ $produto->valor }}</h6>
+											<p>{{ $produto->nome }}</p>
 										</div>
-									</div>
-									<div class="pi-text">
-										<h6>R${{ $produto->valor }}</h6>
-										<p>{{ $produto->nome }}</p>
 									</div>
 								</div>
-							</div>
 							@endforeach
 							@endif
 					</div>
