@@ -25,7 +25,7 @@ class HomeController extends Controller
         return view('home', ['produtosRecentes' => $produtos, 'categorias' => $categorias ]);
     }
 
-    public function contato()
+    public function sobre()
     {
         
         return view('sobre');
