@@ -68,6 +68,7 @@ Route::get('/admin/vendas', function () {
 
 Route::get('/endereco', ['as' => 'enderecos', 'uses' => 'EnderecoController@index']);
 Route::get('/checkout', ['as' => 'checkoutPage', 'uses' => 'CheckoutController@checkoutPage']);
+Route::get('/sobre', ['as' => 'sobre', 'uses' => 'HomeController@sobre']);
 Route::post('/checkout', ['as' => 'checkout', 'uses' => 'CheckoutController@checkout']);
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
@@ -87,4 +88,3 @@ Route::group(['as' => 'carrinho.', 'prefix' => '/carrinho', 'middleware' => 'aut
 
 
 });
-

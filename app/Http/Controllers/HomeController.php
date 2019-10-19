@@ -24,4 +24,10 @@ class HomeController extends Controller
         $categorias = Categoria::all();
         return view('home', ['produtosRecentes' => $produtos, 'categorias' => $categorias ]);
     }
+
+    public function contato()
+    {
+        
+        return view('sobre');
+    }
 }
