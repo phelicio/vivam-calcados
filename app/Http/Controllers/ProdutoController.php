@@ -223,7 +223,7 @@ class ProdutoController extends Controller
             
             if(!empty($marca)){
                 
-                $produtosCollection = $produto->whereHas('marcas', function (Builder $query) {
+                $produtosCollection = $produto->whereHas('marca', function (Builder $query) {
                     $query->where('nome', '=', \Request::query('marca'));
                 })->get();
                 
@@ -238,6 +238,7 @@ class ProdutoController extends Controller
             $produtos = Produto::all();
         }
         
+        $produtos = $produtos->unique();
         $cores = DB::table('produtos')->select('cor as nome', 'cor_html as html')->distinct()->get();
         $tamanhos = DB::table('modelos')->select('tamanho as nome')->distinct()->get();
 
