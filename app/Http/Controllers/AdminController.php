@@ -38,4 +38,10 @@ class AdminController extends Controller
         return redirect()->route('admin.loginPage');
     }
 
+    public function historico(){
+        $vendas = Venda::all();
+
+        return view('admin.vendas', [ 'vendas' => $vendas ]);
+    }
+
 }

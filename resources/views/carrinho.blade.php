@@ -82,6 +82,4 @@
 		
 	</section>
 	<!-- cart section end -->
-
-	<!-- Related product section end -->
 @endsection

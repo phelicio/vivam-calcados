@@ -42,10 +42,25 @@ class CheckoutController extends Controller
             $response = $provider->setExpressCheckout($data);
 
             return redirect($response['paypal_link']);
-
         } catch (Exception $e) {
             dd($e->__toString());
         }
+
+    }
+
+    public function store(){
+        
+        $user = Auth::user();    
+        
+        $venda = Venda::create([
+            'dataEntrega' => time(),
+            'valorTotal' => $user->carrinho->valorTotal(),
+            'status' => '1'
+        ]);
+        
+        $venda->produtos()->attach($user->carrinho->produtos);
+        $venda->associate($user);
+        $user->carrinho->produtos()->detach();
     }
 
 }
