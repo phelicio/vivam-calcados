@@ -83,27 +83,5 @@
 	</section>
 	<!-- cart section end -->
 
-	<script
-    src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID">
-  </script>
-
-  <div id="paypal-button-container"></div>
-  <script>
-		paypal.Buttons({
-		  createOrder: function(data, actions) {
-			// Set up the transaction
-			return actions.order.create({
-			  purchase_units: [{
-				amount: {
-				  value: '0.01'
-				}
-			  }]
-			});
-		  }
-		}).render('#paypal-button-container');
-	  </script>
-  <script>
-    paypal.Buttons().render('#paypal-button-container');
-  </script>
 	<!-- Related product section end -->
 @endsection
