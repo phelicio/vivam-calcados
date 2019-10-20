@@ -99,10 +99,14 @@
 						<ul class="price-list">
 							<li class="total">Total<span>R${{$carrinho->valorTotal()}}</span></li>
 						</ul>
+  
 					</div>
 				</div>
 			</div>
 		</div>
+	
+
 	</section>
+	
 	<!-- checkout section end -->
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="preloder">
+	<div id="preloder">
 		<div class="loader"></div>
 	</div>
     <!-- Page info -->
@@ -83,76 +83,27 @@
 	</section>
 	<!-- cart section end -->
 
-	<!-- Related product section -->
-	<section class="related-product-section">
-		<div class="container">
-			<div class="section-title text-uppercase">
-				<h2>Continue Shopping</h2>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<div class="tag-new">New</div>
-							<img src="./img/product/2.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Black and White Stripes Dress</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/5.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/9.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6">
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="./img/product/1.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<script
+    src="https://www.paypal.com/sdk/js?client-id=SB_CLIENT_ID">
+  </script>
+
+  <div id="paypal-button-container"></div>
+  <script>
+		paypal.Buttons({
+		  createOrder: function(data, actions) {
+			// Set up the transaction
+			return actions.order.create({
+			  purchase_units: [{
+				amount: {
+				  value: '0.01'
+				}
+			  }]
+			});
+		  }
+		}).render('#paypal-button-container');
+	  </script>
+  <script>
+    paypal.Buttons().render('#paypal-button-container');
+  </script>
 	<!-- Related product section end -->
 @endsection

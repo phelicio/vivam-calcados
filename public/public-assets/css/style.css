@@ -2183,6 +2183,24 @@ ol {
 	height: 100%;
 }
 
+.user-panel button {
+  font-size:16px;
+  color: #000;
+  border: 0;
+}
+
+.user-panel button:focus{
+  outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+}
+
+.user-panel:focus{
+  outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+}
+
 /* ----------------
   Responsive
 ---------------------*/
@@ -2423,4 +2441,6 @@ ol {
 	.social-links a span {
 		display: none;
 	}
+
+	
 }

@@ -26,7 +26,6 @@
 	<link rel="stylesheet" href="/public-assets/css/animate.css"/>
 	<link rel="stylesheet" href="/public-assets/css/style.css"/>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -60,7 +59,7 @@
                         </div>
                         <div class="col-xl-6 col-lg-5">
                         <form  method="GET" action="{{ route('produtos.catalogo') }}" class="header-search-form">
-                                <input type="text" name="search" placeholder="Pesquisar">
+                                <input type="text" name="categoria" placeholder="Pesquisar">
                                 <button><i class="flaticon-search"></i></button>
                             </form>
                         </div>
@@ -72,8 +71,14 @@
                                                 <i class="flaticon-profile"></i>
                                                 Olá, {{explode(" ", Auth::user()->name)[0]}}
                                         </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                                           <a class="dropdown-item" href="{{ route('enderecos') }}">Endereços</a>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                {{ method_field('POST') }}                                               
+                                                <button class="dropdown-item">Sair</button>
+                                          </form>
+
                                         </div>
                                 </div>
                                
@@ -126,7 +131,7 @@
                             <h2>Sobre</h2>
                             <p>A Vivam Calçados é um sistema onde busca explorar o mercado de Ecommerce 
                                 na área da venda de calçados com o foco principal no gênero feminino, na região do Cariri.</p>
-                            <img src="/public-assets/img/cards.png" alt="">
+                            <img src="/public-assets/img/paypal.png" alt="">
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">

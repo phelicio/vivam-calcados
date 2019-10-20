@@ -20,6 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         $produtos = Produto::latest('created_at')->limit(10)->get();
         $categorias = Categoria::all();
         return view('home', ['produtosRecentes' => $produtos, 'categorias' => $categorias ]);
