@@ -42,7 +42,7 @@
 										<img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="">
 										<div class="pc-title">
 											<h4>{{ $produto->nome }}</h4>
-											<p>{{ $produto->valor }}</p>
+											<p>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor))}}</p>
 										</div>
 									</td>
 									<td class="quy-col">
@@ -53,7 +53,7 @@
                     					</div>
 									</td>
 									<td class="size-col"><h4>{{ $produto->sizePerModelo($produto->pivot->modelo_id) }}</h4></td>
-									<td class="total-col"><h4>R$ {{ $produto->valor }}</h4></td>
+									<td class="total-col"><h4>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor * $produto->pivot->quantidade)) }}</h4></td>
 									<td class="total-col">
 										<form action="{{route('carrinho.rmvProduto' ,[$carrinho->id, $produto->pivot->modelo_id ,$produto->id])}}" method="POST">
 													{{ method_field('DELETE') }}
@@ -67,7 +67,7 @@
 						</table>
 						</div>
 						<div class="total-cost">
-							<h6>Total <span>R$ {{ $carrinho->valorTotal() }}</span></h6>
+							<h6>Total <span>{{ str_replace('.', ',' ,money_format('R$ %.2n',$carrinho->valorTotal())) }}</span></h6>
 						</div>
 					</div>
 				</div>

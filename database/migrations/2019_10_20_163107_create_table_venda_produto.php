@@ -16,9 +16,10 @@ class CreateTableVendaProduto extends Migration
         Schema::create('venda_produto', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('venda_id');
-            $table->integer('user_id');
+            $table->integer('produto_id');
             $table->integer('modelo_id');
             $table->integer('quantidade');
+            $table->double('valor');
             $table->timestamps();
         });
     }

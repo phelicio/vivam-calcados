@@ -107,7 +107,7 @@
 										</div>
 									</div>
 									<div class="pi-text">
-										<h6>R${{ $produto->valor }}</h6>
+										<h6>{{ str_replace('.', ',', money_format('R$ %.2n', $produto->valor))}}</h6>
 										<p>{{ $produto->nome }}</p>
 									</div>
 								</div>

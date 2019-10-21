@@ -31,7 +31,7 @@
             <div class="box-body">
                 <img class="img-responsive" src=" {{url('storage/produto/'."{$produto->imagem}")}} " class="card-img-top" alt="...">
                 <small>Valor</small>
-                <p>R${{$produto->valor}},00</p>
+                <p>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor)) }} </p>
                 <small>Marca</small>
                     <p>{{$produto->marca->nome}}</p>
                 </div>

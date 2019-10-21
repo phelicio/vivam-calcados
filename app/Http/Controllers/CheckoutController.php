@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use URL;
 use Redirect;
+use App\Venda;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Payer;
@@ -107,13 +108,23 @@ class CheckoutController extends Controller
         $user = Auth::user();    
         
         $venda = Venda::create([
-            'dataEntrega' => time(),
+            'dataEntrega' => date('Y-m-d' ,strtotime("+1 day")),
             'valorTotal' => $user->carrinho->valorTotal(),
-            'status' => '1'
+            'status' => '1',
+            'user_id' => $user->id
         ]);
+
         
-        $venda->produtos()->attach($user->carrinho->produtos);
-        $venda->associate($user);
+        foreach ($user->carrinho->produtos as $produto) {
+            
+            $venda->produtos()->attach($produto, 
+            [
+                'modelo_id' => $produto->pivot->modelo_id,
+                'quantidade' => $produto->pivot->quantidade,
+                'valor' => $produto->valor
+            ]);
+        }
+        
         $user->carrinho->produtos()->detach();
 
         return redirect()->route('home');

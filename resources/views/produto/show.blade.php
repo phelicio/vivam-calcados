@@ -32,7 +32,7 @@
                             <input type="text" value="{{ $produto->id }}" name="produto" hidden>
                             <div class="col-lg-6 product-details">
                                 <h2 class="p-title">{{$produto->nome}}</h2>
-                                <h3 class="p-price">R$ {{$produto->valor}}</h3>
+                                <h3 class="p-price">{{ str_replace('.', ',', money_format('R$ %.2n', $produto->valor))}}</h3>
                                 @if ($produto->quantidade>0)
                                 <h4 class="p-stock"> <span>Disponivel em estoque</span></h4>
                                 @endif

@@ -11,10 +11,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- Page info end -->
-
-
-	<!-- checkout section  -->
 	<section class="checkout-section spad">
 		<div class="container">
 			<div class="row">
@@ -93,7 +89,7 @@
 							<li>
 							<div class="pl-thumb"><img src="{{ url('/storage/produto/') }}/{{ $produto->imagem }}" alt=""></div>
 								<h6>{{ $produto->nome }}</h6>
-								<p>R${{ $produto->valor }}</p>
+								<p>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor)) }}</p>
 							</li>
 						@endforeach
 						<ul class="price-list">
