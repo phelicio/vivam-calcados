@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function carrinho(){
         return $this->hasOne('App\Carrinho');
     }
+
+    public function vendas(){
+        return $this->hasMany('App\Venda');
+    }
 }

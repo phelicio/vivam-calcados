@@ -70,6 +70,8 @@ Route::get('/endereco', ['as' => 'enderecos', 'uses' => 'EnderecoController@inde
 Route::get('/checkout', ['as' => 'checkoutPage', 'uses' => 'CheckoutController@checkoutPage']);
 Route::get('/sobre', ['as' => 'sobre', 'uses' => 'HomeController@sobre']);
 Route::post('/checkout', ['as' => 'checkout', 'uses' => 'CheckoutController@checkout']);
+Route::post('/checkoutStore', ['as' => 'checkoutStore', 'uses' => 'CheckoutController@checkoutStore']);
+Route::get('/pedidos', ['as' => 'pedidos', 'uses' => 'CheckoutController@index']);
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
 

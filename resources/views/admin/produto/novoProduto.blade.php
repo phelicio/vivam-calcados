@@ -34,7 +34,6 @@
       @isset($produto)
         {{ method_field('PUT') }}
       @endisset
-
       @csrf
 
       <div class="box-body">
