@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Endereco;
 use App\Estado;
 
@@ -15,19 +16,10 @@ class EnderecoController extends Controller
      */
     public function index()
     {
-        return view('endereco');
+        return view('endereco',['estados' =>  Estado::all(), 'user' => Auth::user()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('enderecoCreate');
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -36,8 +28,19 @@ class EnderecoController extends Controller
      */
     public function store(Request $request)
     {
-        $endereco = Endereco::create($request->all());
-        $endereco->associate(Auth::user());
+        $estadoId = Estado::where('sigla', $request->estado)->first()->id;
+        $userId = Auth::user()->id;
+
+        $endereco = Endereco::create([
+            'cep' => $request->cep,
+            'numero' => $request->numero,
+            'logradouro' => $request->rua,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'estado_id' => $estadoId,
+            'user_id' => $userId
+        ]);
+
 
         return redirect()->route('enderecos');
     }

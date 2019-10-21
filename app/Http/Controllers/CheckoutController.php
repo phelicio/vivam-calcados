@@ -127,7 +127,7 @@ class CheckoutController extends Controller
         
         $user->carrinho->produtos()->detach();
 
-        return redirect()->route('home');
+        return redirect()->route('enderecosEscolha');
     }
 
     public function index(){

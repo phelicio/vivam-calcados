@@ -56,9 +56,9 @@
 									<td class="total-col"><h4>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor * $produto->pivot->quantidade)) }}</h4></td>
 									<td class="total-col">
 										<form action="{{route('carrinho.rmvProduto' ,[$carrinho->id, $produto->pivot->modelo_id ,$produto->id])}}" method="POST">
-													{{ method_field('DELETE') }}
-													{{ csrf_field() }}
-													<button class="btn"><img src="/public-assets/img/delIcon.png" alt=""/></button>
+											{{ method_field('DELETE') }}
+											{{ csrf_field() }}
+											<button class="btn"><img src="/public-assets/img/delIcon.png" alt=""/></button>
 										</form>
 									</td>
 								</tr>
