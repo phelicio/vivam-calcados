@@ -27,7 +27,7 @@ class Endereco extends Model
     public function getEndereco($id){
         $endereco = Endereco::find($id);
         
-        return "$endereco->logradouro $endereco->numero, $endereco->bairro, $endereco->localicade - {$endereco->estado->sigla} , $endereco->cep";
+        return "$endereco->logradouro $endereco->numero, $endereco->bairro, $endereco->cidade - {$endereco->estado->sigla} , $endereco->cep";
     }
 }
 

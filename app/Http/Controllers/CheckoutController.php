@@ -50,14 +50,13 @@ class CheckoutController extends Controller
         foreach ($user->carrinho->produtos as $produto) {
             
             $item = new Item();
-            $item->setName($produto->nome)-> setCurrency('BRL')->setQuantity($produto->pivot->quantidade)->setPrice(($produto->valor*$produto->pivot->quantidade));
+            $item->setName($produto->nome)-> setCurrency('BRL')->setQuantity($produto->pivot->quantidade)->setPrice(($produto->valor));
             $total+= $produto->pivot->quantidade * $produto->valor;
             array_push($items, $item);
 
         }
         
         $lista_itens->setItems($items);
-
         $valor = new Amount();
         $valor->setCurrency('BRL')->setTotal($total);
      
@@ -126,8 +125,7 @@ class CheckoutController extends Controller
         }
         
         $user->carrinho->produtos()->detach();
-
-        return redirect()->route('enderecosEscolha');
+        return redirect()->route('enderecosEscolha', $venda->id);
     }
 
     public function index(){
@@ -135,8 +133,9 @@ class CheckoutController extends Controller
         return view('pedidos');
     }
 
-    public function pagarComPayPal(Request $request) {
+    public function concluirCompra(Request $request, $id) {
 
+        
         
     }
 

@@ -145,7 +145,12 @@ ol {
 }
 
 .site-btn.sb-white {
-	background: #fff;
+	background: #ddd;
+	color: #111111;
+}
+
+.site-btn.sb-white:hover {
+	background: #ccc;
 	color: #111111;
 }
 

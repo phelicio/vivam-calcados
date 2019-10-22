@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Endereco;
 use App\Estado;
+use App\Venda;
 
 class EnderecoController extends Controller
 {
@@ -20,6 +21,7 @@ class EnderecoController extends Controller
     }
 
     
+
     /**
      * Store a newly created resource in storage.
      *
@@ -78,5 +80,11 @@ class EnderecoController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function entrega($id){
+        $venda = Venda::find($id);
+        return view('enderecoEscolha',['estados' =>  Estado::all(), 'user' => Auth::user(), 'venda' => $id]);
+        return back();
     }
 }

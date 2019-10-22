@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="col-lg-12 contact-info">
 					<h3>Vivam Calçados</h3>
-					<p>A Vivam Calçados é sistema busca explorar o mercado de e-commerce na área da venda de calçados, área pouco explorada na região do Cariri. 
+					<p>A Vivam Calçados é um sistema que busca explorar o mercado de e-commerce na área da venda de calçados, área pouco explorada na região do Cariri. 
 					A princípio será focado apenas na região em questão, e futuramente será estudada a possibilidade de expansão através do Nordeste e em seguida para o restante do Brasil.</p> 
 					<p>A vivam.online tem o compromisso com a privacidade e segurança de seus clientes durante todo o processo desde a navegação até a finalização da compra pelo site.
 					Os dados cadastrais dos clientes não são vendidos, trocados ou divulgados para terceiros, exceto quando essas informações são necessárias para o processo de entrega,

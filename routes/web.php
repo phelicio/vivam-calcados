@@ -66,14 +66,16 @@ Route::get('/admin/vendas', function () {
 
 ##User Routes
 
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/sobre', ['as' => 'sobre', 'uses' => 'HomeController@sobre']);
 Route::get('/endereco', ['as' => 'enderecos', 'uses' => 'EnderecoController@index', 'middleware' => 'auth']);
+Route::get('/endereco/{id}', ['as' => 'enderecosEscolha', 'uses' => 'EnderecoController@entrega', 'middleware' => 'auth']);
 Route::post('/endereco', ['as' => 'enderecos.store', 'uses' => 'EnderecoController@store', 'middleware' => 'auth']);
 Route::get('/checkout', ['as' => 'checkoutPage', 'uses' => 'CheckoutController@checkoutPage']);
-Route::get('/sobre', ['as' => 'sobre', 'uses' => 'HomeController@sobre']);
+Route::post('/concluirCompra/{venda}', ['as' => 'concluirCompra', 'uses' => 'CheckoutController@entrega', 'middleware' => 'auth']);
 Route::post('/checkout', ['as' => 'checkout', 'uses' => 'CheckoutController@checkout', 'middleware' => 'auth']);
 Route::get('/checkoutStore', ['as' => 'checkoutStore', 'uses' => 'CheckoutController@store', 'middleware' => 'auth']);
 Route::get('/pedidos', ['as' => 'pedidos', 'uses' => 'CheckoutController@index', 'middleware' => 'auth']);
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
 
 Route::group(['as' => 'produtos.', 'prefix' => '/produtos'], function(){

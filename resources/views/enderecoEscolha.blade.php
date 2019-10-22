@@ -1,31 +1,35 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <h3 class="mt-5 mb-4">Endereços</h3>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-            </tr>
-        </thead>
-        <tbody>
-            @if($user->enderecos->isEmpty())
-                <tr >
-                    <td colspan="2">
-                        <h3 class="text-center m-5">Não há endereços cadastrados</h3>
-                    </td>
+    <h3 class="mt-5 mb-4">Selecione o endereço de entrega</h3>
+    <form action="{{ route('concluirCompra', $venda) }}">
+    @csrf
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
                 </tr>
-            @else
-                @foreach ($user->enderecos as $endereco)
-                    <tr>
-                        <td><input type="radio"></td>
-                        <td>{{ $endereco->getEndereco($endereco->id) }}</td>
+            </thead>
+            <tbody>
+                @if($user->enderecos->isEmpty())
+                    <tr >
+                        <td colspan="2">
+                            <h3 class="text-center m-5">Não há endereços cadastrados</h3>
+                        </td>
                     </tr>
-                @endforeach
-            @endif  
-        </tbody>
-    </table>
+                @else
+                    @foreach ($user->enderecos as $endereco)
+                        <tr >
+                            <td><input name="endereco" id="{{ $endereco->id}}" type="radio"></td>
+                            <td ><label for="{{ $endereco->id }}">{{ $endereco->getEndereco($endereco->id) }}</label></td>
+                        </tr>
+                    @endforeach
+                @endif  
+            </tbody>
+        </table>
+        <a  class="site-btn sb-white  mb-5" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Cadastrar Endereço</a>
+        <button type="submit" class="site-btn float-right">Concluir compra</button>
+    </form>
 
-    <button type="button" class="site-btn sb-dark  mb-5" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Cadastrar Endereço</button>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
