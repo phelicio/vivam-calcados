@@ -35,20 +35,7 @@ class ProdutoTableSeeder extends Seeder
             App\Marca::create($marca);
         }
 
-        $modelos = array(
-            array(
-                'tamanho' => '1',
-                'quantidade' => '100'
-            ),
-            array(
-                'tamanho' => '2',
-                'quantidade' => '100'
-            ));
-
-        foreach ($marcas as $marca) {
-            
-            App\Marca::create($marca);
-        }
+    
 
         $produtos = array(
             
@@ -70,5 +57,23 @@ class ProdutoTableSeeder extends Seeder
             ),
             
         );
+
+        $modelos = array(
+            array(
+                'tamanho' => '1',
+                'quantidade' => '100',
+                'produto_id' => '1'
+            ),
+            array(
+                'tamanho' => '2',
+                'quantidade' => '100',
+                'produto_id' => '2'
+
+            ));
+
+        foreach ($modelos as $modelo) {
+            
+            App\Modelo::create($modelo);
+        }
     }
 }

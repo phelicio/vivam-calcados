@@ -113,8 +113,7 @@ class CheckoutController extends Controller
             'status' => '1',
             'user_id' => $user->id
         ]);
-
-        
+            
         foreach ($user->carrinho->produtos as $produto) {
             
             $venda->produtos()->attach($produto, 
@@ -139,9 +138,15 @@ class CheckoutController extends Controller
         $venda = Venda::find($idVenda);
         $endereco = Endereco::find($request->endereco);
         $venda->endereco()->associate($endereco);
-        dd($request->all());
+        $venda->save(); 
+        return view('compraConcluida');
+    }
 
-        
+    public function compras(){
+
+        $vendas = Auth::user()->vendas;
+
+        return view('compras',['vendas' => $vendas]);
     }
 
 }

@@ -74,6 +74,7 @@ Route::post('/endereco', ['as' => 'enderecos.store', 'uses' => 'EnderecoControll
 Route::get('/checkout', ['as' => 'checkoutPage', 'uses' => 'CheckoutController@checkoutPage']);
 Route::post('/concluirCompra/{idVenda}', ['as' => 'concluirCompra', 'uses' => 'CheckoutController@concluirCompra', 'middleware' => 'auth']);
 Route::post('/checkout', ['as' => 'checkout', 'uses' => 'CheckoutController@checkout', 'middleware' => 'auth']);
+Route::get('/compras', ['as' => 'compras', 'uses' => 'CheckoutController@compras', 'middleware' => 'auth']);
 Route::get('/checkoutStore', ['as' => 'checkoutStore', 'uses' => 'CheckoutController@store', 'middleware' => 'auth']);
 Route::get('/pedidos', ['as' => 'pedidos', 'uses' => 'CheckoutController@index', 'middleware' => 'auth']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
