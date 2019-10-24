@@ -7,6 +7,7 @@ use Auth;
 use URL;
 use Redirect;
 use App\Venda;
+use App\Endereco;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Payer;
@@ -133,9 +134,13 @@ class CheckoutController extends Controller
         return view('pedidos');
     }
 
-    public function concluirCompra(Request $request, $id) {
-
+    public function concluirCompra(Request $request, $idVenda) {
         
+        $venda = Venda::find($idVenda);
+        $endereco = Endereco::find($request->endereco);
+        $venda->endereco()->associate($endereco);
+        dd($request->all());
+
         
     }
 

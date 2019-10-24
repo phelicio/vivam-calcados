@@ -24,6 +24,10 @@ class Endereco extends Model
         return $this->belongsTo('App\Estado'); 
     }
 
+    public function vendas() { 
+        return $this->hasMany('App\Venda'); 
+    }
+
     public function getEndereco($id){
         $endereco = Endereco::find($id);
         

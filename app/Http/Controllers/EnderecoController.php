@@ -43,8 +43,8 @@ class EnderecoController extends Controller
             'user_id' => $userId
         ]);
 
-
-        return redirect()->route('enderecos');
+        
+        return back();
     }
 
     /**

@@ -14,7 +14,7 @@ class AdminTableSeeder extends Seeder
         DB::table('admins')->insert([
             'nome' => Str::random(10),
             'login' => 'joão@joao.com',
-            'senha' => '123456',
+            'senha' =>  \Hash::make('123456'),
         ]);
     }
 }

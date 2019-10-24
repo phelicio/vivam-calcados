@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <h3 class="mt-5 mb-4">Selecione o endereço de entrega</h3>
-    <form action="{{ route('concluirCompra', $venda) }}">
+    <form method="POST" action="{{ route('concluirCompra', $venda) }}">
     @csrf
         <table class="table table-hover table-bordered">
             <thead>
@@ -19,8 +19,8 @@
                 @else
                     @foreach ($user->enderecos as $endereco)
                         <tr >
-                            <td><input name="endereco" id="{{ $endereco->id}}" type="radio"></td>
-                            <td ><label for="{{ $endereco->id }}">{{ $endereco->getEndereco($endereco->id) }}</label></td>
+                            <td><input name="endereco" value="{{ $endereco->id }}" id="{{ $endereco->id}}" type="radio"></td>
+                            <td ><label for="{{ $endereco->id }}" >{{ $endereco->getEndereco($endereco->id) }}</label></td>
                         </tr>
                     @endforeach
                 @endif  

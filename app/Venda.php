@@ -16,4 +16,9 @@ class Venda extends Model
     public function produtos(){
         return $this->belongsToMany('App\Produto', 'venda_produto')->withPivot(['modelo_id', 'quantidade']);
     }
+
+    public function endereco()
+    {
+        return $this->belongsTo('App\Endereco');
+    }
 }

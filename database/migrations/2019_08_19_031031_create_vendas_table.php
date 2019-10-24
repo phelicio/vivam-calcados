@@ -18,6 +18,7 @@ class CreateVendasTable extends Migration
             $table->date('dataEntrega');
             $table->double('valorTotal', 8, 2);
             $table->integer('user_id')->nullable();
+            $table->integer('endereco_id')->nullable();
             $table->string('status');
             $table->timestamps();
         });

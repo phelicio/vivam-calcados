@@ -23,8 +23,8 @@ class AdminController extends Controller
 
     public function login(Request $request){
         
-        $admin = Admin::where('login', $request->email)->where('senha', $request->password)->first();
-        if(!empty($admin)){
+        $admin = Admin::where('login', $request->email)->first();
+        if(\Hash::check($request->password, $admin->senha)){
             session_start();
             $_SESSION['is_admin'] = true;
             return redirect()->route('produtos.index');
