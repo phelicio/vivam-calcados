@@ -137,7 +137,15 @@ class CheckoutController extends Controller
         
         $venda = Venda::find($idVenda);
         $endereco = Endereco::find($request->endereco);
-        $venda->endereco()->associate($endereco);
+        
+        if(!empty($request->endereco)){
+            $venda->endereco()->associate($endereco);
+            $venda->status = 3;
+            
+        }else{
+            $venda->status = 2;
+
+        }
         $venda->save(); 
         return view('compraConcluida');
     }

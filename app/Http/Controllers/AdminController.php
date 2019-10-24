@@ -39,9 +39,22 @@ class AdminController extends Controller
     }
 
     public function historico(){
-        $vendas = Venda::all();
-
+        
+        $vendas = \App\Venda::all();
         return view('admin.vendas', [ 'vendas' => $vendas ]);
+    }
+
+    public function acoesVendas(Request $request){
+        
+        $vendas = \App\Venda::findMany($request->vendas);
+
+        foreach ($vendas as $venda) {
+
+            $venda->status = 4;
+            $venda->save();
+        }
+        
+        return redirect()->route('admin.vendas');
     }
 
 }

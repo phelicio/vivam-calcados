@@ -52,14 +52,16 @@ Route::group(['as' => 'admin.', 'prefix' => '/admin'], function(){
 
 });
 
+Route::post('/admin/acoes', ['as' => 'acoesVendas', 'uses' => 'AdminController@acoesVendas', 'middleware' => 'auth.admin']);
+
+
+
 Route::get('/admin/email', function () {
     return view('admin.auth.passwords.email');
 });
 
 
-Route::get('/admin/vendas', function () {
-    return view('admin.vendas');
-});
+Route::get('/admin/vendas', ['as' => 'admin.vendas', 'uses' => 'AdminController@historico', 'middleware' => 'auth.admin']);
 
 ##Admin Routes ##end
 
@@ -78,7 +80,6 @@ Route::get('/compras', ['as' => 'compras', 'uses' => 'CheckoutController@compras
 Route::get('/checkoutStore', ['as' => 'checkoutStore', 'uses' => 'CheckoutController@store', 'middleware' => 'auth']);
 Route::get('/pedidos', ['as' => 'pedidos', 'uses' => 'CheckoutController@index', 'middleware' => 'auth']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
-
 Route::group(['as' => 'produtos.', 'prefix' => '/produtos'], function(){
 
     Route::get('', ['as' => 'catalogo','uses' =>'ProdutoController@catalogo']);

@@ -16,7 +16,7 @@
             <tr>
                 <td>{{ date('d/m/Y', strtotime($venda->created_at)) }}</td>
                 <td>{{ date('d/m/Y', strtotime($venda->dataEntrega)) }}</td>
-                <td>{{ $venda->status }}</td>
+                <td>{{ $venda->getStatus() }}</td>
             </tr>
             @endforeach
         </tbody>
