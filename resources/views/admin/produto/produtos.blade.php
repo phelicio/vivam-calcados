@@ -33,7 +33,9 @@
                 <small>Valor</small>
                 <p>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor)) }} </p>
                 <small>Marca</small>
+                @if (!$produto->marca->nome->isEmpty())
                     <p>{{$produto->marca->nome}}</p>
+                @endif
                 </div>
                 <!-- /.box-body -->
             </div>
