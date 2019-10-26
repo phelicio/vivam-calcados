@@ -48,3 +48,14 @@
 </div>
 
 @stop
+
+@section('css')
+    <style>
+        @media screen and (min-width: 1000px) {
+            .item img{
+                width: 400px;
+                height: 150px;
+            }
+        }
+    </style>
+@stop
