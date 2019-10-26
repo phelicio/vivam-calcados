@@ -10,7 +10,7 @@
     </div>
     @endif
 <div class="row">
-    @isset($produtos)
+    @if(!$produtos->isEmpty())
     @foreach ($produtos as $produto)
     <div class="col-md-3 item">
         <div class="box box-default">
@@ -39,7 +39,7 @@
             </div>
         </div>
         @endforeach
-        @endisset
+        @endif
         <nav class="footer position-absolute text-center">
             {{ $produtos->links() }}
         </nav>

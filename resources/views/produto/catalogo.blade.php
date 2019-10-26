@@ -89,7 +89,7 @@
 					
 						<div class="col-lg-9  order-1 order-lg-2 mb-5 mb-lg-0">
 							<div class="row">
-								@if (!empty($produtos))
+								@if (!$produtos->isEmpty())
 								@foreach ($produtos as $produto)
 							<div class="col-lg-4 col-sm-6">
 								<div class="product-item">
