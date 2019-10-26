@@ -109,7 +109,7 @@
               <select class="form-control" name="marca_id" style="width: 100%;" aria-hidden="true">
                 @foreach ($marcas as $marca)
                   <option 
-                    @if(isset($produto) && $produto->marca->id === $marca->id) 
+                    @if(!empty($produto->marca) && $produto->marca->id === $marca->id) 
                       selected 
                     @endif value="{{$marca->id}}">{{$marca->nome}}
                   </option>
