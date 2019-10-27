@@ -56,6 +56,10 @@
                 width: 400px;
                 height: 150px;
             }
+
+            .box {
+                height: 450px;
+            }
         }
     </style>
 @stop
