@@ -16,8 +16,6 @@
         <div class="box box-default">
             <div class="box-header with-border">
                 <i class="fa fa-warning"></i>
-                
-                <h3 class="box-title">{{$produto->nome}}</h3>
                 <div class="pull-right">
                     <form action="{{route('produtos.destroy', $produto->id)}}" method="POST">
                         {{ method_field('DELETE') }}
@@ -26,6 +24,8 @@
                         <button class="btn btn-outline glyphicon glyphicon-remove" style="color:lightcoral;"></button>
                     </form>
                 </div>
+                
+                <h3 class="col-md-12 box-title">{{$produto->nome}}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
