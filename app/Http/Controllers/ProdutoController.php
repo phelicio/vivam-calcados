@@ -241,7 +241,6 @@ class ProdutoController extends Controller
         $produtos = $produtos->unique();
         $cores = DB::table('produtos')->select('cor as nome', 'cor_html as html')->distinct()->get();
         $tamanhos = DB::table('modelos')->select('tamanho as nome')->distinct()->get()->sortBy('nome');
-        dd($tamanhos);
         return view('produto.catalogo',[
             'produtos' => $produtos,
             'categorias' => Categoria::all(),
