@@ -53,10 +53,10 @@
 							<div class="filter-widget mb-0">
 							<h2 class="fw-title">Cor</h2>
 							<div class="fw-color-choose">
-								@foreach ($cores as $cor)
+								@foreach ($cores as $k => $cor)
 								<div class="cs-item" >
-										<input  type="radio" name="cor" value="{{$cor->nome}}"  name="cor" id="{{ $cor->nome }}-cor">
-										<label style="background:{{$cor->html}};" for="{{ $cor->nome }}-cor"></label>
+										<input  type="radio" name="cor" value="{{$cor->nome}}"  id="{{$k, $cor->nome }}-cor">
+										<label style="background:{{$cor->html}};" for="{{$k, $cor->nome }}-cor"></label>
 									</div>
 									@endforeach
 								</div>
@@ -122,11 +122,5 @@
 	
 	</section>
 	<!-- Category section end -->
-	@section('css')
-		<style>
-			.cs-item label{
-				display: none;
-			}
-		</style>
-	@endsection
+	
 @endsection
