@@ -6,7 +6,7 @@
   <h4><i class="icon fa fa-check"></i>{{$mensagem}}</h4>
   </div>
 @endif
-@isset($marcas)
+@isset($categorias)
 @foreach ($categorias as $categoria)
     <div class="col-md-3">
         <div class="box box-default">
