@@ -25,46 +25,47 @@
 					<div class="cart-table">
 						<h3>Carrinho</h3>
 						<div class="cart-table-warp">
-							<table>
-							<thead>
-								<tr>
-									<th class="product-th">Produto</th>
-									<th class="quy-th">Quantidade</th>
-									<th class="size-th">Tamanho</th>
-									<th class="total-th">Preço</th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach ($carrinho->produtos as $produto)
-								<tr>
-									<td class="product-col">
-										<img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="">
-										<div class="pc-title">
-											<h4>{{ $produto->nome }}</h4>
-											<p>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor))}}</p>
-										</div>
-									</td>
-									<td class="quy-col">
-										<div class="quantity">
-											<div class="pro-qty">
-											<input type="text" value="{{ $produto->pivot->quantidade }}">
-											</div>
-                    					</div>
-									</td>
-									<td class="size-col"><h4>{{ $produto->sizePerModelo($produto->pivot->modelo_id) }}</h4></td>
-									<td class="total-col"><h4>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor * $produto->pivot->quantidade)) }}</h4></td>
-									<td class="total-col">
-										<form action="{{route('carrinho.rmvProduto' ,[$carrinho->id, $produto->pivot->modelo_id ,$produto->id])}}" method="POST">
-											{{ method_field('DELETE') }}
-											{{ csrf_field() }}
-											<button class="btn"><img src="/public-assets/img/delIcon.png" alt=""/></button>
-										</form>
-									</td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
+							<form action="{{ route('checkoutPage') }}">
+								@csrf
+								<table>
+									<thead>
+										<tr>
+											<th class="product-th">Produto</th>
+											<th class="quy-th">Quantidade</th>
+											<th class="size-th">Tamanho</th>
+											<th class="total-th">Preço</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										@foreach ($carrinho->produtos as $k => $produto)
+										<tr>
+											<td class="product-col">
+												<img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="">
+												<div class="pc-title">
+													<h4>{{ $produto->nome }}</h4>
+													<p>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor))}}</p>
+												</div>
+											</td>
+											<td class="quy-col">
+												<div class="quantity">
+													<div class="pro-qty">
+														<input class="qtd" name="produto[{{$k}}][quantidade]" value="{{ $produto->pivot->quantidade }}">
+													</div>
+													<input hidden  name="produto[{{$k}}][produto]" value="{{ $produto->id }}">
+												</div>
+											</td>
+											<td class="size-col"><h4>{{ $produto->sizePerModelo($produto->pivot->modelo_id) }}</h4></td>
+											<td class="total-col"><h4>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor * $produto->pivot->quantidade)) }}</h4></td>
+											<td class="total-col">
+												<a href="{{route('carrinho.rmvProduto' ,[$carrinho->id, $produto->pivot->modelo_id ,$produto->id])}}">
+													<button class="btn"><img src="/public-assets/img/delIcon.png" alt=""/></button>
+												</a>
+											</td>
+										</tr>
+										@endforeach
+									</tbody>
+							</table>
 						</div>
 						<div class="total-cost">
 							<h6>Total <span>{{ str_replace('.', ',' ,money_format('R$ %.2n',$carrinho->valorTotal())) }}</span></h6>
@@ -72,9 +73,10 @@
 					</div>
 				</div>
 				<div class="col-lg-4 card-right">
-					<a href="{{ route('checkoutPage') }}" class="site-btn">Concluir compra</a>
+					<button type="submit"  class="site-btn">Concluir compra</button>
 					<a href="{{ route('produtos.catalogo') }}" class="site-btn sb-dark">Continuar comprando</a>
 				</div>
+			</form>
 			</div>
 		</div>
 		<div id="paypal-button-container"></div>

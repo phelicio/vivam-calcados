@@ -91,7 +91,7 @@ Route::group(['as' => 'carrinho.', 'prefix' => '/carrinho', 'middleware' => 'aut
     
     Route::get('', ['as' => 'carrinho', 'uses' => 'CarrinhoController@show']);
     Route::post('', ['as' => 'addProduto', 'uses' => 'CarrinhoController@addProduto']);
-    Route::delete('{carrinho}/{modelo}/{id}', ['as' => 'rmvProduto', 'uses' => 'CarrinhoController@rmvProduto']);
+    Route::get('{carrinho}/{modelo}/{id}', ['as' => 'rmvProduto', 'uses' => 'CarrinhoController@rmvProduto']);
 
 
 });

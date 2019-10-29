@@ -38,7 +38,7 @@ class CheckoutController extends Controller
 
 
 
-    public function checkoutPage(){
+    public function checkoutPage(Request $request){
 
         $user = Auth::user();
         $pagador = new Payer();
@@ -47,6 +47,22 @@ class CheckoutController extends Controller
         $lista_itens = new ItemList();
         $total = 0;
         $items = array();
+
+        foreach ($request->produto as $produtoValue) {
+            $produto = $user->carrinho->produtos()->withPivot(['quantidade', 'modelo_id'])->find($produtoValue["produto"]);
+            
+            if($produto->pivot->quantidade != $produtoValue["quantidade"]){
+                
+                $diferenca = $produto->pivot->quantidade - $produtoValue["quantidade"];
+
+                $modelo = \App\Modelo::find($produto->pivot->modelo_id);
+                $modelo->quantidade+=$diferenca;    
+                $modelo->save();
+
+                $produto->pivot->quantidade = $produtoValue["quantidade"];
+                $produto->pivot->save();
+            }
+        }
 
         foreach ($user->carrinho->produtos as $produto) {
             

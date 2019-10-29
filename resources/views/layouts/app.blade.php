@@ -73,6 +73,7 @@
                                         </button>
                                         <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                                           <a class="dropdown-item" href="{{ route('enderecos') }}">Endereços</a>
+                                          <a class="dropdown-item" href="{{ route('compras') }}">Compras</a>
                                             <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                                 {{ method_field('POST') }}                                               
