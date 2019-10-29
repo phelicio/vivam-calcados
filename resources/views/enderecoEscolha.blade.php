@@ -21,6 +21,13 @@
                         <tr >
                             <td><input name="endereco" value="{{ $endereco->id }}" id="{{ $endereco->id}}" type="radio"></td>
                             <td ><label for="{{ $endereco->id }}" >{{ $endereco->getEndereco($endereco->id) }}</label></td>
+                            @if ($endereco->entrega24hrs)
+
+                                <td class="alert alert-success"> Frete Gratis</td>
+                            @else
+                            
+                                <td class="alert alert-danger">Valor do frete</td>
+                            @endif
                         </tr>
                     @endforeach
                 @endif  

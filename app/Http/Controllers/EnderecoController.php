@@ -30,8 +30,14 @@ class EnderecoController extends Controller
      */
     public function store(Request $request)
     {
-        $estadoId = Estado::where('sigla', $request->estado)->first()->id;
+        $estado = Estado::where('sigla', $request->estado)->first();
         $userId = Auth::user()->id;
+
+        $entrega24hrs = false;
+        $cidade = strtolower($request->cidade);
+
+        if(strtolower($estado->nome) === "ceará" && ($cidade === 'juazeiro do norte' || $cidade === 'crato'|| $cidade === 'barbalha'))
+            $entrega24hrs = true; 
 
         $endereco = Endereco::create([
             'cep' => $request->cep,
@@ -39,8 +45,9 @@ class EnderecoController extends Controller
             'logradouro' => $request->rua,
             'bairro' => $request->bairro,
             'cidade' => $request->cidade,
-            'estado_id' => $estadoId,
-            'user_id' => $userId
+            'estado_id' => $estado->id,
+            'user_id' => $userId,
+            'entrega24hrs' => $entrega24hrs
         ]);
 
         

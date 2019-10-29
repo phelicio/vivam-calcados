@@ -13,7 +13,8 @@ class Endereco extends Model
         'cidade', 
         'estado_id', 
         'user_id', 
-        'numero'
+        'numero',
+        'entrega24hrs'
     ];
 
     public function user() { 
