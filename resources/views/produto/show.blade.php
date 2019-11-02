@@ -59,7 +59,7 @@
                             <p>Quantidade</p>
                             <div class="pro-qty"><input type="text" name="quantidade" value="1"></div>
                         </div>
-                        <button  class="site-btn">Adicionar ao carrrinho</button>
+                        <button  class="site-btn">Adicionar ao carrinho</button>
                     </form>
                     </div>
                 </div>

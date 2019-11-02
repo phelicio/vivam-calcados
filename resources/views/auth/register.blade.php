@@ -106,7 +106,26 @@
                     </span>
                     @enderror
                 </div>
+
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" type="text" name="cpf" value="{{ old('cpf') }}" placeholder="CPF">
+                    <span class="focus-input100"></span>
+                    @error('cpf')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
                 
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" type="text" name="telefone" value="{{ old('telefone') }}" placeholder="Telefone">
+                    <span class="focus-input100"></span>
+                    @error('telefone')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
                 
                 <div class="wrap-input100 validate-input m-b-16">
                     <input class="input100" type="password" name="password" placeholder="Senha">

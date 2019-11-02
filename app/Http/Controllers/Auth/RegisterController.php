@@ -53,6 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'cpf' => ['required', 'string', 'max:14'],
+            'telefone' => ['required', 'string', 'max:15']
+
         ]);
     }
 
@@ -64,10 +67,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $cpf = str_replace(['.', '-'], '', $data['cpf']);
+        $telefone = str_replace(['(', ')', ' ', '-'], '', $data['telefone']);
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'cpf' => $cpf,
+            'telefone' => $telefone
         ]);
         $user->carrinho()->create();
         return $user;
