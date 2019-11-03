@@ -8,7 +8,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
     <h4><i class="icon fa fa-check"></i>{{$mensagem}}</h4>
     </div>
-    @endif
+ @endif
 <div class="row">
     @if(!$produtos->isEmpty())
     @foreach ($produtos as $produto)

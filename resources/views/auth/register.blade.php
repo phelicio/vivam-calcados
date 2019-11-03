@@ -77,7 +77,21 @@
 </div>
 -->
 
+
+
 <div class="limiter">
+   <div class="container">
+       @empty(!$errors->any())
+       <div class = "alert alert-danger">
+          <ul>
+              @foreach($errors->all() as $error)
+              
+              <li> {{ ucfirst($error) }} </li>
+              @endforeach
+            </ul>
+        </div>
+    </div>
+    @endempty
     <div class="container-login100">
         <div class="wrap-login100 p-t-50 p-b-90">
             <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ route('register') }}">

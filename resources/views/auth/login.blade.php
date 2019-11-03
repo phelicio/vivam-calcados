@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="container">
+	@empty(!$errors->any())
+    <div class = "alert alert-danger">
+		@foreach($errors->all() as $error)
+		
+		<li> {{ ucfirst($error) }} </li>
+        @endforeach
+    </div>
+	@endempty
+</div>
+     
 <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
