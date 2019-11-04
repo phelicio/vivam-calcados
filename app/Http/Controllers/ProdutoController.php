@@ -10,7 +10,6 @@ use App\Categoria;
 use App\Marca;
 use App\Modelo;
 use \DB;
-
 use App\Http\Requests\ProdutoRequest;
 
 class ProdutoController extends Controller

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\EnderecoRequest;
 use Auth;
 use App\Endereco;
 use App\Estado;
