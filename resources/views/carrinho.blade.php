@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
@@ -50,7 +54,7 @@
 											<td class="quy-col">
 												<div class="quantity">
 													<div class="pro-qty">
-														<input class="qtd" name="produto[{{$k}}][quantidade]" value="{{ $produto->pivot->quantidade }}">
+														<input class="qtd" id="btnQtd" name="produto[{{$k}}][quantidade]" value="{{ $produto->pivot->quantidade }}">
 													</div>
 													<input hidden  name="produto[{{$k}}][produto]" value="{{ $produto->id }}">
 												</div>
@@ -84,4 +88,6 @@
 		
 	</section>
 	<!-- cart section end -->
+
+		
 @endsection

@@ -163,7 +163,7 @@ class CheckoutController extends Controller
 
         }
         $venda->save(); 
-        return view('compraConcluida');
+        return view('compraConcluida', ['venda' => $venda]);
     }
 
     public function compras(){

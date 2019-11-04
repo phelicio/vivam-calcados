@@ -76,7 +76,11 @@
     </div>
 </div>
 -->
-
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"> </script>
 
 
 <div class="limiter">
@@ -122,7 +126,7 @@
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-16">
-                    <input class="input100" type="text" name="cpf" value="{{ old('cpf') }}" placeholder="CPF">
+                    <input class="input100" id="cpf" type="text" name="cpf" value="{{ old('cpf') }}" placeholder="CPF">
                     <span class="focus-input100"></span>
                     @error('cpf')
                     <span class="invalid-feedback" role="alert">
@@ -130,9 +134,13 @@
                     </span>
                     @enderror
                 </div>
+
+                <script>
+                    $("#cpf").inputmask({"mask": "999.999.999-99"});
+                </script>
                 
                 <div class="wrap-input100 validate-input m-b-16">
-                    <input class="input100" type="text" name="telefone" value="{{ old('telefone') }}" placeholder="Telefone">
+                    <input class="input100" id="telefone" type="text" name="telefone" value="{{ old('telefone') }}" placeholder="Telefone">
                     <span class="focus-input100"></span>
                     @error('telefone')
                     <span class="invalid-feedback" role="alert">
@@ -141,6 +149,10 @@
                     @enderror
                 </div>
                 
+                <script>
+                    $("#telefone").inputmask({"mask": "(99) 99999-9999"});
+                </script>
+
                 <div class="wrap-input100 validate-input m-b-16">
                     <input class="input100" type="password" name="password" placeholder="Senha">
                     <span class="focus-input100"></span>
