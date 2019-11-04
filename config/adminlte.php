@@ -107,10 +107,9 @@ return [
     */
 
     'menu' => [
-        ['header' => 'CONFIGURAÇÕES'],
         [
-            'text' => 'Perfil',
-            'url'  => 'admin/settings',
+            'text' => 'Clientes',
+            'url'  => '/admin/clientes',
             'icon' => 'fas fa-fw fa-user',
         ],
 

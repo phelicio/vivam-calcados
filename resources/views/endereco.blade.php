@@ -17,7 +17,6 @@
             @else
                 @foreach ($user->enderecos as $endereco)
                     <tr>
-                        <td><input type="radio"></td>
                         <td>{{ $endereco->getEndereco($endereco->id) }}</td>
                     </tr>
                 @endforeach

@@ -53,6 +53,7 @@ Route::group(['as' => 'admin.', 'prefix' => '/admin'], function(){
 });
 
 Route::post('/admin/acoes', ['as' => 'acoesVendas', 'uses' => 'AdminController@acoesVendas', 'middleware' => 'auth.admin']);
+Route::get('/admin/clientes', ['as' => 'admin.clientes', 'uses' => 'AdminController@clientes', 'middleware' => 'auth.admin']);
 
 
 
@@ -71,10 +72,11 @@ Route::get('/admin/vendas', ['as' => 'admin.vendas', 'uses' => 'AdminController@
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('/sobre', ['as' => 'sobre', 'uses' => 'HomeController@sobre']);
 Route::get('/endereco', ['as' => 'enderecos', 'uses' => 'EnderecoController@index', 'middleware' => 'auth']);
-Route::get('/endereco/{id}', ['as' => 'enderecosEscolha', 'uses' => 'EnderecoController@entrega', 'middleware' => 'auth']);
+Route::get('/endereco/escolha', ['as' => 'enderecosEscolha', 'uses' => 'EnderecoController@entrega', 'middleware' => 'auth']);
 Route::post('/endereco', ['as' => 'enderecos.store', 'uses' => 'EnderecoController@store', 'middleware' => 'auth']);
+Route::post('/enderecoEntrega', ['as' => 'enderecos.saveEntrega', 'uses' => 'EnderecoController@saveEntrega', 'middleware' => 'auth']);
 Route::get('/checkout', ['as' => 'checkoutPage', 'uses' => 'CheckoutController@checkoutPage']);
-Route::post('/concluirCompra/{idVenda}', ['as' => 'concluirCompra', 'uses' => 'CheckoutController@concluirCompra', 'middleware' => 'auth']);
+Route::get('/compra', ['as' => 'compraConcluida', 'uses' => 'CheckoutController@compraConcluida', 'middleware' => 'auth']);
 Route::post('/checkout', ['as' => 'checkout', 'uses' => 'CheckoutController@checkout', 'middleware' => 'auth']);
 Route::get('/compras', ['as' => 'compras', 'uses' => 'CheckoutController@compras', 'middleware' => 'auth']);
 Route::get('/checkoutStore', ['as' => 'checkoutStore', 'uses' => 'CheckoutController@store', 'middleware' => 'auth']);
@@ -92,6 +94,7 @@ Route::group(['as' => 'carrinho.', 'prefix' => '/carrinho', 'middleware' => 'aut
     Route::get('', ['as' => 'carrinho', 'uses' => 'CarrinhoController@show']);
     Route::post('', ['as' => 'addProduto', 'uses' => 'CarrinhoController@addProduto']);
     Route::get('{carrinho}/{modelo}/{id}', ['as' => 'rmvProduto', 'uses' => 'CarrinhoController@rmvProduto']);
+    Route::post('/update', ['as' => 'updateCarrinho', 'uses' => 'CarrinhoController@update']);
 
 
 });

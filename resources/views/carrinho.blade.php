@@ -29,7 +29,7 @@ crossorigin="anonymous"></script>
 					<div class="cart-table">
 						<h3>Carrinho</h3>
 						<div class="cart-table-warp">
-							<form action="{{ route('checkoutPage') }}">
+							<form method="POST" action="{{ route('carrinho.updateCarrinho') }}">
 								@csrf
 								<table>
 									<thead>

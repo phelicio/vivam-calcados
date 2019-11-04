@@ -39,32 +39,43 @@ class CheckoutController extends Controller
 
 
     public function checkoutPage(Request $request){
-
+        
         $user = Auth::user();
+        $endereco = Endereco::find($request->endereco);
+
+        if(!$endereco || !$endereco->entrega24hrs ) return back();
+
+        $venda = Venda::create([
+            'dataEntrega' => date('Y-m-d' ,strtotime("+1 day")),
+            'valorTotal' => $user->carrinho->valorTotal(),
+            'status' => '2',
+            'user_id' => $user->id,
+        ]);
+        $venda->endereco()->associate($endereco);
+        $venda->save();
+
+        foreach ($user->carrinho->produtos as $produto) {
+            
+            $venda->produtos()->attach($produto, 
+            [
+                'modelo_id' => $produto->pivot->modelo_id,
+                'quantidade' => $produto->pivot->quantidade,
+                'valor' => $produto->valor
+            ]);
+        }
+        
+        $user->carrinho->produtos()->detach();
+
         $pagador = new Payer();
         $pagador->setPaymentMethod('paypal');
-     
+        
         $lista_itens = new ItemList();
         $total = 0;
         $items = array();
 
-        foreach ($request->produto as $produtoValue) {
-            $produto = $user->carrinho->produtos()->withPivot(['quantidade', 'modelo_id'])->find($produtoValue["produto"]);
-            
-            if($produto->pivot->quantidade != $produtoValue["quantidade"]){
-                
-                $diferenca = $produto->pivot->quantidade - $produtoValue["quantidade"];
+      
 
-                $modelo = \App\Modelo::find($produto->pivot->modelo_id);
-                $modelo->quantidade+=$diferenca;    
-                $modelo->save();
-
-                $produto->pivot->quantidade = $produtoValue["quantidade"];
-                $produto->pivot->save();
-            }
-        }
-
-        foreach ($user->carrinho->produtos as $produto) {
+        foreach ($venda->produtos as $produto) {
             
             $item = new Item();
             $item->setName($produto->nome)-> setCurrency('BRL')->setQuantity($produto->pivot->quantidade)->setPrice(($produto->valor));
@@ -81,7 +92,7 @@ class CheckoutController extends Controller
         $transacao->setAmount($valor)->setItemList($lista_itens)->setDescription('Pedido');
 
         $urls_redirecionamento = new RedirectUrls();
-        $urls_redirecionamento->setReturnUrl(URL::route('checkoutStore'))->setCancelUrl(URL::route('carrinho.carrinho'));
+        $urls_redirecionamento->setReturnUrl(URL::route('checkoutStore', ['venda' => $venda->id]))->setCancelUrl(URL::route('carrinho.carrinho'));
      
         $pagamento = new Payment();
         $pagamento->setIntent('Sale')->setPayer($pagador)->setRedirectUrls($urls_redirecionamento)->setTransactions(array($transacao));
@@ -119,29 +130,13 @@ class CheckoutController extends Controller
         
     }
 
-    public function store(){
+    public function store(Request $request){
         
-        $user = Auth::user();    
-        
-        $venda = Venda::create([
-            'dataEntrega' => date('Y-m-d' ,strtotime("+1 day")),
-            'valorTotal' => $user->carrinho->valorTotal(),
-            'status' => '1',
-            'user_id' => $user->id
-        ]);
-            
-        foreach ($user->carrinho->produtos as $produto) {
-            
-            $venda->produtos()->attach($produto, 
-            [
-                'modelo_id' => $produto->pivot->modelo_id,
-                'quantidade' => $produto->pivot->quantidade,
-                'valor' => $produto->valor
-            ]);
-        }
-        
-        $user->carrinho->produtos()->detach();
-        return redirect()->route('enderecosEscolha', $venda->id);
+        $venda = Venda::find($request->venda);
+        $venda->status = 3;
+        $venda->save();
+
+        return view('compraConcluida', ['venda' => $venda]);
     }
 
     public function index(){
@@ -149,22 +144,7 @@ class CheckoutController extends Controller
         return view('pedidos');
     }
 
-    public function concluirCompra(Request $request, $idVenda) {
-        
-        $venda = Venda::find($idVenda);
-        $endereco = Endereco::find($request->endereco);
-        
-        if(!empty($request->endereco)){
-            $venda->endereco()->associate($endereco);
-            $venda->status = 3;
-            
-        }else{
-            $venda->status = 2;
-
-        }
-        $venda->save(); 
-        return view('compraConcluida', ['venda' => $venda]);
-    }
+    
 
     public function compras(){
 

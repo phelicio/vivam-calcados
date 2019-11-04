@@ -89,9 +89,8 @@ class EnderecoController extends Controller
         //
     }
     
-    public function entrega($id){
-        $venda = Venda::find($id);
-        return view('enderecoEscolha',['estados' =>  Estado::all(), 'user' => Auth::user(), 'venda' => $id]);
-        return back();
+    public function entrega(){
+
+        return view('enderecoEscolha',['estados' =>  Estado::all(), 'user' => Auth::user()]);
     }
 }

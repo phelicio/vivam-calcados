@@ -57,4 +57,12 @@ class AdminController extends Controller
         return redirect()->route('admin.vendas');
     }
 
+
+    public function clientes(){
+        
+        $clientes = \App\User::all();
+        
+        return view('admin.clientes', ['clientes' => $clientes]);
+    }
+
 }

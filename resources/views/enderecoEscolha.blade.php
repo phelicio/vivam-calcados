@@ -2,8 +2,7 @@
 @section('content')
 <div class="container">
     <h3 class="mt-5 mb-4">Selecione o endereço de entrega</h3>
-    <form method="POST" action="{{ route('concluirCompra', $venda) }}">
-    @csrf
+    <form method="GET" action="{{ route('checkoutPage') }}">
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>

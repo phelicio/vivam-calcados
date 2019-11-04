@@ -70,4 +70,28 @@ class CarrinhoController extends Controller
 
         return redirect()->route('carrinho.carrinho', ['carrinho' => $carrinho]);
     }
+
+    public function update(Request $request){
+         
+        $user = Auth::user();   
+
+        foreach ($request->produto as $produtoValue) {
+            $produto = $user->carrinho->produtos()->withPivot(['quantidade', 'modelo_id'])->find($produtoValue["produto"]);
+            
+            if($produto->pivot->quantidade != $produtoValue["quantidade"]){
+                
+                $diferenca = $produto->pivot->quantidade - $produtoValue["quantidade"];
+
+                $modelo = \App\Modelo::find($produto->pivot->modelo_id);
+                $modelo->quantidade+=$diferenca;    
+                $modelo->save();
+
+                $produto->pivot->quantidade = $produtoValue["quantidade"];
+                $produto->pivot->save();
+            }
+        }
+
+        return redirect()->action('EnderecoController@entrega');
+        
+    }
 }
