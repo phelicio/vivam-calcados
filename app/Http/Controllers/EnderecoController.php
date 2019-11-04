@@ -28,7 +28,7 @@ class EnderecoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EnderecoRequest $request)
     {
         $estado = Estado::where('sigla', $request->estado)->first();
         $userId = Auth::user()->id;
@@ -36,7 +36,8 @@ class EnderecoController extends Controller
         $entrega24hrs = false;
         $cidade = strtolower($request->cidade);
 
-        if(strtolower($estado->nome) === "ceará" && ($cidade === 'juazeiro do norte' || $cidade === 'crato'|| $cidade === 'barbalha'))
+        if (!$estado) back();
+        if( strtolower($estado->nome) === "ceará" && ($cidade === 'juazeiro do norte' || $cidade === 'crato'|| $cidade === 'barbalha'))
             $entrega24hrs = true; 
 
         $endereco = Endereco::create([
