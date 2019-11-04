@@ -14,8 +14,16 @@ class ChangeAdminEmail extends Migration
     public function up()
     {
         $adm = \App\Admin::find(1);
-        $adm->login = "admin@vivam.online";
-        $adm->save();
+        if($adm){
+            $adm->login = "admin@vivam.online";
+            $adm->save();
+        }else{
+            \App\Admin::create([
+                'nome' => 'Admin',
+                'login' => 'admin@vivam.online',
+                'senha' =>  \Hash::make('123456')
+            ]);
+        }
     }
 
     /**
