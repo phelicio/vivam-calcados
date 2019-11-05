@@ -24,14 +24,14 @@ class EnderecoRequest extends FormRequest
     public function rules()
     {
         return [
-            'cep' =>'require',
-            'numero' =>'require',
-            'logradouro' =>'require',
-            'bairro' =>'require',
-            'cidade' =>'require',
-            'estado_id' =>'require',
-            'user_id' =>'require',
-            'entrega24hrs' => 'require'
+            'cep' =>'required',
+            'numero' =>'required',
+            'logradouro' =>'required',
+            'bairro' =>'required',
+            'cidade' =>'required',
+            'estado_id' =>'required',
+            'user_id' =>'required',
+            'entrega24hrs' => 'required'
         ];
     }
 }

@@ -32,12 +32,12 @@ class EnderecoController extends Controller
     public function store(EnderecoRequest $request)
     {
         $estado = Estado::where('sigla', $request->estado)->first();
+        if (!$estado) back();
         $userId = Auth::user()->id;
 
         $entrega24hrs = false;
         $cidade = strtolower($request->cidade);
 
-        if (!$estado) back();
         if( strtolower($estado->nome) === "ceará" && ($cidade === 'juazeiro do norte' || $cidade === 'crato'|| $cidade === 'barbalha'))
             $entrega24hrs = true; 
 
