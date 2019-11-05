@@ -81,6 +81,7 @@ Route::post('/checkout', ['as' => 'checkout', 'uses' => 'CheckoutController@chec
 Route::get('/compras', ['as' => 'compras', 'uses' => 'CheckoutController@compras', 'middleware' => 'auth']);
 Route::get('/checkoutStore', ['as' => 'checkoutStore', 'uses' => 'CheckoutController@store', 'middleware' => 'auth']);
 Route::get('/pedidos', ['as' => 'pedidos', 'uses' => 'CheckoutController@index', 'middleware' => 'auth']);
+Route::get('/pedido/{id}', ['as' => 'pedido', 'uses' => 'CheckoutController@pedido', 'middleware' => 'auth']);
 Route::get('/produtos', ['as' => 'produtos', 'uses' => 'ProdutoController@userIndex']);
 Route::group(['as' => 'produtos.', 'prefix' => '/produtos'], function(){
 

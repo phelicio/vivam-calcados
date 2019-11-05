@@ -9,6 +9,7 @@
                 <th>Data</th>
                 <th>Data Entrega</th>
                 <th>Status</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +18,7 @@
                 <td>{{ date('d/m/Y', strtotime($venda->created_at)) }}</td>
                 <td>{{ date('d/m/Y', strtotime($venda->dataEntrega)) }}</td>
                 <td>{{ $venda->getStatus() }}</td>
+                <td><a href="{{ route('pedido', $venda->id) }}"> Visualizar</a></td>
             </tr>
             @endforeach
         </tbody>

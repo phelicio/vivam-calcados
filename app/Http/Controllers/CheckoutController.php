@@ -153,4 +153,11 @@ class CheckoutController extends Controller
         return view('compras',['vendas' => $vendas]);
     }
 
+    public function pedido($id){
+
+        $venda = Venda::find($id);
+        if(!(Auth::user() == $venda->user)) return back();
+        
+        return view('pedido', ['venda' => $venda]);
+    }
 }

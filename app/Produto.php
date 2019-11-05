@@ -41,6 +41,8 @@ class Produto extends Model
 
     //Retorna o tamanho do calçado de acordo com o modelo
     public function sizePerModelo($modelo){
-        return Modelo::find($modelo)->tamanho;
+        $modelo = Modelo::find($modelo);
+        if ($modelo)
+        return $modelo->tamanho;
     }
 }

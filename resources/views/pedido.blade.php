@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="container">
+<div class="container m-5">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="cart-table">
                 <div class="cart-table-warp">
                         <table>
