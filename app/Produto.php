@@ -34,6 +34,10 @@ class Produto extends Model
         $return = 0;
 
         foreach ($this->modelos as $modelo) {
+            if($modelo->quantidade < 0){
+                $modelo->quantidade = 0;
+                $modelo->save();
+            }
             $return+=$modelo->quantidade;
         }
         return $return;
