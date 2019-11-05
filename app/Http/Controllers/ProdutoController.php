@@ -190,7 +190,8 @@ class ProdutoController extends Controller
 
         if(!empty($categoria) || !empty($tamanho) || !empty($cor) || !empty($marca)){
 
-            if(!empty($categoria)){
+            
+            if(!empty($categoria && empty($tamanho) && empty($cor) && empty($marca))){
                 
                 $produtosCollection = $produto->whereHas('categorias', function (Builder $query) {
                     $query->where('nome', '=', \Request::query('categoria'));
@@ -201,12 +202,60 @@ class ProdutoController extends Controller
                     $produtos->push($produto);
                 }
             }
+
+            if(!empty($categoria) && !empty($tamanho) && empty($cor) && empty($marca)){
+                
+                $produtosCollection = $produto->whereHas('categorias', function (Builder $query) {
+                    $query->where('nome', '=', \Request::query('categoria'));
+                })->where(function($subQuery) {
+                    $subQuery->whereHas('modelos', function ( $query ) {
+                        $query->where('tamanho', \Request::query('tamanho') );
+                    });
+                })->get();
+                
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+
+            if(!empty($categoria) && !empty($tamanho) && !empty($cor) && empty($marca)){
+                
+                $produtosCollection = $produto->whereHas('categorias', function (Builder $query) {
+                    $query->where('nome', '=', \Request::query('categoria'));
+                })->where(function($subQuery) {
+                    $subQuery->whereHas('modelos', function ( $query ) {
+                        $query->where('tamanho', \Request::query('tamanho') );
+                    });
+                })->where('cor', \Request::query('cor'))->get();
+                
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+
+            if(!empty($categoria) && !empty($tamanho) && !empty($cor) && !empty($marca)){
+                
+                $produtosCollection = $produto->whereHas('categorias', function (Builder $query) {
+                    $query->where('nome', '=', \Request::query('categoria'));
+                })->where(function($subQuery) {
+                    $subQuery->whereHas('modelos', function ( $query ) {
+                        $query->where('tamanho', \Request::query('tamanho') );
+                    });
+                })->where('cor', \Request::query('cor'))->where('marca_id', \Request::query('marca'))->get();
+                
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
             
-            if(!empty($tamanho)){
+            if(empty($categoria) && !empty($tamanho) && empty($cor) && empty($marca)){
 
                 $produtosCollection = $produto->whereHas('modelos', function (Builder $query) {
                     $query->where('tamanho', '=', \Request::query('tamanho'));
-                })->get();
+                })->where('cor', \Request::query('cor'))->get();
                 
                 foreach ($produtosCollection as $produto) {
                     
@@ -214,30 +263,84 @@ class ProdutoController extends Controller
                 }
             }
         
-            if(!empty($cor)){
-                
+            if(empty($categoria) && !empty($tamanho) && !empty($cor) && empty($marca)){
+
                 $produtosCollection = $produto->whereHas('modelos', function (Builder $query) {
-                    $query->where('cor', '=', \Request::query('cor'));
-                })->get();
+                    $query->where('tamanho', '=', \Request::query('tamanho'));
+                })->where('cor', \Request::query('cor'))->get();
                 
                 foreach ($produtosCollection as $produto) {
                     
                     $produtos->push($produto);
                 }
             }
-            
-            if(!empty($marca)){
-                
-                $produtosCollection = $produto->whereHas('marca', function (Builder $query) {
-                    $query->where('nome', '=', \Request::query('marca'));
-                })->get();
+
+            if(empty($categoria) && !empty($tamanho) && !empty($cor) && !empty($marca)){
+
+                $produtosCollection = $produto->whereHas('modelos', function (Builder $query) {
+                    $query->where('tamanho', '=', \Request::query('tamanho'));
+                })->where('cor', \Request::query('cor'))->where('marca_id', \Request::query('marca'))->get();
                 
                 foreach ($produtosCollection as $produto) {
                     
                     $produtos->push($produto);
                 }
             }
-    
+
+            if(empty($categoria) && empty($tamanho) && !empty($cor) && empty($marca)){
+
+                $produtosCollection = $produto->where('cor', \Request::query('cor'))->get();
+                
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+
+            if(!empty($categoria) && empty($tamanho) && !empty($cor) && empty($marca)){
+
+                $produtosCollection = $produto->whereHas('categorias', function (Builder $query) {
+                    $query->where('nome', '=', \Request::query('categoria'));
+                })->where('cor', \Request::query('cor'))->get();
+
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+
+            if(!empty($categoria) && empty($tamanho) && !empty($cor) && !empty($marca)){
+
+                $produtosCollection = $produto->whereHas('categorias', function (Builder $query) {
+                    $query->where('nome', '=', \Request::query('categoria'));
+                })->where('cor', \Request::query('cor'))->where('marca_id', \Request::query('marca'))->get();
+
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+
+            if(empty($categoria) && empty($tamanho) && empty($cor) && !empty($marca)){
+
+                $produtosCollection = $produto->where('marca_id', \Request::query('marca'))->get();
+
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+
+            if(empty($categoria) && empty($tamanho) && !empty($cor) && !empty($marca)){
+
+                $produtosCollection = $produto->where('marca_id', \Request::query('marca'))->where('cor', \Request::query('cor'))->get();
+
+                foreach ($produtosCollection as $produto) {
+                    
+                    $produtos->push($produto);
+                }
+            }
+
         }else {
 
             $produtos = Produto::all();

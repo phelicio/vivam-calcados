@@ -77,7 +77,7 @@
 							<div class="fw-size-choose">
 									@foreach ($marcas as $marca)
 									<div class="sc-item">
-										<input type="radio" name="marca" value="{{$marca->nome}}" id="{{ $marca->nome }}-marca"> 
+										<input type="radio" name="marca" value="{{$marca->id}}" id="{{ $marca->nome }}-marca"> 
 										<label for="{{ $marca->nome }}-marca">{{ucfirst($marca->nome)}}</label>
 									</div>
 									@endforeach
