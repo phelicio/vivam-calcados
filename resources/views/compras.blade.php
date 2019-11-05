@@ -5,19 +5,21 @@
     <h2 class="m-3">Meu pedidos</h2>
     <table class="table table-hover table-bordered">
         <thead>
-            <tr>
-                <th>Data</th>
-                <th>Data Entrega</th>
-                <th>Status</th>
-                <th></th>
-            </tr>
+                @if(!Auth::user()->vendas->isEmpty())
+                    <tr>
+                        <th>Data</th>
+                        <th>Data Entrega</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                @endif
         </thead>
         <tbody>
             @if(Auth::user()->vendas->isEmpty())
                 <tr >
                     <td colspan="3">
-                        <h3 class="text-center m-5">Você não fez nenhuma compra ainda :(</h3>
-                        <p class="text-center m-5" >Veja nossos produtos! <a href="{{ route('produtos.catalogo') }}">clique aqui</a></p>
+                        <h3 class="text-center mr-5 ml-5 mt-5">Você não fez nenhuma compra ainda :(</h3>
+                        <p class="text-center mb-5 ml-5 mr-5" ><a href="{{ route('produtos.catalogo') }}">Clique aqui</a> para ver nossos produtos! </p>
                     </td>
                 </tr>
             @else

@@ -106,11 +106,10 @@
                 <div class="container">
                     <!-- menu -->
                     <ul class="main-menu">
-                        <li><a href="#">Página Inicial</a></li>
-                    <li><a href="{{route('produtos.catalogo').'?categoria=feminino'}}">Femininos</a></li>
-                        <li><a href="{{route('produtos.catalogo').'?categoria=masculino'}}">Masculinos</a></li>
-                        <li><a href="{{route('produtos.catalogo').'?categoria=infantil'}}">Infantis</a></li>
-                        <li><a href="{{route('sobre')}}">Sobre Nós</a></li>
+                        <li><a href="{{ route('home') }}">Página Inicial</a></li>
+                        <li><a href="{{ route('produtos.catalogo') }}">Produtos</a></li>
+                        <li><a href="/documentos">Documentos</a></li>
+                        <li><a href="{{ route('sobre') }}">Sobre Nós</a></li>
                     </ul>
                 </div>
             </nav>

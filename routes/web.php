@@ -99,3 +99,7 @@ Route::group(['as' => 'carrinho.', 'prefix' => '/carrinho', 'middleware' => 'aut
 
 
 });
+
+Route::get('/documentos',  function(){
+    return view('documentos');
+});
