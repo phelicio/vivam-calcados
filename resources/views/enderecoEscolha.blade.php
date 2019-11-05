@@ -23,15 +23,15 @@
                     </tr>
                 @else
                     @foreach ($user->enderecos as $endereco)
-                        <tr >
-                            <td><input name="endereco" value="{{ $endereco->id }}" id="{{ $endereco->id}}" type="radio"></td>
+                        <tr @if (!$endereco->entrega24hrs) disabled @endif>
+                            <td><input @if (!$endereco->entrega24hrs) disabled @endif name="endereco" value="{{ $endereco->id }}" id="{{ $endereco->id}}" type="radio"></td>
                             <td ><label for="{{ $endereco->id }}" >{{ $endereco->getEndereco($endereco->id) }}</label></td>
                             @if ($endereco->entrega24hrs)
 
-                                <td class="alert alert-success"> Frete Gratis</td>
+                                <td class="alert alert-success text-center"> Frete Grátis</td>
                             @else
                             
-                                <td class="alert alert-danger">Valor do frete</td>
+                                <td class="alert alert-danger text-center">Não disponível</td>
                             @endif
                         </tr>
                     @endforeach

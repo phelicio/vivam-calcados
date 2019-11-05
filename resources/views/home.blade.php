@@ -89,7 +89,7 @@
 				@foreach ($produtosRecentes as $produto)
 					<div class="product-item">
 						<div class="pi-pic">
-							<img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt="">
+                            <a href="{{ route('produtos.show', $produto->id) }}"><img src="{{url('storage/produto/'."{$produto->imagem}")}}" alt=""></a>
 							<div class="pi-links">
 							<a href="{{ route('produtos.show', $produto->id) }}" class="add-card"><i class="flaticon-bag"></i><span>ADD AO CARRINHO</span></a>
 							</div>

@@ -78,8 +78,14 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        return view('produto.show', ['produto' => Produto::find($id)]);
+    {   
+
+        $maisProdutos = Produto::all()->random(
+            Produto::all()->count()>=10?
+                10:
+                Produto::all()->count());
+                    
+        return view('produto.show', ['produto' => Produto::find($id), 'maisProdutos' => $maisProdutos]);
     }
 
     /**
