@@ -44,7 +44,7 @@ class EnderecoController extends Controller
         $endereco = Endereco::create([
             'cep' => $request->cep,
             'numero' => $request->numero,
-            'logradouro' => $request->rua,
+            'logradouro' => $request->logradouro,
             'bairro' => $request->bairro,
             'cidade' => $request->cidade,
             'estado_id' => $estado->id,

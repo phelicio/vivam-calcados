@@ -28,10 +28,7 @@ class EnderecoRequest extends FormRequest
             'numero' =>'required',
             'logradouro' =>'required',
             'bairro' =>'required',
-            'cidade' =>'required',
-            'estado_id' =>'required',
-            'user_id' =>'required',
-            'entrega24hrs' => 'required'
+            'cidade' =>'required'
         ];
     }
 }

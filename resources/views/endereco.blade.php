@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"> </script>
+
 <div class="container">
     <h3 class="mt-5 mb-4">Endereços</h3>
     <table class="table table-hover table-bordered">
@@ -41,13 +47,16 @@
                         <label for="cep">Cep</label>
                         <input name="cep" type="text" maxlength="11" class="form-control" id="cep" placeholder="Cep">
                     </div>
+                    <script>
+                        $("#cep").inputmask({"mask": "99999-999"});
+                    </script>
                     <div class="form-group col-md-12">
                             <label for="numero">Numero</label>
                             <input name="numero" type="text" class="form-control" id="numero" placeholder="Numero">
                         </div>
                     <div class="form-group col-md-12">
                         <label for="rua">Rua</label>
-                        <input name="rua" type="text" class="form-control" id="rua" placeholder="Rua">
+                        <input name="logradouro" type="text" class="form-control" id="rua" placeholder="Rua">
                     </div>
                     <div class="form-group col-md-12">
                         <label for="bairro">Bairro</label>
