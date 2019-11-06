@@ -42,13 +42,14 @@ Route::group(['as' => 'categorias.', 'prefix' => '/admin/categorias','middleware
     Route::delete('/delete/{id}', ['as' => 'destroy','uses' =>'CategoriaController@destroy']);
 });
 
+Route::get('/admin/pedido/{id}', ['as' => 'admin.pedido', 'uses' => 'AdminController@pedido', 'middleware' => 'auth.admin']);
+
+
 Route::group(['as' => 'admin.', 'prefix' => '/admin'], function(){
     
     Route::get('/', ['as' => 'loginPage', 'uses' => 'AdminController@loginPage']);
     Route::post('/login' , ['as' => 'login' , 'uses' => 'AdminController@login']);
     Route::post('/logout' , ['as' => 'logout' , 'uses' => 'AdminController@logout']);
-    Route::get('/settings', ['as' => 'settings', 'uses' => 'AdminController@settings']);
-    Route::post('/settings', ['as' => 'saveSettings', 'uses' => 'AdminController@saveSettings']);
 
 });
 

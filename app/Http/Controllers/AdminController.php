@@ -65,4 +65,10 @@ class AdminController extends Controller
         return view('admin.clientes', ['clientes' => $clientes]);
     }
 
+    public function pedido($id){
+        
+        $venda = \App\Venda::find($id);
+        return view('admin.pedido', ['venda' => $venda]);
+    }
+
 }

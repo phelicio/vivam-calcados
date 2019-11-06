@@ -23,7 +23,7 @@
             <div class="box-body">
                 <table class="table table-hover table-bordered">
                     <thead>
-                        <th><input type="checkbox"></th>
+                        <th></th>
                         <th>Cliente</th>
                         <th>Data</th>
                         <th>Data de Entrega</th>
@@ -32,14 +32,15 @@
                     </thead>
                     <tbody>
                         @foreach ($vendas as $venda)
-                        <tr>
-                            <td><input name="vendas[]" type="checkbox" value={{ $venda->id }}></td>
-                            <td>{{ $venda->user->email }}</td>
-                            <td>{{ date('d/m/Y', strtotime($venda->created_at)) }}</td>
-                            <td>{{ date('d/m/Y', strtotime($venda->dataEntrega)) }}</td>
-                            <td>{{ str_replace('.', ',', money_format('R$ %.2n', $venda->valorTotal())) }}</td>
-                            <td>{{ $venda->getStatus() }}</td>
-                        </tr>    
+                            <tr>
+                                <td><input name="vendas[]" type="checkbox" value={{ $venda->id }}></td>
+                                <td>{{ $venda->user->email }}</td>
+                                <td>{{ date('d/m/Y', strtotime($venda->created_at)) }}</td>
+                                <td>{{ date('d/m/Y', strtotime($venda->dataEntrega)) }}</td>
+                                <td>{{ str_replace('.', ',', money_format('R$ %.2n', $venda->valorTotal())) }}</td>
+                                <td>{{ $venda->getStatus() }}</td>
+                                <td><a href="{{ route('admin.pedido', $venda) }}">Detalhes</a></td>
+                            </tr>    
                         @endforeach
                     </tbody>
                 </table>
