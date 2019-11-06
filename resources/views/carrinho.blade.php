@@ -30,6 +30,7 @@ crossorigin="anonymous"></script>
 						<h3>Carrinho</h3>
 						<div class="cart-table-warp">
 							<form method="POST" action="{{ route('carrinho.updateCarrinho') }}">
+								
 								@csrf
 								<table>
 									<thead>
@@ -42,6 +43,11 @@ crossorigin="anonymous"></script>
 										</tr>
 									</thead>
 									<tbody>
+										<script>
+											const totalValueTds = [];
+											const valores = [];
+											const quantidades = [];
+										</script>
 										@foreach ($carrinho->produtos as $k => $produto)
 										<tr>
 											<td class="product-col">
@@ -53,26 +59,55 @@ crossorigin="anonymous"></script>
 											</td>
 											<td class="quy-col">
 												<div class="quantity">
-													<div class="pro-qty">
-														<input class="qtd" id="btnQtd" name="produto[{{$k}}][quantidade]" value="{{ $produto->pivot->quantidade }}">
+													<div class="pro-qty carrinho" id="pro-qtd{{$k}}">
+														<input class="qtd" name="produto[{{$k}}][quantidade]" value="{{ $produto->pivot->quantidade }}" id="qtd">
 													</div>
 													<input hidden  name="produto[{{$k}}][produto]" value="{{ $produto->id }}">
 												</div>
 											</td>
 											<td class="size-col"><h4>{{ $produto->sizePerModelo($produto->pivot->modelo_id) }}</h4></td>
-											<td class="total-col"><h4>{{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor * $produto->pivot->quantidade)) }}</h4></td>
+											<td class="total-col" id="totalValue{{$k}}"></td>
 											<td class="total-col">
 												<a class="btn" href="{{route('carrinho.rmvProduto' ,[$carrinho->id, $produto->pivot->modelo_id ,$produto->id])}}">
 													<img src="/public-assets/img/delIcon.png" alt=""/>
 												</a>
 											</td>
 										</tr>
+										<script>
+											// {{ str_replace('.', ',' ,money_format('R$ %.2n', $produto->valor * $produto->pivot->quantidade)) }}
+											var key = {!! $k !!}
+											var proQty = $('#pro-qtd' + key);
+											valores.push({!! $produto->valor !!});
+											quantidades.push({!! $produto->pivot->quantidade !!});
+											proQty.prepend(`<span onclick="dec(${key})" id="dec${key}" class="dec qtybtn">-</span>`);
+											proQty.append(`<span onclick="inc(${key})" id="inc${key}" class="inc qtybtn">+</span>`);
+											totalValueTds.push($('#totalValue' + key));
+											totalValueTds[key].html(`<h4>R$ ${((valores[key] * quantidades[key]).toFixed(2)).toString().replace('.', ',')}</h4>`);
+											
+											function inc(key) {
+												quantidades[key] += 1;
+												totalValueTds[key].html(`<h4>R$ ${((valores[key] * quantidades[key]).toFixed(2)).toString().replace('.', ',')}</h4>`);
+												somarTudo();
+											}
+
+											function dec(key) {
+												
+												if (quantidades[key] > 1) {
+													quantidades[key] -= 1;
+												} else {
+													quantidades[key] = 1;
+												}
+												totalValueTds[key].html(`<h4>R$ ${((valores[key] * quantidades[key]).toFixed(2)).toString().replace('.', ',')}</h4>`);
+												somarTudo();
+											}
+										</script>
 										@endforeach
+										
 									</tbody>
 							</table>
 						</div>
 						<div class="total-cost">
-							<h6>Total <span>{{ str_replace('.', ',' ,money_format('R$ %.2n',$carrinho->valorTotal())) }}</span></h6>
+							<h6>Total <span class="valorTotal"></span></h6>
 						</div>
 					</div>
 				</div>
@@ -84,9 +119,20 @@ crossorigin="anonymous"></script>
 			</div>
 		</div>
 		<div id="paypal-button-container"></div>
-
-		
-	</section>
+		<script>
+				//{{ str_replace('.', ',' ,money_format('R$ %.2n',$carrinho->valorTotal())) }}
+				function somarTudo() {
+					var total = 0;
+					valores.forEach((valor, index) => {
+						total += (valor * quantidades[index])
+					});
+					
+					$('.valorTotal').html(`R$ ${((total).toFixed(2)).toString().replace('.', ',')}`);
+				}
+				somarTudo()
+		</script>
+	
+</section>
 	<!-- cart section end -->
 
 		
