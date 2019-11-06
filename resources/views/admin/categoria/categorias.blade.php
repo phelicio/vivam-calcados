@@ -30,5 +30,13 @@
     <nav class="footer position-fixed text-center">
             {{ $categorias->links() }}
     </nav>
-   
+
+    @section('css')
+    <style>
+            .box {
+                height: 450px;
+            }
+        }
+    </style>
+@stop
 @stop

@@ -33,4 +33,11 @@
         </nav>
     </div>
   
+    @section('css')
+    <style>
+            .box {
+                height: 450px;
+            }
+        }
+    </style>
 @stop
