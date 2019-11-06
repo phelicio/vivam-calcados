@@ -36,8 +36,9 @@
     @section('css')
     <style>
             .box {
-                height: 250px;
+                height: 200px;
             }
         }
     </style>
+    @stop
 @stop
