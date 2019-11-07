@@ -18,6 +18,7 @@ class CarrinhoController extends Controller
         $modeloId = ($request->input('modelo'));
         $quantidade = ($request->input('quantidade'));
         $modelo = Modelo::find($modeloId);
+        
         if($modeloId){
 
             if($modelo)
