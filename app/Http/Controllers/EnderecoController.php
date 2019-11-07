@@ -32,7 +32,7 @@ class EnderecoController extends Controller
     public function store(EnderecoRequest $request)
     {
         $estado = Estado::where('sigla', $request->estado)->first();
-        if (!$estado) return redirect()->action('EnderecoContrller@index');
+        if (!$estado) return redirect()->action('EnderecoController@index');
         $userId = Auth::user()->id;
 
         $entrega24hrs = false;

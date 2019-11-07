@@ -92,7 +92,8 @@ class CheckoutController extends Controller
         $transacao->setAmount($valor)->setItemList($lista_itens)->setDescription('Pedido');
 
         $urls_redirecionamento = new RedirectUrls();
-        $urls_redirecionamento->setReturnUrl(URL::route('checkoutStore', ['venda' => $venda->id]))->setCancelUrl(URL::route('carrinho.carrinho'));
+        $urls_redirecionamento->setReturnUrl(URL::route('checkoutStore', ['venda' => $venda->id]))
+                              ->setCancelUrl(URL::route('carrinho.carrinho'));
      
         $pagamento = new Payment();
         $pagamento->setIntent('Sale')->setPayer($pagador)->setRedirectUrls($urls_redirecionamento)->setTransactions(array($transacao));
