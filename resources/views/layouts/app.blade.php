@@ -108,8 +108,8 @@
                     <ul class="main-menu">
                         <li><a href="{{ route('home') }}">Página Inicial</a></li>
                         <li><a href="{{ route('produtos.catalogo') }}">Produtos</a></li>
-                        <li><a href="/documentos">Documentos</a></li>
                         <li><a href="{{ route('sobre') }}">Sobre Nós</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1FenchLGbO4e_tinNVT7cz2ugK8Wao13G?usp=sharing">Documentos</a></li>
                     </ul>
                 </div>
             </nav>
