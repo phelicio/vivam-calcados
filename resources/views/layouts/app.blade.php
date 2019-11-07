@@ -109,7 +109,7 @@
                         <li><a href="{{ route('home') }}">Página Inicial</a></li>
                         <li><a href="{{ route('produtos.catalogo') }}">Produtos</a></li>
                         <li><a href="{{ route('sobre') }}">Sobre Nós</a></li>
-                        <li><a href="https://drive.google.com/drive/folders/1FenchLGbO4e_tinNVT7cz2ugK8Wao13G?usp=sharing">Documentos</a></li>
+                        <li><a href="https://drive.google.com/open?id=1FenchLGbO4e_tinNVT7cz2ugK8Wao13G">Documentos</a></li>
                     </ul>
                 </div>
             </nav>
