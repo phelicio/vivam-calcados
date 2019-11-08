@@ -48,11 +48,11 @@ class CheckoutController extends Controller
         $dia = date('D');
 
         switch ($dia) {
-            case 'Friday':
+            case 'Fri':
                 $entrega = date('Y-m-d' ,strtotime("+3 day"));
                 break;
             
-            case 'Saturday':
+            case 'Sat':
                 $entrega = date('Y-m-d' ,strtotime("+2 day"));
                 break;
             
