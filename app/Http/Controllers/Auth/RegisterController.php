@@ -49,6 +49,8 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+        
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -56,9 +58,9 @@ class RegisterController extends Controller
             'cpf' => ['required', 'string', 'max:14'],
             'telefone' => ['required', 'string', 'max:15']
 
-        ]);
+            ]);
     }
-
+    
     /**
      * Create a new user instance after a valid registration.
      *
@@ -68,6 +70,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $cpf = str_replace(['.', '-'], '', $data['cpf']);
+        if (!validaCPF($cpf)) return back();
         $telefone = str_replace(['(', ')', ' ', '-'], '', $data['telefone']);
 
         $user = User::create([
@@ -79,5 +82,28 @@ class RegisterController extends Controller
         ]);
         $user->carrinho()->create();
         return $user;
+    }
+    
+    private function validaCPF($cpf) {
+    
+        $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+         
+        if (strlen($cpf) != 11) {
+            return false;
+        }
+        if (preg_match('/(\d)\1{10}/', $cpf)) {
+            return false;
+        }
+
+        for ($t = 9; $t < 11; $t++) {
+            for ($d = 0, $c = 0; $c < $t; $c++) {
+                $d += $cpf{$c} * (($t + 1) - $c);
+            }
+            $d = ((10 * $d) % 11) % 10;
+            if ($cpf{$c} != $d) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -32,6 +32,14 @@
                     <span class="float-right">{{  str_replace('.', ',', money_format('R$ %.2n', $venda->valorTotal())) }}</span>
                 </td>
             </tr>
+            <tr>
+                <td colspan="2">
+                    <h4 class="float-left">Endereço de Entrega</h4> 
+                </td>
+                <td>
+                    <span class="float-right">{{  $venda->endereco->getEndereco() }}</span>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

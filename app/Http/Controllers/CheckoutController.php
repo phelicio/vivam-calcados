@@ -45,8 +45,25 @@ class CheckoutController extends Controller
 
         if(!$endereco || !$endereco->entrega24hrs ) return back();
 
+        $dia = date('D');
+
+        switch ($dia) {
+            case 'Friday':
+                $entrega = date('Y-m-d' ,strtotime("+3 day"));
+                break;
+            
+            case 'Saturday':
+                $entrega = date('Y-m-d' ,strtotime("+2 day"));
+                break;
+            
+            default:
+                $entrega = date('Y-m-d' ,strtotime("+1 day"));
+                break;
+        }
+
+
         $venda = Venda::create([
-            'dataEntrega' => date('Y-m-d' ,strtotime("+1 day")),
+            'dataEntrega' => $entrega,
             'valorTotal' => $user->carrinho->valorTotal(),
             'status' => '2',
             'user_id' => $user->id,
