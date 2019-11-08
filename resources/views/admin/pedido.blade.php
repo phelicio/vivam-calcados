@@ -19,6 +19,7 @@
                         <td>
                             <img src=" {{url('storage/produto/'."{$produto->imagem}")}} " class="card-img-top" alt="...">
                         </td>
+                        <td>{{ $produto->nome }}</td>
                         <td>{{ $produto->pivot->quantidade }}</td>
                         <td>{{ str_replace('.', ',', money_format('R$ %.2n', $produto->valor * $produto->pivot->quantidade))}}</td>
                     </tr>

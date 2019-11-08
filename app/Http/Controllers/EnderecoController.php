@@ -35,11 +35,9 @@ class EnderecoController extends Controller
         if (!$estado) return redirect()->action('EnderecoController@index');
         $userId = Auth::user()->id;
 
-        $entrega24hrs = false;
         $cidade = strtolower($request->cidade);
 
-        if( strtolower($estado->nome) === "ceará" && ($cidade === 'juazeiro do norte' || $cidade === 'crato'|| $cidade === 'barbalha'))
-            $entrega24hrs = true; 
+        $entrega24hrs = Endereco::entrega24hrs($estado, $cidade); 
 
         $endereco = Endereco::create([
             'cep' => $request->cep,

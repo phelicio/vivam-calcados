@@ -34,6 +34,10 @@ class Endereco extends Model
         
         return "$endereco->logradouro $endereco->numero, $endereco->bairro, $endereco->cidade - {$endereco->estado->sigla} , $endereco->cep";
     }
+
+    public function entrega24hrs($estado, $cidade){
+        if( strtolower($estado->nome) === "ceará" && ($cidade === 'juazeiro do norte' || $cidade === 'crato'|| $cidade === 'barbalha'))
+    }
 }
 
  
