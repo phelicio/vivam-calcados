@@ -37,7 +37,7 @@
                     <h4 class="float-left">Endereço de Entrega</h4> 
                 </td>
                 <td>
-                    <span class="float-right">{{  $venda->endereco->getEndereco() }}</span>
+                    <span class="float-right">{{  $venda->endereco->getEndereco($venda->endereco->id) }}</span>
                 </td>
             </tr>
         </tbody>
