@@ -70,7 +70,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $cpf = str_replace(['.', '-'], '', $data['cpf']);
-        if (!validaCPF($cpf)) return redirect()->route('register');
+        if (!$this->validaCPF($cpf)) return redirect()->route('register');
         $telefone = str_replace(['(', ')', ' ', '-'], '', $data['telefone']);
 
         $user = User::create([
